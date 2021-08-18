@@ -3,7 +3,9 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Home from './components/home';
 import Admin from './components/admin';
 import BoardingPlaceAdmin from './components/admin/BoardingPlace';
-import NewBoardingPlace from './components/admin/BoardingPlace/newPlace';
+//import NewBoardingPlace from './components/admin/BoardingPlace/newPlace';
+import PetAccessory from './components/admin/PetAccessory';
+import newAccessory from './components/admin/PetAccessory/newAccessory';
 import './App.css';
 
 export default class App extends Component {
@@ -16,7 +18,9 @@ export default class App extends Component {
             <Route exact path='/' component={Home} />
             <Route exact path='/admin' component={Admin} />
             <Route exact path='/admin-boarding-place' component={BoardingPlaceAdmin} />
-            <Route exact path='/new-boarding-place' component={NewBoardingPlace} />
+         {/* <Route exact path='/new-boarding-place' component={NewBoardingPlace} /> */}
+         <Route exact path='/admin-accessory' component={PetAccessory} />
+         <Route exact path='/new-accessory' component={newAccessory} />
           </Switch>
         </BrowserRouter>
       </div>

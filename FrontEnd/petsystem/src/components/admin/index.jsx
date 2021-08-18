@@ -29,7 +29,7 @@ export default class Home extends Component {
                 image: vet,
                 title: "Pet Veterinary Services",
                 description: "◾Add New Service ◾Update Service ◾Delete Service ◾Generate Report",
-                link: ""
+                link: "/admin-accessory"
             },
             {
                 image: shelter,
