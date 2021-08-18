@@ -8,7 +8,6 @@ import PetAccessory from './components/admin/PetAccessory';
 import newAccessory from './components/admin/PetAccessory/newAccessory';
 import VeterinaryService from './components/admin/VeterinaryServices';
 import InsertVeterinay from './components/admin/VeterinaryServices/InsertVeterinaryDetails';
-// import NewBoardingPlace from './components/admin/BoardingPlace/newPlace';
 import './App.css';
 import InsertPet from './components/admin/PetDetails/InsertPet';
 
