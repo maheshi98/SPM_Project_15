@@ -23,13 +23,13 @@ export default class Home extends Component {
                 image: items,
                 title: "Pet Accessories",
                 description: "◾Add New Accessory ◾Update Accessory ◾Delete Accessory ◾Generate Report",
-                link: ""
+                link: "/admin-accessory"
             },
             {
                 image: vet,
                 title: "Pet Veterinary Services",
                 description: "◾Add New Service ◾Update Service ◾Delete Service ◾Generate Report",
-                link: "/admin-accessory"
+                link: "/admin-veterinary-services"
             },
             {
                 image: shelter,
