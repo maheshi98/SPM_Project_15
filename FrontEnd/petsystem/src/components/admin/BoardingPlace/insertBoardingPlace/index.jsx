@@ -124,11 +124,6 @@ class NewBoardingPlace extends Component {
         if (!placeName) {
             formIsValid = false;
             formErrors["placeNameError"] = "*Pet Boarding Place Name is required.";
-        } else {
-            if (!letters_only_pattern.test(placeName)) {
-                formIsValid = false;
-                formErrors["placeNameError"] = "*Please Enter Letters Only.";
-            }
         }
 
         if (!placeCity) {
