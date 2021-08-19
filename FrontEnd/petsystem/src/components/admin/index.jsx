@@ -17,13 +17,13 @@ export default class Home extends Component {
                 image: pet,
                 title: "Pet Details",
                 description: "◾Add New Pet Detail ◾Update Pet ◾Delete Pet ◾Generate Report",
-                link: ""
+                link: "/admin-insert-pet"
             },
             {
                 image: items,
                 title: "Pet Accessories",
                 description: "◾Add New Accessory ◾Update Accessory ◾Delete Accessory ◾Generate Report",
-                link: ""
+                link: "/admin-accessory"
             },
             {
                 image: vet,
