@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Row, Col, Button, Form, Image} from 'react-bootstrap';
 import pets from '../../../../assets/admin/pets.png';
 import './index.css';
+import PetService from '../../../../Services/PetService';
 
 const initialState = {
     breed : '',
@@ -10,8 +11,8 @@ const initialState = {
     description : '',
     price : '',
     imgUrl : '',
-    ownername : '',
-    contactNo : '',
+    ownerName : '',
+    ownerContactNo : '',
 } 
 
 export default class InsertPet extends Component {
@@ -32,9 +33,29 @@ export default class InsertPet extends Component {
         
     }
     componentDidUpdate(prevProps, prevState, snapshot) { if (prevState.name !== this.state.name) { this.handler() } }
+
     onChange(e) {
         this.setState({ [e.target.name]: e.target.value })
     }
+
+    onSubmit(e) {
+        e.preventDefault();
+        let pet = {
+            breed: this.state.breeed,
+            age: this.state.age,
+            description: this.state.description,
+            price: this.state.price,
+            ownerName : this.state.ownerName,
+            ownerContactNo : this.state.ownerContactNo,
+            imgUrl : this.state.imgUrl
+        };
+        console.log("DETAILS ADDED SUCCESSFUL ", pet);
+        PetService.addPetDetails(pet).then(res =>{
+
+        })
+
+    }
+
     componentWillUnmount() {
         
     }
@@ -88,7 +109,7 @@ export default class InsertPet extends Component {
                                     onChange={this.onChange} />
                             </Form.Group>
                             <Form.Group >
-                                <Form.Label>Image URL</Form.Label>
+                                <Form.Label>Price</Form.Label>
                                 <Form.Control
                                     type="text"
                                     id="price"
@@ -111,20 +132,20 @@ export default class InsertPet extends Component {
                                 <Form.Label>Owner Name</Form.Label>
                                 <Form.Control
                                     type="text"
-                                    id="ownername"
-                                    name="ownername"
+                                    id="ownerName"
+                                    name="ownerName"
                                     placeholder="Owner name."
-                                    value={this.state.ownername}
+                                    value={this.state.ownerName}
                                     onChange={this.onChange} />
                             </Form.Group>
                             <Form.Group >
                                 <Form.Label>Owner contact Number</Form.Label>
                                 <Form.Control
                                     type="text"
-                                    id="contactNo"
-                                    name="contactNo"
+                                    id="ownerContactNo"
+                                    name="ownerContactNo"
                                     placeholder="Contact Number."
-                                    value={this.state.contactNo}
+                                    value={this.state.ownerContactNo}
                                     onChange={this.onChange} />
                             </Form.Group>
                             <br />
