@@ -47,7 +47,7 @@ export default class BoardingPlace extends Component {
                                 <button class="member-btn btn"><i><BsPlusCircle size="25" /></i> New Entry</button>
                             </a>
 
-                            <a href="" target="_blank" rel="noreferrer">
+                            <a href="/generate-report-boarding-place">
                                 <button class="member-btn btn"><i><RiFileDownloadLine size="25" /></i> Download</button>
                             </a>
                         </Col>
