@@ -12,7 +12,7 @@ const initialState = {
     placeOpeningHours: "",
     selectedServices: [],
     serviceDetails: [],
-    submitted: true,
+    submitted: false,
     formErrors: {}
 }
 

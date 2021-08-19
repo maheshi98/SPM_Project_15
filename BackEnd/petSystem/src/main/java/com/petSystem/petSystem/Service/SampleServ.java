@@ -1,5 +1,6 @@
 package com.petSystem.petSystem.Service;
 
+import com.petSystem.petSystem.Model.PetAccessoryModel;
 import com.petSystem.petSystem.Model.SampleMod;
 import com.petSystem.petSystem.Repository.SampleRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,5 +19,5 @@ public class SampleServ {
         else {
             return true;
         }
-    }
+    }    
 }
