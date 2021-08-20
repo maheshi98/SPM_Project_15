@@ -5,6 +5,8 @@ import com.petSystem.petSystem.Repository.BoardingPlaceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class BoardingPlaceService {
     public final BoardingPlaceRepository boardingPlaceRepository;
@@ -21,5 +23,13 @@ public class BoardingPlaceService {
      */
     public void createNewBoardingPlace(BoardingPlace boardingPlace){
         boardingPlaceRepository.insert(boardingPlace);
+    }
+
+    /**
+     * @description Get all Conferences
+     * @memberof ConferenceService
+     */
+    public List<BoardingPlace> getAllBoardingPlace(){
+        return boardingPlaceRepository.findAll();
     }
 }

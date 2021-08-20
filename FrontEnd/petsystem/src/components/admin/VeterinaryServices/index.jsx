@@ -23,7 +23,7 @@ export default class VeterinaryService extends Component {
                                 <button class="member-btn btn"><i><BsPlusCircle size="25" /></i> New Entry</button>
                             </a>
 
-                            <a href="" target="_blank" rel="noreferrer">
+                            <a href="/contact-us" target="_blank" rel="noreferrer">
                                 <button class="member-btn btn"><i><RiFileDownloadLine size="25" /></i> Download</button>
                             </a>
                         </Col>
