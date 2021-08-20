@@ -1,11 +1,35 @@
 
 import React, { Component } from 'react';
 import { Row, Col } from 'react-bootstrap';
+import BoardingPlaceService from '../../Services/BoardingPlacesService';
 import './index.css';
 
 export default class BoardingPlace extends Component {
-    render() {
+    constructor(props) {
+        super(props);
+        this.retrievePetBoardingPlaces = this.retrievePetBoardingPlaces.bind(this);
+        this.state = {
+            boardingPlaces: []
+        }
+    }
 
+    componentDidMount() {
+        this.retrievePetBoardingPlaces();
+    }
+
+    retrievePetBoardingPlaces = () => {
+        BoardingPlaceService.getAll().then(response => {
+            this.setState({
+                boardingPlaces: response.data
+            });
+            console.log(response.data);
+        })
+            .catch(e => {
+                console.log(e);
+            });
+    }
+
+    render() {
         return (
             <div className="container">
                 <Row>
@@ -35,142 +59,77 @@ export default class BoardingPlace extends Component {
                         </div>
                     </div>
                 </Row>
-                <section class="why-us section-bg auto-space auto-space-vertical">
-                    <br />
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-6 video-box">
-                                <img
-                                    src="http://durbandevelopment.com/wp-content/uploads/2019/08/Web-1.jpg"
-                                    class="img-fluid"
-                                    alt="Not Available"
-                                // style={{ width: 400, height: 400 }}
-                                />
-                            </div>
-
-                            <div class="col-lg-6 d-flex flex-column">
-                                <div class="col-md-10 col-sm-12">
-                                    <br />
-                                    <h2 style={{ textAlign: "center", color: "#5a5af3" }}>Dog Expert</h2>
-                                    <h4 style={{ fontFamily: "revert", color: "InfoText" }}>Contact Details</h4>
-                                    <ul>
-                                        <Row>
-                                            <Col>
-                                                <h6 style={{ color: "CaptionText" }}>
-                                                    City:
-                                                </h6>
-                                                <p style={{ color: "GrayText", fontFamily: "monospace" }}>
-                                                    Colombo o6
-                                                </p>
-                                            </Col>
-                                            <Col>
-                                                <h6>
-                                                    Email:
-                                                </h6>
-                                                <p style={{ color: "grey", fontFamily: "monospace" }}>
-                                                    dogexpert@gmail.com
-                                                </p>
-                                            </Col>
-                                        </Row>
-                                        <Row>
-                                            <Col>
-                                                <h6>
-                                                    Open:
-                                                </h6>
-                                                <p style={{ color: "grey", fontFamily: "monospace" }}>
-                                                    Open 7 days a week 7am - 8pm
-                                                </p>
-                                            </Col>
-                                        </Row>
-                                    </ul>
-                                    <Row style={{ textAlign: "left" }}>
-                                        <h4 style={{ fontFamily: "revert", color: "InfoText" }}>Services</h4>
-                                        <p>
+                {this.state.boardingPlaces.map(
+                    places => 
+                        <section class="why-us section-bg auto-space auto-space-vertical">
+                            <br />
+                            <div class="container" key={places.placeId}>
+                                <div class="row">
+                                    <div class="col-lg-6 video-box">
+                                        <img
+                                            src={places.placeImage}
+                                            class="img-fluid"
+                                            alt="Not Available"
+                                            style={{objectFit:"cover", width:600, height: 400}}
+                                        />
+                                    </div>
+                                    <div class="col-lg-6 d-flex flex-column">
+                                        <div class="col-md-10 col-sm-12">
+                                            <br />
+                                            <h2 style={{ textAlign: "center", color: "#5a5af3" }}>{places.placeName}</h2>
+                                            <h4 style={{ fontFamily: "revert", color: "InfoText" }}>Contact Details</h4>
                                             <ul>
-                                                <li> <h6 style={{ fontFamily: "cursive" }}>Extended Stays (per dog) starts at - <b><span style={{ fontFamily: "monospace" }}> LKR: 1000</span></b></h6></li>
-                                                <li> <h6 style={{ fontFamily: "cursive" }}>DayCare (per dog) starts at - <b><span style={{ fontFamily: "monospace" }}> LKR: 1000</span></b></h6></li>
-                                                <li>  <h6 style={{ fontFamily: "cursive" }}>Grooming (per dog) starts at - <b><span style={{ fontFamily: "monospace" }}> LKR: 1000</span></b></h6></li>
+                                                <Row>
+                                                    <Col>
+                                                        <h6 style={{ color: "CaptionText" }}>
+                                                            City:
+                                                        </h6>
+                                                        <p style={{ color: "GrayText", fontFamily: "monospace" }}>
+                                                            {places.placeCity}
+                                                        </p>
+                                                    </Col>
+                                                    <Col>
+                                                        <h6>
+                                                            Email:
+                                                        </h6>
+                                                        <p style={{ color: "grey", fontFamily: "monospace" }}>
+                                                            {places.placeEmail}
+                                                        </p>
+                                                    </Col>
+                                                </Row>
+                                                <Row>
+                                                    <Col>
+                                                        <h6>
+                                                            Open Hours:
+                                                        </h6>
+                                                        <p style={{ color: "grey", fontFamily: "monospace" }}>
+                                                            {places.placeOpeningHours}
+                                                        </p>
+                                                    </Col>
+                                                </Row>
                                             </ul>
-                                            <span class="text-color-primary">
-                                                *Prices will vary according to purpose and number of pets.
-                                            </span>
-                                        </p>
-                                        
-                                    </Row>
+                                            <Row style={{ textAlign: "left" }}>
+                                                <h4 style={{ fontFamily: "revert", color: "InfoText" }}>Services</h4>
+                                                <p>
+                                                    <ul>
+                                                        {places.placeServices.map(
+                                                            services =>
+                                                             <li> <h6 style={{ fontFamily: "cursive" }}>{services.label} - <b><span style={{ fontFamily: "monospace" }}> LKR:{services.price}/=</span></b></h6></li>
+                                                        )}
+                                                    </ul>
+                                                    <span class="text-color-primary">
+                                                        *Prices will vary according to purpose and number of pets.
+                                                    </span>
+                                                </p>
+
+                                            </Row>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <br />
-                </section>
-                <section class="why-us section-bg auto-space auto-space-vertical">
-                    <br />
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-6 video-box">
-                                <img
-                                    src="https://wl-img-prd.s3-accelerate.amazonaws.com/ad09bac7-7a36-451c-bde6-79d29e918f7d-h.jpeg"
-                                    class="img-fluid"
-                                    alt="Not Available"
-                                // style={{ width: 400, height: 400 }}
-                                />
-                            </div>
-
-                            <div class="col-lg-6 d-flex flex-column">
-                                <div class="col-md-10 col-sm-12">
-                                    <br />
-                                    <h2 style={{ textAlign: "center", color: "#5a5af3" }}>Dog Expert</h2>
-                                    <h4 style={{ fontFamily: "revert", color: "InfoText" }}>Contact Details</h4>
-                                    <ul>
-                                        <Row>
-                                            <Col>
-                                                <h6 style={{ color: "CaptionText" }}>
-                                                    City:
-                                                </h6>
-                                                <p style={{ color: "GrayText", fontFamily: "monospace" }}>
-                                                    Colombo o6
-                                                </p>
-                                            </Col>
-                                            <Col>
-                                                <h6>
-                                                    Email:
-                                                </h6>
-                                                <p style={{ color: "grey", fontFamily: "monospace" }}>
-                                                    dogexpert@gmail.com
-                                                </p>
-                                            </Col>
-                                        </Row>
-                                        <Row>
-                                            <Col>
-                                                <h6>
-                                                    Open:
-                                                </h6>
-                                                <p style={{ color: "grey", fontFamily: "monospace" }}>
-                                                    Open 7 days a week 7am - 8pm
-                                                </p>
-                                            </Col>
-                                        </Row>
-                                    </ul>
-                                    <Row style={{ textAlign: "left" }}>
-                                        <h4 style={{ fontFamily: "revert", color: "InfoText" }}>Services</h4>
-                                        <p>
-                                            <ul>
-                                                <li> <h6 style={{ fontFamily: "cursive" }}>Extended Stays (per dog) starts at - <b><span style={{ fontFamily: "monospace" }}> LKR: 1000</span></b></h6></li>
-                                                <li> <h6 style={{ fontFamily: "cursive" }}>DayCare (per dog) starts at - <b><span style={{ fontFamily: "monospace" }}> LKR: 1000</span></b></h6></li>
-                                                <li>  <h6 style={{ fontFamily: "cursive" }}>Grooming (per dog) starts at - <b><span style={{ fontFamily: "monospace" }}> LKR: 1000</span></b></h6></li>
-                                            </ul>
-                                            <span class="text-color-primary">
-                                                *Prices will vary according to purpose and number of pets.
-                                            </span>
-                                        </p>
-
-                                    </Row>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <br />
-                </section>
+                            <br />
+                        </section>
+                    )}
             </div>
         )
     }
