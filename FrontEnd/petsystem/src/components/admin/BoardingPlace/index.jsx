@@ -62,7 +62,7 @@ export default class BoardingPlace extends Component {
                                 <p>Place Name</p>
                             </div>
                             <div class="table-cell">
-                                <p>Address</p>
+                                <p>City</p>
                             </div>
                             <div class="table-cell">
                                 <p>Email</p>
@@ -101,19 +101,16 @@ export default class BoardingPlace extends Component {
                                     <div class="table-cell">
                                         <p>{places.placeOpeningHours}</p>
                                     </div>
-
-                                    {places.placeServices.map(
-                                        services =>
-                                            <div class="table-cell">
-                                                <p>
-                                                    <ol>
+                                    <div class="table-cell">
+                                        <p>
+                                            <ol>
+                                                {places.placeServices.map(
+                                                    services =>
                                                         <li>{services.label} - Rs.{services.price}/=</li>
-                                                    </ol>
-                                                </p>
-                                            </div>
-                                    )}
-
-
+                                                )}
+                                            </ol>
+                                        </p>
+                                    </div>
                                     <div class="table-cell last-cell">
                                         <a href="" target="_blank" rel="noreferrer">
                                             <FiEdit
