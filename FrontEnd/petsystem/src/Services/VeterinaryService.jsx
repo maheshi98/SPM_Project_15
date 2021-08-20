@@ -5,8 +5,8 @@ import axios from 'axios';
         return axios.post('http://localhost:8080/veterinary/saveVeterinary',vet)
     }
 
-    geVeterinaryById(VetID){
-        return axios.get('http://localhost:8080/veterinary/showVeterinary'+ '/' +VetID);
+    getAll() {
+        return axios.get("http://localhost:8080/veterinary/showVeterinary");
     }
 }
 export default new VeterinaryServices();
