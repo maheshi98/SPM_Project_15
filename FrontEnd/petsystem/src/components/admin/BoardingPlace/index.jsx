@@ -1,15 +1,38 @@
 
 import React, { Component } from 'react';
 import { Row, Col } from 'react-bootstrap';
-import items from '../../../assets/admin/items.png';
 import { BsPlusCircle } from 'react-icons/bs';
 import { RiFileDownloadLine, RiDeleteBin2Line } from 'react-icons/ri';
 import { FiEdit } from 'react-icons/fi';
+import BoardingPlaceService from '../../../services/BoardingPlacesService';
 import './index.css'
 
 export default class BoardingPlace extends Component {
-    render() {
+    constructor(props) {
+        super(props);
+        this.retrievePetBoardingPlaces = this.retrievePetBoardingPlaces.bind(this);
 
+        this.state = {
+            boardingPlaces: []
+        }
+    }
+    componentDidMount() {
+        this.retrievePetBoardingPlaces();
+    }
+
+    retrievePetBoardingPlaces = () => {
+        BoardingPlaceService.getAll().then(response => {
+            this.setState({
+                boardingPlaces: response.data
+            });
+            console.log(response.data);
+        })
+            .catch(e => {
+                console.log(e);
+            });
+    }
+    render() {
+        console.log("boarding places", this.state.boardingPlaces);
         return (
             <div className="container">
                 <Row>
@@ -20,7 +43,7 @@ export default class BoardingPlace extends Component {
                         <Col>
                         </Col>
                         <Col style={{ marginLeft: "35%" }}>
-                            <a href="/new-boarding-place" target="_blank" rel="noreferrer">
+                            <a href="" target="_blank" rel="noreferrer">
                                 <button class="member-btn btn"><i><BsPlusCircle size="25" /></i> New Entry</button>
                             </a>
 
@@ -39,16 +62,16 @@ export default class BoardingPlace extends Component {
                                 <p>Place Name</p>
                             </div>
                             <div class="table-cell">
-                                <p>Address</p>
-                            </div>
-                            <div class="table-cell">
-                                <p>Contact Number</p>
+                                <p>City</p>
                             </div>
                             <div class="table-cell">
                                 <p>Email</p>
                             </div>
                             <div class="table-cell">
-                                <p>Services</p>
+                                <p>Open Hours</p>
+                            </div>
+                            <div class="table-cell">
+                                <p>Services (*Prices are per dog)</p>
                             </div>
                             <div class="table-cell">
                                 <p>Actions</p>
@@ -56,49 +79,54 @@ export default class BoardingPlace extends Component {
                         </div>
                         {/* Table Header End */}
                         {/* Table Data Row Start */}
-                        <div class="table-row">
-                            <div class="table-cell first-cell">
-                                <img
-                                    alt="Not available"
-                                    class="card-img-top"
-                                    src="https://th.bing.com/th/id/OIP.vVAnGE1ISzQr7z875YLjaAHaEK?w=276&h=180&c=7&o=5&dpr=1.12&pid=1.7"
-                                />
-                            </div>
-                            <div class="table-cell">
-                                <p>Dog Palace</p>
-                            </div>
-                            <div class="table-cell">
-                                <p>76/B, Weedagama,Bandaragama</p>
-                            </div>
-                            <div class="table-cell">
-                                <p>0987654321</p>
-                            </div>
-                            <div class="table-cell">
-                                <p>dulyakemali@gmail.com</p>
-                            </div>
-                            <div class="table-cell">
-                                <p>
-                                    <ol>
-                                        <li>Extended Stays - LKR 100/=</li>
-                                        <li>Daycare - LKR 100/=</li>
-                                        <li>Grooming - LKR 100/=</li>
-                                    </ol>
-                                </p>
-                            </div>
-                            <div class="table-cell last-cell">
-                                <a href="" target="_blank" rel="noreferrer">
-                                    <FiEdit
-                                        size={30}
-                                        style={{ textAlign: "center", color: "blue", backgroundColor: "white" }} />
-                                </a>&nbsp;&nbsp;&nbsp;
-                                <a href="" target="_blank" rel="noreferrer">
-                                    <RiDeleteBin2Line
-                                        size={35}
-                                        style={{ textAlign: "center", color: "red", backgroundColor: "white" }} />
-                                </a>
-                            </div>
-                        </div>
+                        {this.state.boardingPlaces.map(
+                            places =>
+                                <div class="table-row" key={places.placeId}>
+                                    <div class="table-cell first-cell">
+                                        <img
+                                            alt="Not available"
+                                            class="card-img-top"
+                                            src={places.placeImage}
+                                        />
+                                    </div>
+                                    <div class="table-cell">
+                                        <p>{places.placeName}</p>
+                                    </div>
+                                    <div class="table-cell">
+                                        <p>{places.placeCity}</p>
+                                    </div>
+                                    <div class="table-cell">
+                                        <p>{places.placeEmail}</p>
+                                    </div>
+                                    <div class="table-cell">
+                                        <p>{places.placeOpeningHours}</p>
+                                    </div>
+                                    <div class="table-cell">
+                                        <p>
+                                            <ol>
+                                                {places.placeServices.map(
+                                                    services =>
+                                                        <li>{services.label} - Rs.{services.price}/=</li>
+                                                )}
+                                            </ol>
+                                        </p>
+                                    </div>
+                                    <div class="table-cell last-cell">
+                                        <a href="" target="_blank" rel="noreferrer">
+                                            <FiEdit
+                                                size={30}
+                                                style={{ textAlign: "center", color: "blue", backgroundColor: "white" }} />
+                                        </a>&nbsp;&nbsp;&nbsp;
+                                        <a href="" target="_blank" rel="noreferrer">
+                                            <RiDeleteBin2Line
+                                                size={35}
+                                                style={{ textAlign: "center", color: "red", backgroundColor: "white" }} />
+                                        </a>
+                                    </div>
+                                </div>
+                        )}
                         {/* Table Data Row End */}
+
                     </div>
                 </Row>
             </div>
