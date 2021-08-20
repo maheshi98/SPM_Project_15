@@ -9,7 +9,7 @@ import { FaStethoscope, FaDog } from 'react-icons/fa';
 import { GiDogHouse, GiDogBowl } from 'react-icons/gi';
 import './index.css'
 
-export default class Home extends Component {
+export default class Admin extends Component {
     render() {
 
         const details = [
