@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Home from './components/home';
+import LogIn from './components/admin/AdminLogin';
 import Admin from './components/admin';
 import BoardingPlaceAdmin from './components/admin/BoardingPlace';
 import NewBoardingPlace from './components/admin/BoardingPlace/insertBoardingPlace';
@@ -11,7 +12,6 @@ import InsertVeterinay from './components/admin/VeterinaryServices/InsertVeterin
 import InsertPet from './components/admin/PetDetails/InsertPet';
 import './App.css';
 
-
 export default class App extends Component {
 
   render() {
@@ -21,6 +21,7 @@ export default class App extends Component {
           <Switch>
             {/* Main Pages */}
             <Route exact path='/' component={Home} />
+            <Route exact path='/admin-login' component={LogIn} />
             <Route exact path='/admin' component={Admin} />
             {/* Boarding Place Related Paths */}
             <Route exact path='/admin-boarding-place' component={BoardingPlaceAdmin} />
