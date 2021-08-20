@@ -10,8 +10,8 @@ import GenerateReportBoardingPlace from './components/admin/BoardingPlace/genera
 import PetAccessory from './components/admin/PetAccessory';
 import newAccessory from './components/admin/PetAccessory/newAccessory';
 import InsertPet from './components/admin/PetDetails/InsertPet';
-import LogIn from './components/admin/AdminLogin';
-import ContactUs from './components/ContactUs';
+import InsertVeterinay from './components/admin/VeterinaryServices/InsertVeterinaryDetails';
+import VeterinaryService from './components/admin/VeterinaryServices';
 
 export default class App extends Component {
 
