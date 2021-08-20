@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Row, Col, Card, Image } from 'react-bootstrap';
 import Select from 'react-select';
-import BoardingPlaceService from '../../../../services/BoardingPlacesService';
+import BoardingPlaceService from '../../../../Services/BoardingPlacesService';
 import pic from '../../../../assets/admin/shelter.png';
 
 const initialState = {

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Row, Col, Button, Form, Image} from 'react-bootstrap';
 import pets from '../../../../assets/admin/pets.png';
 import './index.css';
-import PetService from '../../../../services/PetService';
+import PetService from '../../../../Services/PetService';
 
 const initialState = {
     breed : '',
