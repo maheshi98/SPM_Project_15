@@ -1,21 +1,25 @@
-
 import React, { Component } from 'react';
-import { Row, Col } from 'react-bootstrap';
+import { Row, Col, Toast } from 'react-bootstrap';
 import { BsPlusCircle } from 'react-icons/bs';
 import { RiFileDownloadLine, RiDeleteBin2Line } from 'react-icons/ri';
 import { FiEdit } from 'react-icons/fi';
-import BoardingPlaceService from '../../../services/BoardingPlacesService';
+import BoardingPlaceService from '../../../Services/BoardingPlacesService';
 import './index.css'
 
 export default class BoardingPlace extends Component {
     constructor(props) {
         super(props);
         this.retrievePetBoardingPlaces = this.retrievePetBoardingPlaces.bind(this);
+        this.deletePetBoardingPlace = this.deletePetBoardingPlace.bind(this);
+        this.setToast = this.setToast.bind(this);
 
         this.state = {
-            boardingPlaces: []
+            boardingPlaces: [],
+            message_show: false,
+            message: ""
         }
     }
+
     componentDidMount() {
         this.retrievePetBoardingPlaces();
     }
@@ -31,19 +35,52 @@ export default class BoardingPlace extends Component {
                 console.log(e);
             });
     }
+
+    deletePetBoardingPlace = (id) => {
+        BoardingPlaceService.delete(id)
+            .then(response => {
+                this.setState({
+                    boardingPlaces: this.state.boardingPlaces.filter(boardingPlace => boardingPlace.placeId !== id),
+                    message_show: true,
+                    message: "Successfully Deleted."
+                });
+                console.log(response.data);
+            })
+            .catch(e => {
+                console.log(e)
+                this.setState({
+                    message_show: true,
+                    message: "Can't delete."
+                });
+            })
+    }
+
+    setToast = (key) => {
+        this.setState({ message_show: key });
+    }
+
     render() {
-        console.log("boarding places", this.state.boardingPlaces);
         return (
             <div className="container">
                 <Row>
                     <div class="text-center">
                         <h1 class="head-title">PET BOARDING PLACE DETAILS</h1>
                     </div>
+                    {/* Toaster Start */}
+                    <Row>
+                        <Col></Col>
+                        <Col style={{ marginLeft: "70%" }} xs={6}>
+                            <Toast onClose={() => this.setToast(false)} show={this.state.message_show} delay={3000} autohide>
+                                <Toast.Body>{this.state.message}</Toast.Body>
+                            </Toast>
+                        </Col>
+                    </Row>
+                    {/* Toaster End */}
                     <Row style={{ marginTop: "3%" }}>
                         <Col>
                         </Col>
                         <Col style={{ marginLeft: "35%" }}>
-                            <a href="" target="_blank" rel="noreferrer">
+                            <a href="/new-boarding-place" target="_blank" rel="noreferrer">
                                 <button class="member-btn btn"><i><BsPlusCircle size="25" /></i> New Entry</button>
                             </a>
 
@@ -112,16 +149,18 @@ export default class BoardingPlace extends Component {
                                         </p>
                                     </div>
                                     <div class="table-cell last-cell">
-                                        <a href="" target="_blank" rel="noreferrer">
+                                        <button style={{ backgroundColor: "white", border: "none" }}>
                                             <FiEdit
                                                 size={30}
                                                 style={{ textAlign: "center", color: "blue", backgroundColor: "white" }} />
-                                        </a>&nbsp;&nbsp;&nbsp;
-                                        <a href="" target="_blank" rel="noreferrer">
+                                        </button>
+                                        &nbsp;&nbsp;&nbsp;
+                                        <button style={{ backgroundColor: "white", border: "none" }}>
                                             <RiDeleteBin2Line
+                                                onClick={() => this.deletePetBoardingPlace(places.placeId)}
                                                 size={35}
                                                 style={{ textAlign: "center", color: "red", backgroundColor: "white" }} />
-                                        </a>
+                                        </button>
                                     </div>
                                 </div>
                         )}
@@ -129,7 +168,7 @@ export default class BoardingPlace extends Component {
 
                     </div>
                 </Row>
-            </div>
+            </div >
         )
     }
 }

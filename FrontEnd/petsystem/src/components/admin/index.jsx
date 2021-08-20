@@ -7,11 +7,36 @@ import vet from '../../assets/admin/vet.png';
 import shelter from '../../assets/admin/shelter.png';
 import { FaStethoscope, FaDog } from 'react-icons/fa';
 import { GiDogHouse, GiDogBowl } from 'react-icons/gi';
+import BoardingPlaceService from '../../Services/BoardingPlacesService';
 import './index.css'
 
 export default class Home extends Component {
-    render() {
+    constructor(props) {
+        super(props);
+        this.retrievePetBoardingPlacesCount = this.retrievePetBoardingPlacesCount.bind(this);
 
+        this.state = {
+            boardingPlacesCount: ""
+        }
+    }
+
+    componentDidMount() {
+        this.retrievePetBoardingPlacesCount();
+    }
+
+    retrievePetBoardingPlacesCount = () => {
+        BoardingPlaceService.getCount().then(response => {
+            this.setState({
+                boardingPlacesCount: response.data
+            });
+            console.log(response.data);
+        })
+            .catch(e => {
+                console.log(e);
+            });
+    }
+    
+    render() {
         const details = [
             {
                 image: pet,
@@ -68,7 +93,7 @@ export default class Home extends Component {
                             </div>
                             <div class="four col-sm-6 col-md-3 my-2">
                                 <div class="counter-box colored">
-                                    <i class="fa fa-video-camera"><GiDogHouse /></i> <span class="counter">10</span>
+                                    <i class="fa fa-video-camera"><GiDogHouse /></i> <span class="counter">{this.state.boardingPlacesCount}</span>
                                     <p>Places</p>
                                 </div>
                             </div>
