@@ -7,7 +7,7 @@ export default class ContactUs extends Component {
     render() {
         return (
             <div style={{ paddingLeft: "3cm", paddingRight: "3cm" }}>
-                <div id='createConference'style={{marginTop: "2cm"}}>
+                <div id='createConference'style={{marginTop: "-2cm"}}>
                     <div className='section-title text-center'>
                         <h3>Reach Our Team</h3>
                         <h5>We love questions and feedbacks - And we always happy to help</h5>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Home from './components/home';
-import ContactUs from './components/contactUs';
+import ContactUs from './components/ContactUs';
 import LogIn from './components/admin/AdminLogin';
 import Admin from './components/admin';
 import BoardingPlaceAdmin from './components/admin/BoardingPlace';
@@ -13,6 +13,7 @@ import newAccessory from './components/admin/PetAccessory/newAccessory';
 import InsertPet from './components/admin/PetDetails/InsertPet';
 import VeterinaryService from './components/admin/VeterinaryServices';
 import InsertVeterinay from './components/admin/VeterinaryServices/InsertVeterinaryDetails';
+import VetGenerateReport from './components/admin/VeterinaryServices/ReportGenerate';
 import './App.css';
 
 export default class App extends Component {
@@ -40,6 +41,7 @@ export default class App extends Component {
             {/* Pet Veterinary Services Related Paths */}
             <Route exact path='/admin-veterinary-services' component={VeterinaryService} />
             <Route exact path='/new-veterinary-details' component={InsertVeterinay} />
+            <Route exact path='/generate-report-veterinary-details' component={VetGenerateReport} />
           </Switch>
         </BrowserRouter>
       </div>
