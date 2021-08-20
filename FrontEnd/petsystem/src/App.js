@@ -28,6 +28,8 @@ export default class App extends Component {
             <Route exact path='/admin-veterinary-services' component={VeterinaryService} />
             <Route exact path='/new-veterinary-details' component={InsertVeterinay} />
             <Route exact path='/new-boarding-place' component={NewBoardingPlace} />
+            <Route exact path='/contact-us' component={ContactUs} />
+            {/* <Route exact path='/new-boarding-place' component={NewBoardingPlace} /> */}
             <Route exact path='/admin-login' component={LogIn} />
           </Switch>
         </BrowserRouter>
