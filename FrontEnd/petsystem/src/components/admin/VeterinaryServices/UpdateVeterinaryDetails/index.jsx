@@ -76,8 +76,9 @@ export default class UpdateVeterinay extends Component {
                                     id="name"
                                     name="name"
                                     placeholder="Full Name"
-                                    value={this.state.name}
-                                    onChange={this.onChange} />
+                                    // value={this.state.name}
+                                    // onChange={this.onChange} 
+                                    />
                                     
                             </Form.Group>
                             <Form.Group >
@@ -87,8 +88,9 @@ export default class UpdateVeterinay extends Component {
                                     id="imageURL"
                                     name="imageURL"
                                     placeholder="Image URL"
-                                    value={this.state.imageURL}
-                                    onChange={this.onChange} />
+                                    // value={this.state.imageURL}
+                                    // onChange={this.onChange}
+                                     />
                             </Form.Group>
                             <Form.Group >
                                 <Form.Label>Clinic Location</Form.Label>
@@ -97,8 +99,9 @@ export default class UpdateVeterinay extends Component {
                                     id="clinicLocation"
                                     name="clinicLocation"
                                     placeholder="Clinic Location"
-                                    value={this.state.clinicLocation}
-                                    onChange={this.onChange} />
+                                    // value={this.state.clinicLocation}
+                                    // onChange={this.onChange} 
+                                    />
                             </Form.Group>
                             <Form.Group >
                                 <Form.Label>Contact Number</Form.Label>
@@ -107,8 +110,9 @@ export default class UpdateVeterinay extends Component {
                                     id="contact_no"
                                     name="contact_no"
                                     placeholder="Contact Number"
-                                    value={this.state.contact_no}
-                                    onChange={this.onChange} />
+                                    // value={this.state.contact_no}
+                                    // onChange={this.onChange} 
+                                    />
                             </Form.Group>
                             <Form.Group >
                                 <Form.Label>Veterinary Fee</Form.Label>
@@ -117,8 +121,9 @@ export default class UpdateVeterinay extends Component {
                                     id="veterinaryFee"
                                     name="veterinaryFee"
                                     placeholder="Veterinary Fee"
-                                    value={this.state.veterinaryFee}
-                                    onChange={this.onChange} />
+                                    // value={this.state.veterinaryFee}
+                                    // onChange={this.onChange} 
+                                    />
                             </Form.Group>
                             <Form.Group >
                                 <Form.Label>Description</Form.Label>
@@ -127,8 +132,9 @@ export default class UpdateVeterinay extends Component {
                                     id="description"
                                     name="description"
                                     placeholder="Description"
-                                    value={this.state.description}
-                                    onChange={this.onChange} />
+                                    // value={this.state.description}
+                                    // onChange={this.onChange}
+                                     />
                             </Form.Group>
                             <br />
                             <Form.Group>
