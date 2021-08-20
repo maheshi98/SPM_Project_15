@@ -5,9 +5,12 @@ import Admin from './components/admin';
 import BoardingPlaceAdmin from './components/admin/BoardingPlace';
 import VeterinaryService from './components/admin/VeterinaryServices';
 import InsertVeterinay from './components/admin/VeterinaryServices/InsertVeterinaryDetails';
-import ContactUs from './components/ContactUs';
+import NewBoardingPlace from './components/admin/BoardingPlace/insertBoardingPlace';
+import PetAccessory from './components/admin/PetAccessory';
+import newAccessory from './components/admin/PetAccessory/newAccessory';
 import './App.css';
 import InsertPet from './components/admin/PetDetails/InsertPet';
+import LogIn from './components/admin/AdminLogin';
 
 export default class App extends Component {
 
@@ -24,8 +27,10 @@ export default class App extends Component {
             <Route exact path='/admin-insert-pet' component={InsertPet} />
             <Route exact path='/admin-veterinary-services' component={VeterinaryService} />
             <Route exact path='/new-veterinary-details' component={InsertVeterinay} />
+            <Route exact path='/new-boarding-place' component={NewBoardingPlace} />
             <Route exact path='/contact-us' component={ContactUs} />
             {/* <Route exact path='/new-boarding-place' component={NewBoardingPlace} /> */}
+            <Route exact path='/admin-login' component={LogIn} />
           </Switch>
         </BrowserRouter>
       </div>
