@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Row, Col, Card, Image } from 'react-bootstrap';
-import Select from 'react-select';
 import BoardingPlaceService from '../../../../Services/BoardingPlacesService';
 import pic from '../../../../assets/admin/shelter.png';
 
@@ -16,7 +15,7 @@ const initialState = {
     formErrors: {}
 }
 
-class NewBoardingPlace extends Component {
+class UpdateBoardingPlace extends Component {
 
     constructor(props) {
         super(props);
@@ -27,7 +26,6 @@ class NewBoardingPlace extends Component {
         this.onchangePlaceOpeningHours = this.onchangePlaceOpeningHours.bind(this);
         this.onchangeSelectedServices = this.onchangeSelectedServices.bind(this);
         this.onchangeServiceDetails = this.onchangeServiceDetails.bind(this);
-        this.saveBoardingPlace = this.saveBoardingPlace.bind(this);
         this.newBoardingPlace = this.newBoardingPlace.bind(this);
         this.handleFormValidation = this.handleFormValidation.bind(this);
         this.state = initialState;
@@ -66,32 +64,6 @@ class NewBoardingPlace extends Component {
         }
         prices[item.id] = newService;
         this.setState({ serviceDetails: prices });
-    }
-
-    saveBoardingPlace = (e) => {
-        e.preventDefault();
-        if (this.handleFormValidation()) {
-
-            var data = {
-                placeImage: this.state.placeImage,
-                placeName: this.state.placeName,
-                placeCity: this.state.placeCity,
-                placeEmail: this.state.placeEmail,
-                placeOpeningHours: this.state.placeOpeningHours,
-                placeServices: this.state.serviceDetails
-            };
-            BoardingPlaceService.create(data)
-                .then(response => {
-                    this.setState({
-                        submitted: true
-                    });
-                    // alert('Data successfully entered.');
-                    console.log(response.data);
-                })
-                .catch(e => {
-                    console.log(e);
-                });
-        }
     }
 
     newBoardingPlace = () => {
@@ -163,28 +135,21 @@ class NewBoardingPlace extends Component {
     }
 
     render() {
-        const { placeImageError, placeNameError, placeCityError, placeEmailError, placeOpeningHoursError, selectedServicesError } = this.state.formErrors;
-        const services = [
-            { id: "0", value: 'stays', label: 'Overnight & Extended Stays' },
-            { id: "1", value: 'daycare', label: 'Daycare' },
-            { id: "2", value: 'grooming', label: 'Grooming' }];
+        const { placeImageError, placeNameError, placeCityError, placeEmailError, placeOpeningHoursError } = this.state.formErrors;
 
         return (
             <div className="container">
                 <div class="text-center">
-                    <h1 class="head-title">ADD NEW PET BOARDING PLACE</h1>
+                    <h1 class="head-title">UPDATE PET BOARDING PLACE</h1>
                 </div>
                 <Card style={{ width: '100%', marginTop: "5%" }}>
                     <Card.Body>
                         <Row>
                             <Col>
-                                <Image src={pic} thumbnail style={{ border: "none" }} />
-                            </Col>
-                            <Col>
                                 <div className="submit-form" style={{ width: 500, textAlign: "left", color: "grey", marginTop: "2%", marginLeft: "7%" }}>
                                     {this.state.submitted ? (
                                         <div style={{ marginTop: "40%", textAlign: "center", color: "darkorchid" }}>
-                                            <h4>New Boarding Place Created Successfully.!!</h4>
+                                            <h4>Boarding Place Updated Successfully.!!</h4>
                                             <br />
                                             <button className="btn btn-secondary" onClick={this.newBoardingPlace}>Add New Place</button>
                                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -284,20 +249,50 @@ class NewBoardingPlace extends Component {
                                                     </div>
                                                 </div>
                                                 {/* Pet Boarding Place Services */}
-                                                <div className="form-group">
+                                                {/* <div className="form-group">
                                                     <label htmlFor="selectedServices">Pet Boarding Place Services</label>
                                                     <Select
                                                         options={services}
                                                         onChange={this.onchangeSelectedServices}
                                                         className="basic-multi-select"
                                                         isMulti
-                                                    />
+                                                    /> */}
                                                     {/* Pet Boarding Place Services error */}
-                                                    <div className="">
+                                                    {/* <div className="">
                                                         {selectedServicesError &&
                                                             <div style={{ color: "red", paddingBottom: 10, paddingTop: 3 }}>{selectedServicesError}</div>}
                                                     </div>
-                                                </div>
+                                                </div> */}
+                                                    <Row>
+                                                        {/* Pet Boarding Place Each Services */}
+                                                        <Col>
+                                                            <div className="form-group">
+                                                                <label htmlFor="serviceName">Service</label>
+                                                                <input
+                                                                    type="text"
+                                                                    className="form-control"
+                                                                    id="serviceName"
+                                                                    required
+                                                                    value=""
+                                                                    name="serviceName"
+                                                                />
+                                                            </div>
+                                                        </Col>
+                                                        {/* Pet Boarding Place Each Service Price */}
+                                                        <Col>
+                                                            <div className="form-group">
+                                                                <label htmlFor="servicePrice">Service Price in LKR (Per Pet)</label>
+                                                                <input
+                                                                    type="text"
+                                                                    className="form-control"
+                                                                    id="id"
+                                                                    required
+                                                                    value={this.state.servicePrice}
+                                                                    name="servicePrice"
+                                                                />
+                                                            </div>
+                                                        </Col>
+                                                    </Row>
                                                 {/* Pet Boarding Place Services */}
                                                 {this.state.selectedServices.length > 0 ? this.state.selectedServices.map((item, index) => (
                                                     <Row key={index}>
@@ -336,7 +331,7 @@ class NewBoardingPlace extends Component {
                                                 }
                                                 <br />
                                                 <Row style={{ marginLeft: "25%" }}>
-                                                    <button className="btn btn-success" onClick={this.saveBoardingPlace} style={{ width: 100 }}>Save</button>
+                                                    <button className="btn btn-primary" style={{ width: 100 }}>Update</button>
                                                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                     <button className="btn btn-danger" onClick={this.newBoardingPlace} style={{ width: 100 }}>Clear</button>
                                                 </Row>
@@ -344,6 +339,9 @@ class NewBoardingPlace extends Component {
                                         </div>
                                     )}
                                 </div>
+                            </Col>
+                            <Col>
+                                <Image src={pic} thumbnail style={{ border: "none" }} />
                             </Col>
                         </Row>
                     </Card.Body>
@@ -353,4 +351,4 @@ class NewBoardingPlace extends Component {
     }
 }
 
-export default NewBoardingPlace;
+export default UpdateBoardingPlace;

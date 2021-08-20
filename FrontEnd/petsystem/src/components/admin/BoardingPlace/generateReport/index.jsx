@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react';
-import { Row } from 'react-bootstrap'; 
+import { Row } from 'react-bootstrap';
 import './index.css'
 
 export default class GenerateReport extends Component {
@@ -13,20 +13,17 @@ export default class GenerateReport extends Component {
                         <h1 class="head-title">Generate Report For Boarding Places</h1>
                     </div>
 
-                    <div className="col-md-4" style={{marginTop: "5%"}}>
+                    <div className="col-md-4" style={{ marginTop: "5%" }}>
                         <div className="input-group mb-3">
                             <input
                                 type="text"
                                 className="form-control"
-                                placeholder="Search by place city"
-                                // value={searchTitle}
-                                // onChange={this.onChangeSearchTitle}
+                                placeholder="Search By City"
                             />
                             <div className="input-group-append">
                                 <button
-                                    className="btn btn-outline-secondary"
+                                    className="btn btn-outline-primary"
                                     type="button"
-                                    // onClick={this.searchTitle}
                                 >
                                     Search
                                 </button>
@@ -44,7 +41,7 @@ export default class GenerateReport extends Component {
                             <p>Place Name</p>
                         </div>
                         <div class="table-cell">
-                            <p>Address</p>
+                            <p>City</p>
                         </div>
                         <div class="table-cell">
                             <p>Email</p>
@@ -63,7 +60,7 @@ export default class GenerateReport extends Component {
                             <img
                                 alt="Not available"
                                 class="card-img-top"
-                                src="https://th.bing.com/th/id/OIP.vVAnGE1ISzQr7z875YLjaAHaEK?w=276&h=180&c=7&o=5&dpr=1.12&pid=1.7"
+                                src="http://durbandevelopment.com/wp-content/uploads/2019/08/Web-1.jpg"
                             />
                         </div>
                         <div class="table-cell">
