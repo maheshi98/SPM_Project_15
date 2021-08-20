@@ -39,9 +39,10 @@ export default class InsertPet extends Component {
     }
 
     onSubmit(e) {
+         
         e.preventDefault();
         let pet = {
-            breed: this.state.breeed,
+            breed: this.state.breed,
             age: this.state.age,
             description: this.state.description,
             price: this.state.price,
