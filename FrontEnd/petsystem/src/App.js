@@ -11,8 +11,9 @@ import GenerateReportBoardingPlace from './components/admin/BoardingPlace/genera
 import PetAccessory from './components/admin/PetAccessory';
 import newAccessory from './components/admin/PetAccessory/newAccessory';
 import InsertPet from './components/admin/PetDetails/InsertPet';
-import InsertVeterinay from './components/admin/VeterinaryServices/InsertVeterinaryDetails';
 import VeterinaryService from './components/admin/VeterinaryServices';
+import InsertVeterinay from './components/admin/VeterinaryServices/InsertVeterinaryDetails';
+import './App.css';
 
 export default class App extends Component {
 
