@@ -7,6 +7,7 @@ export default class Home extends Component {
         return (
             <div className="container">
                 <Button href="/admin" style={{ fontSize: 20, width: 150, paddingRight: 10, borderRadius: 20, backgroundColor: "#6372ff" }}>For More...</Button>{' '}
+                <Button href="/boarding-place" style={{ fontSize: 20, width: 150, paddingRight: 10, borderRadius: 20, backgroundColor: "#6372ff" }}>For More...</Button>{' '}
             </div>
         )
     }
