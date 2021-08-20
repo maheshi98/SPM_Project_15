@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Home from './components/home';
-import ContactUs from './components/ContactUs';
+import ContactUs from './components/contactUs';
 import LogIn from './components/admin/AdminLogin';
 import Admin from './components/admin';
 import BoardingPlaceAdmin from './components/admin/BoardingPlace';

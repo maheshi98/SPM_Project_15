@@ -18,7 +18,7 @@ export default class GenerateReport extends Component {
                             <input
                                 type="text"
                                 className="form-control"
-                                placeholder="Search by place city"
+                                placeholder="Search By City"
                             />
                             <div className="input-group-append">
                                 <button
@@ -60,7 +60,7 @@ export default class GenerateReport extends Component {
                             <img
                                 alt="Not available"
                                 class="card-img-top"
-                                src="https://th.bing.com/th/id/OIP.vVAnGE1ISzQr7z875YLjaAHaEK?w=276&h=180&c=7&o=5&dpr=1.12&pid=1.7"
+                                src="http://durbandevelopment.com/wp-content/uploads/2019/08/Web-1.jpg"
                             />
                         </div>
                         <div class="table-cell">
