@@ -34,6 +34,17 @@ export default class VeterinaryService extends Component {
             });
     }
 
+    deleteVeterinaryDetails(e,vetId){
+        VeterinaryServices.deleteVet(vetId)
+        .then(response => {
+            alert('Data successfully deleted.');
+        })
+        .catch(error => {
+            console.log(error.message);
+            alert(error.message);
+        })
+    }
+
 
     render() {
 
@@ -119,6 +130,7 @@ export default class VeterinaryService extends Component {
                                 </a>&nbsp;&nbsp;&nbsp;
                                 <a href="" target="_blank" rel="noreferrer">
                                     <RiDeleteBin2Line
+                                        onClick = {e => this.deleteVeterinaryDetails(e,vet.id)}
                                         size={35}
                                         style={{ textAlign: "center", color: "red", backgroundColor: "white" }} />
                                 </a>
