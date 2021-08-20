@@ -10,6 +10,7 @@ import PetAccessory from './components/admin/PetAccessory';
 import newAccessory from './components/admin/PetAccessory/newAccessory';
 import './App.css';
 import InsertPet from './components/admin/PetDetails/InsertPet';
+import LogIn from './components/admin/AdminLogin';
 
 export default class App extends Component {
 
@@ -27,6 +28,7 @@ export default class App extends Component {
             <Route exact path='/admin-veterinary-services' component={VeterinaryService} />
             <Route exact path='/new-veterinary-details' component={InsertVeterinay} />
             <Route exact path='/new-boarding-place' component={NewBoardingPlace} />
+            <Route exact path='/admin-login' component={LogIn} />
           </Switch>
         </BrowserRouter>
       </div>
