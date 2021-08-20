@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react';
 import { Row, Col } from 'react-bootstrap';
 import { BsPlusCircle } from 'react-icons/bs';
@@ -16,6 +15,7 @@ export default class BoardingPlace extends Component {
             boardingPlaces: []
         }
     }
+
     componentDidMount() {
         this.retrievePetBoardingPlaces();
     }
@@ -32,7 +32,6 @@ export default class BoardingPlace extends Component {
             });
     }
     render() {
-        console.log("boarding places", this.state.boardingPlaces);
         return (
             <div className="container">
                 <Row>
@@ -47,7 +46,7 @@ export default class BoardingPlace extends Component {
                                 <button class="member-btn btn"><i><BsPlusCircle size="25" /></i> New Entry</button>
                             </a>
 
-                            <a href="" target="_blank" rel="noreferrer">
+                            <a href="/generate-report-boarding-place">
                                 <button class="member-btn btn"><i><RiFileDownloadLine size="25" /></i> Download</button>
                             </a>
                         </Col>
