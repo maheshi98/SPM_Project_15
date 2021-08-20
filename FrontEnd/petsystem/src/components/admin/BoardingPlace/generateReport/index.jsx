@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react';
-import { Row } from 'react-bootstrap'; 
+import { Row } from 'react-bootstrap';
 import './index.css'
 
 export default class GenerateReport extends Component {
@@ -13,20 +13,17 @@ export default class GenerateReport extends Component {
                         <h1 class="head-title">Generate Report For Boarding Places</h1>
                     </div>
 
-                    <div className="col-md-4" style={{marginTop: "5%"}}>
+                    <div className="col-md-4" style={{ marginTop: "5%" }}>
                         <div className="input-group mb-3">
                             <input
                                 type="text"
                                 className="form-control"
                                 placeholder="Search by place city"
-                                // value={searchTitle}
-                                // onChange={this.onChangeSearchTitle}
                             />
                             <div className="input-group-append">
                                 <button
-                                    className="btn btn-outline-secondary"
+                                    className="btn btn-outline-primary"
                                     type="button"
-                                    // onClick={this.searchTitle}
                                 >
                                     Search
                                 </button>
@@ -44,7 +41,7 @@ export default class GenerateReport extends Component {
                             <p>Place Name</p>
                         </div>
                         <div class="table-cell">
-                            <p>Address</p>
+                            <p>City</p>
                         </div>
                         <div class="table-cell">
                             <p>Email</p>

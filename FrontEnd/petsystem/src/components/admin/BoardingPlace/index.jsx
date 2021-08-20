@@ -1,10 +1,9 @@
-
 import React, { Component } from 'react';
 import { Row, Col } from 'react-bootstrap';
 import { BsPlusCircle } from 'react-icons/bs';
 import { RiFileDownloadLine, RiDeleteBin2Line } from 'react-icons/ri';
 import { FiEdit } from 'react-icons/fi';
-import BoardingPlaceService from '../../../services/BoardingPlacesService';
+import BoardingPlaceService from '../../../Services/BoardingPlacesService';
 import './index.css'
 
 export default class BoardingPlace extends Component {
@@ -16,6 +15,7 @@ export default class BoardingPlace extends Component {
             boardingPlaces: []
         }
     }
+
     componentDidMount() {
         this.retrievePetBoardingPlaces();
     }
@@ -32,7 +32,6 @@ export default class BoardingPlace extends Component {
             });
     }
     render() {
-        console.log("boarding places", this.state.boardingPlaces);
         return (
             <div className="container">
                 <Row>
@@ -62,7 +61,7 @@ export default class BoardingPlace extends Component {
                                 <p>Place Name</p>
                             </div>
                             <div class="table-cell">
-                                <p>Address</p>
+                                <p>City</p>
                             </div>
                             <div class="table-cell">
                                 <p>Email</p>
@@ -101,19 +100,16 @@ export default class BoardingPlace extends Component {
                                     <div class="table-cell">
                                         <p>{places.placeOpeningHours}</p>
                                     </div>
-
-                                    {places.placeServices.map(
-                                        services =>
-                                            <div class="table-cell">
-                                                <p>
-                                                    <ol>
+                                    <div class="table-cell">
+                                        <p>
+                                            <ol>
+                                                {places.placeServices.map(
+                                                    services =>
                                                         <li>{services.label} - Rs.{services.price}/=</li>
-                                                    </ol>
-                                                </p>
-                                            </div>
-                                    )}
-
-
+                                                )}
+                                            </ol>
+                                        </p>
+                                    </div>
                                     <div class="table-cell last-cell">
                                         <a href="" target="_blank" rel="noreferrer">
                                             <FiEdit
