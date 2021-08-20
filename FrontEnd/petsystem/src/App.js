@@ -6,6 +6,7 @@ import LogIn from './components/admin/AdminLogin';
 import Admin from './components/admin';
 import BoardingPlaceAdmin from './components/admin/BoardingPlace';
 import NewBoardingPlace from './components/admin/BoardingPlace/insertBoardingPlace';
+import UpdateBoardingPlace from './components/admin/BoardingPlace/updateBoardingPlace';
 import GenerateReportBoardingPlace from './components/admin/BoardingPlace/generateReport';
 import PetAccessory from './components/admin/PetAccessory';
 import newAccessory from './components/admin/PetAccessory/newAccessory';
@@ -29,6 +30,7 @@ export default class App extends Component {
             {/* Boarding Place Related Paths */}
             <Route exact path='/admin-boarding-place' component={BoardingPlaceAdmin} />
             <Route exact path='/new-boarding-place' component={NewBoardingPlace} />
+            <Route exact path='/update-boarding-place/:id' component={UpdateBoardingPlace} />
             <Route exact path='/generate-report-boarding-place' component={GenerateReportBoardingPlace} />
             {/* Pet Accessories Related Paths */}
             <Route exact path='/admin-accessory' component={PetAccessory} />
