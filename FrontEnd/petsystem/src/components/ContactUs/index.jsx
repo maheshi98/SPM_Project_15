@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Row, Col, Button, Form, Image, Alert,Card ,Container} from 'react-bootstrap';
+import { Row, Col, Button, Form, Image, Alert,Card ,Container,Spinner} from 'react-bootstrap';
 
 export default class ContactUs extends Component {
 
@@ -49,12 +49,15 @@ export default class ContactUs extends Component {
                         <Col xs={12} md={12} >
                             <Card style={{ width: '40rem',marginTop: "1cm" }} border="dark">
                                 <Card.Body>
-                                    <Card.Title>Contact Customer Support</Card.Title>
-                                    <Card.Subtitle className="mb-2 text-muted">Do not hesitate To Reach Us</Card.Subtitle>
-                                    <Card.Text><br/>
-                                    <Button variant="secondary" size="lg">
-                                       Contact Support
-                                        </Button>
+                                    <Card.Title>Headquarters</Card.Title>
+                                    <Card.Subtitle className="mb-2 text-muted">177/Flower Ave,</Card.Subtitle>
+                                    <Card.Subtitle className="mb-2 text-muted">Colombo - Sri Lanka</Card.Subtitle>
+                                    <Card.Text>
+                                    <>
+                                    <Spinner animation="grow" variant="primary" size="sm"/>
+                                    <Spinner animation="grow" variant="primary" size="sm"/>
+                                    <Spinner animation="grow" variant="primary" size="sm"/>
+                                    </>
                                     </Card.Text>
                                 </Card.Body>
                                 </Card>
