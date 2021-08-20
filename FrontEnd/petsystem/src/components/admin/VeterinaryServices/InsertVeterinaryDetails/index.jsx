@@ -3,23 +3,53 @@ import { Link } from 'react-router-dom';
 import { Row, Col, Button, Form, Image} from 'react-bootstrap';
 import pets from '../../../../assets/admin/pets.png';
 import './index.css';
+import VeterinaryServices from '../../../../Services/VeterinaryService';
+
+
+const initialState = {
+    name : '',
+    imageURL : ''  ,
+    clinicLocation : '',
+    contact_no : '',
+    veterinaryFee : '',
+    description : '',
+} 
 
 export default class InsertVeterinay extends Component {
     constructor(props) {
         super(props)
 
-        this.state = {
-                 
-        }
-
-        this.handleEvent = this.handleEvent.bind(this)
+        this.onChange = this.onChange.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
+        this.state = initialState;
     }
 
     componentDidMount() {
         
     }
-
+    
     componentDidUpdate(prevProps, prevState, snapshot) { if (prevState.name !== this.state.name) { this.handler() } }
+
+    onChange(e) {
+        this.setState({ [e.target.name]: e.target.value })
+    }
+
+    onSubmit(e) {
+        e.preventDefault();
+        let vet = {
+            name: this.state.name,
+            imageURL: this.state.imageURL,
+            clinicLocation: this.state.clinicLocation,
+            contact_no: this.state.contact_no,
+            veterinaryFee : this.state.veterinaryFee,
+            description : this.state.description,
+        };
+        console.log("DETAILS ADDED SUCCESSFUL ", vet);
+        VeterinaryServices.add(vet).then(res =>{
+
+        })
+
+    }
 
     componentWillUnmount() {
         
@@ -43,44 +73,64 @@ export default class InsertVeterinay extends Component {
                     <Col >
                         <Form onSubmit={this.onSubmit} style={{ width: "80%", marginLeft: "10%" }}>
                             <Form.Group >
-                                <Form.Label>Veterinary Image</Form.Label>
+                                <Form.Label>Veterinary Name</Form.Label>
                                 <Form.Control
                                     type="text"
-                                    id="confTopic"
-                                    name="fname"
+                                    id="name"
+                                    name="name"
                                     placeholder="Full Name"
-                                    value={this.state.fname}
+                                    value={this.state.name}
                                     onChange={this.onChange} />
                                     
                             </Form.Group>
                             <Form.Group >
-                                <Form.Label>Card Number</Form.Label>
+                                <Form.Label>Veterinary Image</Form.Label>
                                 <Form.Control
                                     type="text"
-                                    id="cnumber"
-                                    name="cnumber"
-                                    placeholder="Card Number"
-                                    value={this.state.cnumber}
+                                    id="imageURL"
+                                    name="imageURL"
+                                    placeholder="Image URL"
+                                    value={this.state.imageURL}
                                     onChange={this.onChange} />
                             </Form.Group>
                             <Form.Group >
-                                <Form.Label>CVC Number</Form.Label>
+                                <Form.Label>Clinic Location</Form.Label>
                                 <Form.Control
                                     type="text"
-                                    id="cvc"
-                                    name="cvc"
-                                    placeholder="CVC"
-                                    value={this.state.cvc}
+                                    id="clinicLocation"
+                                    name="clinicLocation"
+                                    placeholder="Clinic Location"
+                                    value={this.state.clinicLocation}
                                     onChange={this.onChange} />
                             </Form.Group>
                             <Form.Group >
-                                <Form.Label>Card Expiration</Form.Label>
+                                <Form.Label>Contact Number</Form.Label>
                                 <Form.Control
-                                    type="date"
-                                    id="exdate"
-                                    name="exdate"
-                                    placeholder="MM/YY"
-                                    value={this.state.exdate}
+                                    type="text"
+                                    id="contact_no"
+                                    name="contact_no"
+                                    placeholder="Contact Number"
+                                    value={this.state.contact_no}
+                                    onChange={this.onChange} />
+                            </Form.Group>
+                            <Form.Group >
+                                <Form.Label>Veterinary Fee</Form.Label>
+                                <Form.Control
+                                    type="text"
+                                    id="veterinaryFee"
+                                    name="veterinaryFee"
+                                    placeholder="Veterinary Fee"
+                                    value={this.state.veterinaryFee}
+                                    onChange={this.onChange} />
+                            </Form.Group>
+                            <Form.Group >
+                                <Form.Label>Description</Form.Label>
+                                <Form.Control
+                                    type="text"
+                                    id="description"
+                                    name="description"
+                                    placeholder="Description"
+                                    value={this.state.description}
                                     onChange={this.onChange} />
                             </Form.Group>
                             <br />
