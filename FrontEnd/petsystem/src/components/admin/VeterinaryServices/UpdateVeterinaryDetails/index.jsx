@@ -60,8 +60,7 @@ export default class UpdateVeterinay extends Component {
     // handler = () => { this.setState() }
 
     render() {
-        return (
-            
+        return ( 
             <div>
             <div id='createpet' style= {{paddingLeft : "3cm" , paddingRight : "3cm"}}>
                 <div className='section-title text-center'>
