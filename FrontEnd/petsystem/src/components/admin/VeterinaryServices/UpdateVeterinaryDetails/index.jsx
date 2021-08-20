@@ -64,7 +64,7 @@ export default class UpdateVeterinay extends Component {
             <div>
             <div id='createpet' style= {{paddingLeft : "3cm" , paddingRight : "3cm"}}>
                 <div className='section-title text-center'>
-                    <h3> Update VETERINARY DETAILS</h3>
+                    <h3> UPDATE VETERINARY DETAILS</h3>
                 </div>
                 <Row className="landing">
                     <Col >
