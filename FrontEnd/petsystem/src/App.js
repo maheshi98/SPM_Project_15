@@ -11,6 +11,7 @@ import newAccessory from './components/admin/PetAccessory/newAccessory';
 import './App.css';
 import InsertPet from './components/admin/PetDetails/InsertPet';
 import LogIn from './components/admin/AdminLogin';
+import ContactUs from './components/ContactUs';
 
 export default class App extends Component {
 
