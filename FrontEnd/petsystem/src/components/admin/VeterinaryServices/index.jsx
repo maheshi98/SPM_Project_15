@@ -112,7 +112,7 @@ export default class VeterinaryService extends Component {
                                 <p>{vet.description}</p>
                             </div>
                             <div class="table-cell last-cell">
-                                <a href="" target="_blank" rel="noreferrer">
+                                <a href="/update-veterinary-details" target="_blank" rel="noreferrer">
                                     <FiEdit
                                         size={30}
                                         style={{ textAlign: "center", color: "blue", backgroundColor: "white" }} />
