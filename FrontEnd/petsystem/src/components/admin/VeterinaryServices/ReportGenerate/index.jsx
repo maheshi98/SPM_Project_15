@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import { Row } from 'react-bootstrap';
 import './index.css'
 
-export default class GenerateReport extends Component {
+export default class VetGenerateReport extends Component {
     render() {
 
         return (
             <div className="container">
                 <Row>
                     <div class="text-center">
-                        <h1 class="head-title">Generate Report For Boarding Places</h1>
+                        <h1 class="head-title">Generate Report For Veterinary Details According to the Location</h1>
                     </div>
 
                     <div className="col-md-4" style={{ marginTop: "5%" }}>
@@ -17,7 +17,7 @@ export default class GenerateReport extends Component {
                             <input
                                 type="text"
                                 className="form-control"
-                                placeholder="Search by place city"
+                                placeholder="Search by Clinic Location"
                             />
                             <div className="input-group-append">
                                 <button
@@ -34,22 +34,22 @@ export default class GenerateReport extends Component {
                     {/* Table Header Start */}
                     <div class="table-row table-head">
                         <div class="table-cell first-cell">
-                            <p>Boarding Place Image</p>
+                            <p>Veterinary Image</p>
                         </div>
                         <div class="table-cell">
-                            <p>Place Name</p>
+                            <p>Veterinary Name</p>
                         </div>
                         <div class="table-cell">
-                            <p>City</p>
+                            <p>Clinic Location</p>
                         </div>
                         <div class="table-cell">
-                            <p>Email</p>
+                            <p>Contact Number</p>
                         </div>
                         <div class="table-cell">
-                            <p>Opening Hours</p>
+                            <p>Veterinary Fee(Rs.)</p>
                         </div>
                         <div class="table-cell">
-                            <p>Services</p>
+                            <p>Description</p>
                         </div>
                     </div>
                     {/* Table Header End */}
@@ -59,27 +59,27 @@ export default class GenerateReport extends Component {
                             <img
                                 alt="Not available"
                                 class="card-img-top"
-                                src="https://th.bing.com/th/id/OIP.vVAnGE1ISzQr7z875YLjaAHaEK?w=276&h=180&c=7&o=5&dpr=1.12&pid=1.7"
+                                src="https://th.bing.com/th/id/R.601fa0501ca2b1bebbe27e836ed22b36?rik=VPGyTFn9bMptHA&riu=http%3a%2f%2fil2.picdn.net%2fshutterstock%2fvideos%2f4208266%2fthumb%2f1.jpg%3fi10c%3dimg.resize(height%3a160)&ehk=PzMYZ5yU28i0BO2TGQ%2byC4PJgVF9ADVuNbek6CoNgFU%3d&risl=&pid=ImgRaw&r=0"
                             />
                         </div>
                         <div class="table-cell">
-                            <p>Dog Palace</p>
+                            <p>Anne Amanda</p>
                         </div>
                         <div class="table-cell">
-                            <p>Colombo 05</p>
+                            <p>Flower Rd, Colombo 05</p>
                         </div>
                         <div class="table-cell">
-                            <p>dulyakemali@gmail.com</p>
+                            <p>071 1234567</p>
                         </div>
                         <div class="table-cell">
-                            <p>8.00a.m-6.00p.m</p>
+                            <p>3000.00</p>
                         </div>
                         <div class="table-cell">
                             <p>
                                 <ol>
-                                    <li>Extended Stays - LKR 1000/=</li>
-                                    <li>Daycare - LKR 1500/=</li>
-                                    <li>Grooming - LKR 500/=</li>
+                                    <li>Doctor of Veterinary Medicine - Lowa State University</li>
+                                    <li>10 Years Experience</li>
+                                    <li>Efficient Surgical Procedures </li>
                                 </ol>
                             </p>
                         </div>
