@@ -42,13 +42,7 @@ export default class PetAccessory extends Component {
                                 <p>Price</p>
                             </div>
                             <div class="table-cell">
-                                <p>Contact Number</p>
-                            </div>
-                            <div class="table-cell">
-                                <p>Email</p>
-                            </div>
-                            <div class="table-cell">
-                                <p>Services</p>
+                                <p>Description</p>
                             </div>
                             <div class="table-cell">
                                 <p>Actions</p>
@@ -76,15 +70,7 @@ export default class PetAccessory extends Component {
                             <div class="table-cell">
                                 <p>dulyakemali@gmail.com</p>
                             </div>
-                            <div class="table-cell">
-                                <p>
-                                    <ol>
-                                        <li>Extended Stays - LKR 100/=</li>
-                                        <li>Daycare - LKR 100/=</li>
-                                        <li>Grooming - LKR 100/=</li>
-                                    </ol>
-                                </p>
-                            </div>
+                           
                             <div class="table-cell last-cell">
                                 {/* <a href="" target="_blank" rel="noreferrer">
                                     <FiEdit

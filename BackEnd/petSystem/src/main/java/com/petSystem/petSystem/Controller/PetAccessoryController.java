@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.*;
 
 public class PetAccessoryController {
 
-    @Autowired
-    public PetAccessoryRepo iaccessory;
 
     @Autowired
     public PetAccessoryService petAccessoryService;
