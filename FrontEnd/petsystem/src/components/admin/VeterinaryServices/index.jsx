@@ -87,7 +87,7 @@ export default class VeterinaryService extends Component {
                                 <p>Contact Number</p>
                             </div>
                             <div class="table-cell">
-                                <p>Veterinary Fee</p>
+                                <p>Veterinary Fee(Rs.)</p>
                             </div>
                             <div class="table-cell">
                                 <p>Description</p>
