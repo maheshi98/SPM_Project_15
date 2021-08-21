@@ -24,7 +24,7 @@ export default class PetAccessory extends Component {
                                 <button class="member-btn btn"><i><BsPlusCircle size="25" /></i> New Entry</button>
                             </a>
 
-                             <a href="/generate-report-boarding-place" target="_blank" rel="noreferrer">
+                             <a href="/generate-report-accessory" target="_blank" rel="noreferrer">
                                 <button class="member-btn btn"><i><RiFileDownloadLine size="25" /></i> Download</button>
                             </a> 
                         </Col>
