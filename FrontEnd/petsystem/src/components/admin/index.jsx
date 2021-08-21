@@ -9,7 +9,7 @@ import { FaStethoscope, FaDog } from 'react-icons/fa';
 import { GiDogHouse, GiDogBowl } from 'react-icons/gi';
 import './index.css'
 
-export default class Admin extends Component {
+export default class Home extends Component {
     render() {
 
         const details = [
@@ -17,7 +17,7 @@ export default class Admin extends Component {
                 image: pet,
                 title: "Pet Details",
                 description: "◾Add New Pet Detail ◾Update Pet ◾Delete Pet ◾Generate Report",
-                link: "/admin-insert-pet"
+                link: "/get-pet-details"
             },
             {
                 image: items,

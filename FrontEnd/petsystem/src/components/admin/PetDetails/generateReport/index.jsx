@@ -1,17 +1,18 @@
+
 import React, { Component } from 'react';
 import { Row } from 'react-bootstrap';
-import { RiFileDownloadLine } from 'react-icons/ri';
 import './index.css'
 
-export default class GenerateReport extends Component {
+export default class Petreport extends Component {
     render() {
+
         return (
             <div className="container">
                 <Row>
                     <div class="text-center">
-                        <h1 class="head-title">Generate Report For Boarding Places</h1>
+                        <h1 class="head-title">Generate Report For PetDetails</h1>
                     </div>
-                    {/* Search bar & button */}
+
                     <div className="col-md-4" style={{ marginTop: "5%" }}>
                         <div className="input-group mb-3">
                             <input
@@ -29,36 +30,27 @@ export default class GenerateReport extends Component {
                             </div>
                         </div>
                     </div>
-                    {/* Download button */}
-                    <div className="col-md-4" style={{ marginTop: "5%" }}>
-                        <div className="input-group mb-3">
-                            <a href="/generate-report-boarding-place">
-                                <button class="member-btn btn"><i><RiFileDownloadLine size="25" /></i> Download</button>
-                            </a>
-                        </div>
-                    </div>
                 </Row>
-                {/* Table */}
                 <div class="table-box">
                     {/* Table Header Start */}
                     <div class="table-row table-head">
                         <div class="table-cell first-cell">
-                            <p>Boarding Place Image</p>
+                            <p>Pet Image</p>
                         </div>
                         <div class="table-cell">
-                            <p>Place Name</p>
+                            <p>Breed</p>
                         </div>
                         <div class="table-cell">
-                            <p>City</p>
+                            <p>Age</p>
                         </div>
                         <div class="table-cell">
-                            <p>Email</p>
+                            <p>price</p>
                         </div>
                         <div class="table-cell">
-                            <p>Opening Hours</p>
+                            <p>Description</p>
                         </div>
                         <div class="table-cell">
-                            <p>Services</p>
+                            <p>Owner Details</p>
                         </div>
                     </div>
                     {/* Table Header End */}
@@ -68,17 +60,17 @@ export default class GenerateReport extends Component {
                             <img
                                 alt="Not available"
                                 class="card-img-top"
-                                src="http://durbandevelopment.com/wp-content/uploads/2019/08/Web-1.jpg"
+                                src="https://s3.amazonaws.com/cdn-origin-etr.akc.org/wp-content/uploads/2017/11/11181218/German-Shepherd-puppies.jpg"
                             />
                         </div>
                         <div class="table-cell">
-                            <p>Dog Palace</p>
+                            <p>German Shepard</p>
                         </div>
                         <div class="table-cell">
-                            <p>Colombo 05</p>
+                            <p>3 months</p>
                         </div>
                         <div class="table-cell">
-                            <p>dulyakemali@gmail.com</p>
+                            <p>Rs 30000</p>
                         </div>
                         <div class="table-cell">
                             <p>8.00a.m-6.00p.m</p>
