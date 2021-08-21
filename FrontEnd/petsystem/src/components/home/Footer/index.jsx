@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import logo from 'url:~/src/Assets/new.png';
-import './FooterStyles.css';
+import './index.css';
 
 export default class Footer extends Component {
     // constructor(props) {
@@ -16,19 +15,18 @@ export default class Footer extends Component {
                             <div class="col-xl-4 col-lg-4 mb-5">
                                 <div class="footer-widget">
                                     <div class="footer-logo">
-                                        <a href="/"><img
+                                        {/* <a href="/"><img
                                             src={logo}
                                             class="img-fluid"
                                             alt="logo"
                                             height="80"
                                             width="130"
-                                        /></a>
+                                        /></a> */}
                                     </div>
                                     <div class="footer-text">
                                         <p>
-                                            Welcome to SLIIT ICAF conference. We're help you to
-                                            do publication of your Research Papers on
-                                            International Conference in Application Framework (ICAF).
+                                            Welcome to pet system. We're help you to
+                                            find pet accessories, Veternaries and boarding places for your pet.
                                         </p>
                                     </div>
                                 </div>
@@ -57,7 +55,7 @@ export default class Footer extends Component {
                                 <div class="copyright-text">
                                     <p>
                                         Copyright &copy; 2021 | All Rights Reserved
-                                        <a href="/">SLIIT ICAF</a>
+                                        <a href="/">Pet Care</a>
                                     </p>
                                 </div>
                             </div>
@@ -65,9 +63,9 @@ export default class Footer extends Component {
                                 <div class="footer-menu">
                                     <ul>
                                         <li><a href="/">Home</a></li>
-                                        <li><a href="/keynotes">Keynotes</a></li>
-                                        <li><a href="/conference">Conference</a></li>
-                                        <li><a href="/past-proceedings">Pat Proceedings</a></li>
+                                        <li><a href="/keynotes">Pet Accessory</a></li>
+                                        <li><a href="/conference">Pet Details</a></li>
+                                        <li><a href="/past-proceedings">Veternary</a></li>
                                         <li><a href="/contact">Contact Us</a></li>
                                     </ul>
                                 </div>

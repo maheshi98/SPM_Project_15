@@ -9,7 +9,7 @@ ul {
 .footer-section {
   background-color: #0d3668;
   /* background: linear-gradient(to right, #6372ff 0%, #062546 100%); */
-  background-image: url(../../Assets/back.jpg);
+  /* background-image: url(../../Assets/back.jpg); */
 }
 .footer-cta {
   border-bottom: 1px solid #5a5af3;

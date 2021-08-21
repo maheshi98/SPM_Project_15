@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { Row, Col } from 'react-bootstrap';
 //import items from '../../../assets/admin/items.png';
 import { BsPlusCircle } from 'react-icons/bs';
-//import { RiFileDownloadLine, RiDeleteBin2Line } from 'react-icons/ri';
+import { RiFileDownloadLine, RiDeleteBin2Line } from 'react-icons/ri';
 //import { FiEdit } from 'react-icons/fi';
 import './index.css'
 
@@ -24,9 +24,9 @@ export default class PetAccessory extends Component {
                                 <button class="member-btn btn"><i><BsPlusCircle size="25" /></i> New Entry</button>
                             </a>
 
-                            {/* <a href="" target="_blank" rel="noreferrer">
+                             <a href="/generate-report-boarding-place" target="_blank" rel="noreferrer">
                                 <button class="member-btn btn"><i><RiFileDownloadLine size="25" /></i> Download</button>
-                            </a> */}
+                            </a> 
                         </Col>
                     </Row>
                     <div class="table-box">

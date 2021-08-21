@@ -13,6 +13,7 @@ import InsertPet from './components/admin/PetDetails/InsertPet';
 import VeterinaryService from './components/admin/VeterinaryServices';
 import InsertVeterinay from './components/admin/VeterinaryServices/InsertVeterinaryDetails';
 import './App.css';
+import Footer from './components/home/Footer';
 
 export default class App extends Component {
 
@@ -40,6 +41,7 @@ export default class App extends Component {
             <Route exact path='/new-veterinary-details' component={InsertVeterinay} />
           </Switch>
         </BrowserRouter>
+        <Footer/>
       </div>
     )
   }
