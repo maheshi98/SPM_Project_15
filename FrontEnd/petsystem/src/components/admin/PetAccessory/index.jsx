@@ -33,13 +33,13 @@ export default class PetAccessory extends Component {
                         {/* Table Header Start */}
                         <div class="table-row table-head">
                             <div class="table-cell first-cell">
-                                <p>Accessory Image</p>
+                                <p>Boarding Place Image</p>
                             </div>
                             <div class="table-cell">
-                                <p>Item Name</p>
+                                <p>Place Name</p>
                             </div>
                             <div class="table-cell">
-                                <p>Price</p>
+                                <p>Address</p>
                             </div>
                             <div class="table-cell">
                                 <p>Description</p>
