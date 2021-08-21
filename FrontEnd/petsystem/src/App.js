@@ -12,7 +12,6 @@ import UpdateBoardingPlace from './components/admin/BoardingPlace/updateBoarding
 import GenerateReportBoardingPlace from './components/admin/BoardingPlace/generateReport';
 import PetAccessory from './components/admin/PetAccessory';
 import newAccessory from './components/admin/PetAccessory/newAccessory';
-import GenerateReport from './components/admin/PetAccessory/generateReport';
 import InsertPet from './components/admin/PetDetails/InsertPet';
 import VeterinaryService from './components/admin/VeterinaryServices';
 import InsertVeterinay from './components/admin/VeterinaryServices/InsertVeterinaryDetails';
@@ -21,12 +20,11 @@ import UpdateVeterinay from './components/admin/VeterinaryServices/UpdateVeterin
 import './App.css';
 import DisplayPet from './components/User/DisplayPet';
 import Petreport from './components/admin/PetDetails/generateReport';
-
 export default class App extends Component {
   render() {
     return (
       <div className='body'>
-        <NavBar/>
+        <NavBar />
         <BrowserRouter>
           <Switch>
             {/* Main Pages Related Paths */}
@@ -42,12 +40,10 @@ export default class App extends Component {
             {/* Pet Accessories Related Paths */}
             <Route exact path='/admin-accessory' component={PetAccessory} />
             <Route exact path='/new-accessory' component={newAccessory} />
-            <Route exact path='/generate-report-accessory' component={GenerateReport} />
             {/* Pet Details Related Paths */}
             <Route exact path='/admin-insert-pet' component={InsertPet} />
             <Route exact path='/display-pet' component={DisplayPet} />
             <Route exact path='/generate-reprt-pet' component={Petreport} />
-
             {/* Pet Veterinary Services Related Paths */}
             <Route exact path='/admin-veterinary-services' component={VeterinaryService} />
             <Route exact path='/new-veterinary-details' component={InsertVeterinay} />
@@ -55,7 +51,7 @@ export default class App extends Component {
             <Route exact path='/update-veterinary-details' component={UpdateVeterinay} />
           </Switch>
         </BrowserRouter>
-        <Footer/>
+        <Footer />
       </div>
     )
   }
