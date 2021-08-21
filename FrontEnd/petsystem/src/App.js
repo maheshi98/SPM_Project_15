@@ -15,12 +15,13 @@ import LogIn from './components/admin/AdminLogin';
 
 
 import updateAccessory from './components/admin/PetAccessory/updateAccessory';
-
+import NavBar from './components/home/NavBar';
 export default class App extends Component {
 
   render() {
     return (
       <div className='body'>
+        <NavBar/>
         <BrowserRouter>
           <Switch>
             <Route exact path='/' component={Home} />
