@@ -4,7 +4,7 @@ import { Row, Col, Button, Form, Image} from 'react-bootstrap';
 import pets from '../../../../assets/admin/pets.png';
 import './index.css';
 
-export default class newAccessory extends Component {
+export default class updateAccessory extends Component {
     constructor(props) {
         super(props)
 
@@ -35,9 +35,9 @@ export default class newAccessory extends Component {
         return (
             
             <div>
-            <div id='createaccessory' style= {{paddingLeft : "3cm" , paddingRight : "3cm"}}>
+            <div id='updateaccessory' style= {{paddingLeft : "3cm" , paddingRight : "3cm"}}>
                 <div className='section-title text-center'>
-                    <h3> ADD PET Accessory</h3>
+                    <h3> Update PET Accessory</h3>
                 </div>
                 <Row className="landing">
                     <Col >
@@ -46,10 +46,10 @@ export default class newAccessory extends Component {
                                 <Form.Label>Item Name</Form.Label>
                                 <Form.Control
                                     type="text"
-                                    id="confTopic"
-                                    name="fname"
+                                    id="itemName"
+                                    name="itemName"
                                     placeholder="Item Name"
-                                    value={this.state.fname}
+                                    value={this.state.itemName}
                                     onChange={this.onChange} />
                                     
                             </Form.Group>
@@ -57,20 +57,20 @@ export default class newAccessory extends Component {
                                 <Form.Label>Image Url</Form.Label>
                                 <Form.Control
                                     type="text"
-                                    id="cnumber"
-                                    name="cnumber"
+                                    id="imageURL"
+                                    name="imageURL"
                                     placeholder="Image Url"
-                                    value={this.state.cnumber}
+                                    value={this.state.imageURL}
                                     onChange={this.onChange} />
                             </Form.Group>
                             <Form.Group >
                                 <Form.Label>Item Price</Form.Label>
                                 <Form.Control
                                     type="text"
-                                    id="cvc"
-                                    name="cvc"
+                                    id="price"
+                                    name="price"
                                     placeholder="Item Price"
-                                    value={this.state.cvc}
+                                    value={this.state.price}
                                     onChange={this.onChange} />
                             </Form.Group>
                             <Form.Group >
@@ -80,12 +80,12 @@ export default class newAccessory extends Component {
                                     id="description"
                                     name="description"
                                     placeholder="Description"
-                                    value={this.state.exdate}
+                                    value={this.state.description}
                                     onChange={this.onChange} />
                             </Form.Group>
                             <br />
                             <Form.Group>
-                                <Button type="submit" style={{ backgroundColor: '#37474F', paddingRight: 10 }}>Submit</Button> {''}
+                                <Button type="submit" style={{ paddingRight: 10 }}>Submit</Button> {''}
                                 <Link to='/'>  <Button type="back" style={{ backgroundColor: '#37474F', paddingRight: 10 }}> Clear </Button></Link>
                             </Form.Group>
                         </Form>

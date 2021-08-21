@@ -4,7 +4,7 @@ import { Row, Col } from 'react-bootstrap';
 import { BsPlusCircle } from 'react-icons/bs';
 import { RiFileDownloadLine, RiDeleteBin2Line } from 'react-icons/ri';
 import { FiEdit } from 'react-icons/fi';
-import BoardingPlaceService from '../../../services/BoardingPlacesService';
+import BoardingPlaceService from '../../../Services/BoardingPlacesService';
 import './index.css'
 
 export default class BoardingPlace extends Component {
