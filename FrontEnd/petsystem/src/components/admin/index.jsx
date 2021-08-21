@@ -66,7 +66,7 @@ export default class Home extends Component {
 
         return (
             <div className="container">
-                <Row>
+                <Row style={{marginBottom:"5%"}}>
                     <div class="text-center">
                         <h1 class="head-title">ADMIN DASHBOARD</h1>
                     </div>

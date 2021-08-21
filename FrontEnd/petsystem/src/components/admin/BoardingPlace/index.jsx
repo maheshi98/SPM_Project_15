@@ -67,7 +67,7 @@ export default class BoardingPlace extends Component {
     render() {
         return (
             <div className="container">
-                <Row>
+                <Row style={{ marginBottom: "5%" }}>
                     <div class="text-center">
                         <h1 class="head-title">PET BOARDING PLACE DETAILS</h1>
                     </div>
