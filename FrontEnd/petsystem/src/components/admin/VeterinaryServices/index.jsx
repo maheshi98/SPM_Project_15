@@ -51,8 +51,12 @@ export default class VeterinaryService extends Component {
                                 <button class="member-btn btn"><i><BsPlusCircle size="25" /></i> New Entry</button>
                             </a>
 
-                            <a href="/contact-us" target="_blank" rel="noreferrer">
+                            <a href="/generate-report-veterinary-details" target="_blank" rel="noreferrer">
                                 <button class="member-btn btn"><i><RiFileDownloadLine size="25" /></i> Download</button>
+                            </a>
+                            
+                            <a href="/contact-us" target="_blank" rel="noreferrer">
+                                <button class="member-btn btn"><i><RiFileDownloadLine size="25" /></i> Testing</button>
                             </a>
                         </Col>
                     </Row>
@@ -108,7 +112,7 @@ export default class VeterinaryService extends Component {
                                 <p>{vet.description}</p>
                             </div>
                             <div class="table-cell last-cell">
-                                <a href="" target="_blank" rel="noreferrer">
+                                <a href="/update-veterinary-details" target="_blank" rel="noreferrer">
                                     <FiEdit
                                         size={30}
                                         style={{ textAlign: "center", color: "blue", backgroundColor: "white" }} />

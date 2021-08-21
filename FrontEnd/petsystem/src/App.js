@@ -11,8 +11,11 @@ import GenerateReportBoardingPlace from './components/admin/BoardingPlace/genera
 import PetAccessory from './components/admin/PetAccessory';
 import newAccessory from './components/admin/PetAccessory/newAccessory';
 import InsertPet from './components/admin/PetDetails/InsertPet';
-import InsertVeterinay from './components/admin/VeterinaryServices/InsertVeterinaryDetails';
 import VeterinaryService from './components/admin/VeterinaryServices';
+import InsertVeterinay from './components/admin/VeterinaryServices/InsertVeterinaryDetails';
+import VetGenerateReport from './components/admin/VeterinaryServices/ReportGenerate';
+import UpdateVeterinay from './components/admin/VeterinaryServices/UpdateVeterinaryDetails';
+import './App.css';
 
 export default class App extends Component {
 
@@ -39,6 +42,8 @@ export default class App extends Component {
             {/* Pet Veterinary Services Related Paths */}
             <Route exact path='/admin-veterinary-services' component={VeterinaryService} />
             <Route exact path='/new-veterinary-details' component={InsertVeterinay} />
+            <Route exact path='/generate-report-veterinary-details' component={VetGenerateReport} />
+            <Route exact path='/update-veterinary-details' component={UpdateVeterinay} />
           </Switch>
         </BrowserRouter>
       </div>
