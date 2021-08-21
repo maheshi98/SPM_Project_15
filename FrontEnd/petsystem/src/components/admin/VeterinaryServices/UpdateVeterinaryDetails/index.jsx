@@ -3,71 +3,68 @@ import { Link } from 'react-router-dom';
 import { Row, Col, Button, Form, Image} from 'react-bootstrap';
 import pets from '../../../../assets/admin/pets.png';
 import './index.css';
-import VeterinaryServices from '../../../../Services/VeterinaryService';
 
+// const initialState = {
+//     name : '',
+//     imageURL : ''  ,
+//     clinicLocation : '',
+//     contact_no : '',
+//     veterinaryFee : '',
+//     description : '',
+// } 
 
-const initialState = {
-    name : '',
-    imageURL : ''  ,
-    clinicLocation : '',
-    contact_no : '',
-    veterinaryFee : '',
-    description : '',
-} 
-
-export default class InsertVeterinay extends Component {
+export default class UpdateVeterinay extends Component {
     constructor(props) {
         super(props)
 
-        this.onChange = this.onChange.bind(this);
-        this.onSubmit = this.onSubmit.bind(this);
-        this.state = initialState;
+        // this.onChange = this.onChange.bind(this);
+        // this.onSubmit = this.onSubmit.bind(this);
+        // this.state = initialState;
     }
 
-    componentDidMount() {
+    // componentDidMount() {
         
-    }
+    // }
     
-    componentDidUpdate(prevProps, prevState, snapshot) { if (prevState.name !== this.state.name) { this.handler() } }
+    // componentDidUpdate(prevProps, prevState, snapshot) { if (prevState.name !== this.state.name) { this.handler() } }
 
-    onChange(e) {
-        this.setState({ [e.target.name]: e.target.value })
-    }
+    // onChange(e) {
+    //     this.setState({ [e.target.name]: e.target.value })
+    // }
 
-    onSubmit(e) {
-        e.preventDefault();
-        let vet = {
-            name: this.state.name,
-            imageURL: this.state.imageURL,
-            clinicLocation: this.state.clinicLocation,
-            contact_no: this.state.contact_no,
-            veterinaryFee : this.state.veterinaryFee,
-            description : this.state.description,
-        };
-        console.log("DETAILS ADDED SUCCESSFUL ", vet);
-        VeterinaryServices.add(vet).then(res =>{
+    // onSubmit(e) {
+    //     e.preventDefault();
+    //     let vet = {
+    //         name: this.state.name,
+    //         imageURL: this.state.imageURL,
+    //         clinicLocation: this.state.clinicLocation,
+    //         contact_no: this.state.contact_no,
+    //         veterinaryFee : this.state.veterinaryFee,
+    //         description : this.state.description,
+    //     };
+    //     console.log("DETAILS ADDED SUCCESSFUL ", vet);
+    //     VeterinaryServices.add(vet).then(res =>{
 
-        })
+    //     })
 
-    }
+    // }
 
-    componentWillUnmount() {
+    // componentWillUnmount() {
         
-    }
+    // }
 
-    // Prototype methods, Bind in Constructor (ES2015)
-    handleEvent() {}
+    // // Prototype methods, Bind in Constructor (ES2015)
+    // handleEvent() {}
 
-    // Class Properties (Stage 3 Proposal)
-    handler = () => { this.setState() }
+    // // Class Properties (Stage 3 Proposal)
+    // handler = () => { this.setState() }
 
     render() {
-        return (
-            
+        return ( 
             <div>
             <div id='createpet' style= {{paddingLeft : "3cm" , paddingRight : "3cm"}}>
                 <div className='section-title text-center'>
-                    <h3> ADD VETERINARY DETAILS</h3>
+                    <h3> UPDATE VETERINARY DETAILS</h3>
                 </div>
                 <Row className="landing">
                     <Col >
@@ -79,8 +76,9 @@ export default class InsertVeterinay extends Component {
                                     id="name"
                                     name="name"
                                     placeholder="Full Name"
-                                    value={this.state.name}
-                                    onChange={this.onChange} />
+                                    // value={this.state.name}
+                                    // onChange={this.onChange} 
+                                    />
                                     
                             </Form.Group>
                             <Form.Group >
@@ -90,8 +88,9 @@ export default class InsertVeterinay extends Component {
                                     id="imageURL"
                                     name="imageURL"
                                     placeholder="Image URL"
-                                    value={this.state.imageURL}
-                                    onChange={this.onChange} />
+                                    // value={this.state.imageURL}
+                                    // onChange={this.onChange}
+                                     />
                             </Form.Group>
                             <Form.Group >
                                 <Form.Label>Clinic Location</Form.Label>
@@ -100,8 +99,9 @@ export default class InsertVeterinay extends Component {
                                     id="clinicLocation"
                                     name="clinicLocation"
                                     placeholder="Clinic Location"
-                                    value={this.state.clinicLocation}
-                                    onChange={this.onChange} />
+                                    // value={this.state.clinicLocation}
+                                    // onChange={this.onChange} 
+                                    />
                             </Form.Group>
                             <Form.Group >
                                 <Form.Label>Contact Number</Form.Label>
@@ -110,8 +110,9 @@ export default class InsertVeterinay extends Component {
                                     id="contact_no"
                                     name="contact_no"
                                     placeholder="Contact Number"
-                                    value={this.state.contact_no}
-                                    onChange={this.onChange} />
+                                    // value={this.state.contact_no}
+                                    // onChange={this.onChange} 
+                                    />
                             </Form.Group>
                             <Form.Group >
                                 <Form.Label>Veterinary Fee</Form.Label>
@@ -120,8 +121,9 @@ export default class InsertVeterinay extends Component {
                                     id="veterinaryFee"
                                     name="veterinaryFee"
                                     placeholder="Veterinary Fee"
-                                    value={this.state.veterinaryFee}
-                                    onChange={this.onChange} />
+                                    // value={this.state.veterinaryFee}
+                                    // onChange={this.onChange} 
+                                    />
                             </Form.Group>
                             <Form.Group >
                                 <Form.Label>Description</Form.Label>
@@ -130,8 +132,9 @@ export default class InsertVeterinay extends Component {
                                     id="description"
                                     name="description"
                                     placeholder="Description"
-                                    value={this.state.description}
-                                    onChange={this.onChange} />
+                                    // value={this.state.description}
+                                    // onChange={this.onChange}
+                                     />
                             </Form.Group>
                             <br />
                             <Form.Group>
