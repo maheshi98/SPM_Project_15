@@ -21,12 +21,11 @@ import VetDetails from './components/User/DisplayVeterinary';
 import './App.css';
 import DisplayPet from './components/User/DisplayPet';
 import Petreport from './components/admin/PetDetails/generateReport';
-
 export default class App extends Component {
   render() {
     return (
       <div className='body'>
-        <NavBar/>
+        <NavBar />
         <BrowserRouter>
           <Switch>
             {/* Main Pages Related Paths */}
@@ -46,7 +45,6 @@ export default class App extends Component {
             <Route exact path='/admin-insert-pet' component={InsertPet} />
             <Route exact path='/display-pet' component={DisplayPet} />
             <Route exact path='/generate-reprt-pet' component={Petreport} />
-
             {/* Pet Veterinary Services Related Paths */}
             <Route exact path='/admin-veterinary-services' component={VeterinaryService} />
             <Route exact path='/new-veterinary-details' component={InsertVeterinay} />
@@ -55,7 +53,7 @@ export default class App extends Component {
             <Route exact path='/display-veterinary-details' component={VetDetails} />
           </Switch>
         </BrowserRouter>
-        <Footer/>
+        <Footer />
       </div>
     )
   }
