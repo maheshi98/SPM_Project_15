@@ -20,7 +20,7 @@ export default class PetAccessory extends Component {
                         <Col>
                         </Col>
                         <Col style={{ marginLeft: "35%" }}>
-                            <a href="/new-accessory" target="_blank" rel="noreferrer">
+                            <a href="/new-boarding-place" target="_blank" rel="noreferrer">
                                 <button class="member-btn btn"><i><BsPlusCircle size="25" /></i> New Entry</button>
                             </a>
 
@@ -33,13 +33,13 @@ export default class PetAccessory extends Component {
                         {/* Table Header Start */}
                         <div class="table-row table-head">
                             <div class="table-cell first-cell">
-                                <p>Accessory Image</p>
+                                <p>Boarding Place Image</p>
                             </div>
                             <div class="table-cell">
-                                <p>Item Name</p>
+                                <p>Place Name</p>
                             </div>
                             <div class="table-cell">
-                                <p>Price</p>
+                                <p>Address</p>
                             </div>
                             <div class="table-cell">
                                 <p>Contact Number</p>
