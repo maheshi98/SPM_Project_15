@@ -8,13 +8,24 @@ export default class BoardingPlace extends Component {
     constructor(props) {
         super(props);
         this.retrievePetBoardingPlaces = this.retrievePetBoardingPlaces.bind(this);
+        this.onChangeSearchPlace = this.onChangeSearchPlace.bind(this);
+        this.searchPetBoardingPlace = this.searchPetBoardingPlace.bind(this);
         this.state = {
-            boardingPlaces: []
+            boardingPlaces: [],
+            searchPlace: ""
         }
     }
 
     componentDidMount() {
         this.retrievePetBoardingPlaces();
+    }
+
+    onChangeSearchPlace(e) {
+        const searchPlace = e.target.value;
+
+        this.setState({
+            searchPlace: searchPlace
+        });
     }
 
     retrievePetBoardingPlaces = () => {
@@ -29,7 +40,22 @@ export default class BoardingPlace extends Component {
             });
     }
 
+    searchPetBoardingPlace = () => {
+        BoardingPlaceService.findByPlace(this.state.searchPlace)
+            .then(response => {
+                this.setState({
+                    boardingPlaces: response.data
+                });
+                console.log(response.data);
+            })
+            .catch(e => {
+                console.log(e);
+            });
+    }
+
     render() {
+        const { searchPlace } = this.state;
+
         return (
             <div className="container">
                 <Row>
@@ -37,21 +63,22 @@ export default class BoardingPlace extends Component {
                         <h1 class="head-title">BOARDING PLACES</h1>
                     </div>
                 </Row>
+                {/* Search bar & search button */}
                 <Row>
                     <div className="col-md-4" style={{ marginTop: "3%", marginLeft: "65%" }}>
                         <div className="input-group mb-3">
                             <input
                                 type="text"
                                 className="form-control"
-                                placeholder="Search by place city"
-                            // value={searchTitle}
-                            // onChange={this.onChangeSearchTitle}
+                                placeholder="Search By Location"
+                                value={searchPlace}
+                                onChange={this.onChangeSearchPlace}
                             />
                             <div className="input-group-append">
                                 <button
                                     className="btn btn-outline-primary"
                                     type="button"
-                                // onClick={this.searchTitle}
+                                    onClick={this.searchPetBoardingPlace}
                                 >
                                     Search
                                 </button>
@@ -60,7 +87,7 @@ export default class BoardingPlace extends Component {
                     </div>
                 </Row>
                 {this.state.boardingPlaces.map(
-                    places => 
+                    places =>
                         <section class="why-us section-bg auto-space auto-space-vertical">
                             <br />
                             <div class="container" key={places.placeId}>
@@ -70,7 +97,7 @@ export default class BoardingPlace extends Component {
                                             src={places.placeImage}
                                             class="img-fluid"
                                             alt="Not Available"
-                                            style={{objectFit:"cover", width:600, height: 400}}
+                                            style={{ objectFit: "cover", width: 600, height: 400 }}
                                         />
                                     </div>
                                     <div class="col-lg-6 d-flex flex-column">
@@ -114,7 +141,7 @@ export default class BoardingPlace extends Component {
                                                     <ul>
                                                         {places.placeServices.map(
                                                             services =>
-                                                             <li> <h6 style={{ fontFamily: "cursive" }}>{services.label} - <b><span style={{ fontFamily: "monospace" }}> LKR:{services.price}/=</span></b></h6></li>
+                                                                <li> <h6 style={{ fontFamily: "cursive" }}>{services.label} - <b><span style={{ fontFamily: "monospace" }}> LKR:{services.price}/=</span></b></h6></li>
                                                         )}
                                                     </ul>
                                                     <span class="text-color-primary">
@@ -129,7 +156,7 @@ export default class BoardingPlace extends Component {
                             </div>
                             <br />
                         </section>
-                    )}
+                )}
             </div>
         )
     }

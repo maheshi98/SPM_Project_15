@@ -10,6 +10,10 @@ class BoardingPlacesService {
         return http.get("/boardingPlace/places");
     }
 
+    findByPlace(placeCity) {
+        return http.get(`/boardingPlace/search?placeCity=${placeCity}`);
+    }
+
 }
 
 export default new BoardingPlacesService();
