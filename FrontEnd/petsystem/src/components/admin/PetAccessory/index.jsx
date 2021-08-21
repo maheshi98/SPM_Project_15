@@ -20,7 +20,7 @@ export default class PetAccessory extends Component {
                         <Col>
                         </Col>
                         <Col style={{ marginLeft: "35%" }}>
-                            <a href="" target="_blank" rel="noreferrer">
+                            <a href="/new-boarding-place" target="_blank" rel="noreferrer">
                                 <button class="member-btn btn"><i><BsPlusCircle size="25" /></i> New Entry</button>
                             </a>
 
