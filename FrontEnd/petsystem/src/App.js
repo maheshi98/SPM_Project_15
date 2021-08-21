@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import Footer from './components/home/Footer';
+import NavBar from './components/home/NavBar';
 import Home from './components/home';
-import ContactUs from './components/contactUs';
+import ContactUs from './components/ContactUs';
 import LogIn from './components/admin/AdminLogin';
 import Admin from './components/admin';
 import BoardingPlaceAdmin from './components/admin/BoardingPlace';
@@ -22,6 +24,7 @@ export default class App extends Component {
   render() {
     return (
       <div className='body'>
+        <NavBar/>
         <BrowserRouter>
           <Switch>
             {/* Main Pages Related Paths */}
@@ -46,6 +49,7 @@ export default class App extends Component {
             <Route exact path='/update-veterinary-details' component={UpdateVeterinay} />
           </Switch>
         </BrowserRouter>
+        <Footer/>
       </div>
     )
   }
