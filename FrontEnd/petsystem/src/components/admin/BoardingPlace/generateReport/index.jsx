@@ -57,7 +57,7 @@ export default class GenerateReport extends Component {
         const { searchPlace } = this.state;
 
         return (
-            <div className="container">
+            <div className="container" style={{marginBottom:"5%"}}>
                 <Row>
                     <div class="text-center">
                         <h1 class="head-title">Generate Report For Boarding Places</h1>
