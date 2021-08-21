@@ -11,8 +11,8 @@ export default class BoardingPlace extends Component {
         super(props);
         this.retrievePetBoardingPlaces = this.retrievePetBoardingPlaces.bind(this);
         this.deletePetBoardingPlace = this.deletePetBoardingPlace.bind(this);
+        this.navigateUpdatePage = this.navigateUpdatePage.bind(this);
         this.setToast = this.setToast.bind(this);
-
         this.state = {
             boardingPlaces: [],
             message_show: false,
@@ -55,6 +55,11 @@ export default class BoardingPlace extends Component {
             })
     }
 
+    navigateUpdatePage(e, categoryId) {
+        console.log("Category ID:", categoryId);
+        window.location = `/update-boarding-place/${categoryId}`
+    }
+
     setToast = (key) => {
         this.setState({ message_show: key });
     }
@@ -83,8 +88,7 @@ export default class BoardingPlace extends Component {
                             <a href="/new-boarding-place" target="_blank" rel="noreferrer">
                                 <button class="member-btn btn"><i><BsPlusCircle size="25" /></i> New Entry</button>
                             </a>
-
-                            <a href="" target="_blank" rel="noreferrer">
+                            <a href="/generate-report-boarding-place">
                                 <button class="member-btn btn"><i><RiFileDownloadLine size="25" /></i> Download</button>
                             </a>
                         </Col>
@@ -151,6 +155,7 @@ export default class BoardingPlace extends Component {
                                     <div class="table-cell last-cell">
                                         <button style={{ backgroundColor: "white", border: "none" }}>
                                             <FiEdit
+                                                onClick={e => this.navigateUpdatePage(e, places.placeId)}
                                                 size={30}
                                                 style={{ textAlign: "center", color: "blue", backgroundColor: "white" }} />
                                         </button>

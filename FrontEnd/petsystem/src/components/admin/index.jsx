@@ -42,7 +42,7 @@ export default class Home extends Component {
                 image: pet,
                 title: "Pet Details",
                 description: "◾Add New Pet Detail ◾Update Pet ◾Delete Pet ◾Generate Report",
-                link: "/admin-insert-pet"
+                link: "/get-pet-details"
             },
             {
                 image: items,

@@ -7,6 +7,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @RestController
 @CrossOrigin(origins = "*")
 @RequestMapping("/PetDetails")
@@ -21,6 +24,30 @@ public class PetController {
             petService.savePet(pet);
             return ResponseEntity.status(HttpStatus.CREATED).build();
         }catch(Exception e){
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @GetMapping("/getall")
+    public ResponseEntity<List<Pet>> getAllPets(){
+        try{
+            List<Pet> pets = new ArrayList<Pet>();
+            petService.getAllPets().forEach(pets::add);
+            if(pets.isEmpty()){
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            }
+            return new ResponseEntity<>(pets, HttpStatus.OK);
+        } catch (Exception e){
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<?> deletePet(@PathVariable String id) {
+        try {
+            petService.deletePet(id);
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+        } catch(Exception e){
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }

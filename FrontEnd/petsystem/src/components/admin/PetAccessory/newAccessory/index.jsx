@@ -1,25 +1,54 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 import { Row, Col, Button, Form, Image} from 'react-bootstrap';
-import pets from '../../../../assets/admin/pets.png';
+import pet2 from '../../../../assets/admin/pet2.jpg';
 import './index.css';
+import AccessoryService from '../../../../Services/AccessoryService';
+
+const initialState = {
+    itemName : '',
+    imageURL : ''  ,
+    itemPrice : 0,
+    description: ''
+} 
 
 export default class newAccessory extends Component {
     constructor(props) {
         super(props)
 
-        this.state = {
-                 
-        }
-
-        this.handleEvent = this.handleEvent.bind(this)
+        this.onChange = this.onChange.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
+        this.state = initialState;
     }
 
     componentDidMount() {
         
     }
-
+    // onSubmit(e) {
+    //     e.preventDefault();
+        
+        
+    // }
     componentDidUpdate(prevProps, prevState, snapshot) { if (prevState.name !== this.state.name) { this.handler() } }
+
+    onChange(e) {
+        this.setState({ [e.target.name]: e.target.value })
+    }
+
+    onSubmit(e) {
+        e.preventDefault();
+        let accessory = {
+            itemName: this.state.itemName,
+            age: this.state.age,
+            itemPrice: this.state.itemPrice,
+            description: this.state.description
+        };
+        console.log("DETAILS ADDED SUCCESSFUL ", accessory);
+        AccessoryService.addPetAccessory(accessory).then(res =>{
+
+        })
+
+    }
 
     componentWillUnmount() {
         
@@ -35,7 +64,7 @@ export default class newAccessory extends Component {
         return (
             
             <div>
-            <div id='createpet' style= {{paddingLeft : "3cm" , paddingRight : "3cm"}}>
+            <div id='createaccessory' style= {{paddingLeft : "3cm" , paddingRight : "3cm"}}>
                 <div className='section-title text-center'>
                     <h3> ADD PET Accessory</h3>
                 </div>
@@ -43,55 +72,55 @@ export default class newAccessory extends Component {
                     <Col >
                         <Form onSubmit={this.onSubmit} style={{ width: "80%", marginLeft: "10%" }}>
                             <Form.Group >
-                                <Form.Label>Item Name</Form.Label>
+                                <Form.Label>itemName</Form.Label>
                                 <Form.Control
                                     type="text"
-                                    id="confTopic"
-                                    name="fname"
-                                    placeholder="Item Name"
-                                    value={this.state.fname}
+                                    id="itemName"
+                                    name="itemName"
+                                    placeholder="Breed"
+                                    value={this.state.itemName}
                                     onChange={this.onChange} />
                                     
                             </Form.Group>
                             <Form.Group >
-                                <Form.Label>Image Url</Form.Label>
+                                <Form.Label>imageURL</Form.Label>
                                 <Form.Control
                                     type="text"
-                                    id="cnumber"
-                                    name="cnumber"
-                                    placeholder="Image Url"
-                                    value={this.state.cnumber}
+                                    id="imageURL"
+                                    name="imageURL"
+                                    placeholder="Age"
+                                    value={this.state.imageURL}
                                     onChange={this.onChange} />
                             </Form.Group>
                             <Form.Group >
-                                <Form.Label>Item Price</Form.Label>
+                                <Form.Label>itemPrice</Form.Label>
                                 <Form.Control
                                     type="text"
-                                    id="cvc"
-                                    name="cvc"
-                                    placeholder="Item Price"
-                                    value={this.state.cvc}
+                                    id="itemPrice"
+                                    name="itemPrice"
+                                    placeholder="Description"
+                                    value={this.state.itemPrice}
                                     onChange={this.onChange} />
                             </Form.Group>
                             <Form.Group >
-                                <Form.Label>Description</Form.Label>
+                                <Form.Label>description</Form.Label>
                                 <Form.Control
                                     type="text"
                                     id="description"
                                     name="description"
-                                    placeholder="Description"
-                                    value={this.state.exdate}
+                                    placeholder="description"
+                                    value={this.state.description}
                                     onChange={this.onChange} />
                             </Form.Group>
                             <br />
                             <Form.Group>
-                                <Button type="submit" style={{ backgroundColor: '#37474F', paddingRight: 10 }}>Submit</Button> {''}
-                                <Link to='/'>  <Button type="back" style={{ backgroundColor: '#37474F', paddingRight: 10 }}> Clear </Button></Link>
+                                <Button type="submit" style={{ paddingRight: 10 }}>Submit</Button> {''}
+                                <Link to='/'>  <Button type="back" style={{ backgroundColor: '#37474F', paddingRight: 10 }}>Clear</Button></Link>
                             </Form.Group>
                         </Form>
                     </Col>
                     <Col >
-                        <Image src={pets} thumbnail style={{ border: "none", width:"18cm" , marginTop:"-4cm"}} />
+                        <Image src={pet2} thumbnail style={{ border: "none", width:"18cm" , marginTop:"-4cm"}} />
                     </Col>
                 </Row>
             </div >

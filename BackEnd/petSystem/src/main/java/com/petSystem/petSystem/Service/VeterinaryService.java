@@ -5,6 +5,8 @@ import com.petSystem.petSystem.Repository.VeterinaryRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class VeterinaryService {
     @Autowired
@@ -14,4 +16,10 @@ public class VeterinaryService {
         return  veterinary.save(veterinaryModel);
 
     }
+
+    public List<VeterinaryModel> showVeterinary() {
+        return veterinary.findAll();
+    }
+
+    public void deleteVeterinary(String id) {veterinary.deleteById(id);}
 }
