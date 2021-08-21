@@ -39,7 +39,7 @@ export default class newAccessory extends Component {
         e.preventDefault();
         let accessory = {
             itemName: this.state.itemName,
-            age: this.state.age,
+            imageURL: this.state.imageURL,
             itemPrice: this.state.itemPrice,
             description: this.state.description
         };
