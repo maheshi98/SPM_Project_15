@@ -5,8 +5,47 @@ import { BsPlusCircle } from 'react-icons/bs';
 import { RiFileDownloadLine, RiDeleteBin2Line } from 'react-icons/ri';
 import { FiEdit } from 'react-icons/fi';
 import './index.css'
+import VeterinaryServices from '../../../Services/VeterinaryService';
+
 
 export default class VeterinaryService extends Component {
+    constructor(props) {
+        super(props);
+        this.retrieveVeterinaryDetails = this.retrieveVeterinaryDetails.bind(this);
+
+        this.state = {
+            veterinaryDetails: [],
+        }
+    }
+
+    componentDidMount(){
+        this.retrieveVeterinaryDetails();
+    }
+
+    retrieveVeterinaryDetails = () => {
+        VeterinaryServices.getAll().then(response => {
+            this.setState({
+                veterinaryDetails: response.data
+            });
+            console.log(response.data);
+        })
+            .catch(e => {
+                console.log(e);
+            });
+    }
+
+    deleteVeterinaryDetails(e,vetId){
+        VeterinaryServices.deleteVet(vetId)
+        .then(response => {
+            alert('Data successfully deleted.');
+        })
+        .catch(error => {
+            console.log(error.message);
+            alert(error.message);
+        })
+    }
+
+
     render() {
 
         return (
@@ -23,8 +62,12 @@ export default class VeterinaryService extends Component {
                                 <button class="member-btn btn"><i><BsPlusCircle size="25" /></i> New Entry</button>
                             </a>
 
-                            <a href="" target="_blank" rel="noreferrer">
+                            <a href="/generate-report-veterinary-details" target="_blank" rel="noreferrer">
                                 <button class="member-btn btn"><i><RiFileDownloadLine size="25" /></i> Download</button>
+                            </a>
+                            
+                            <a href="/contact-us" target="_blank" rel="noreferrer">
+                                <button class="member-btn btn"><i><RiFileDownloadLine size="25" /></i> Testing</button>
                             </a>
                         </Col>
                     </Row>
@@ -44,7 +87,7 @@ export default class VeterinaryService extends Component {
                                 <p>Contact Number</p>
                             </div>
                             <div class="table-cell">
-                                <p>Veterinary Fee</p>
+                                <p>Veterinary Fee(Rs.)</p>
                             </div>
                             <div class="table-cell">
                                 <p>Description</p>
@@ -55,48 +98,46 @@ export default class VeterinaryService extends Component {
                         </div>
                         {/* Table Header End */}
                         {/* Table Data Row Start */}
-                        <div class="table-row">
+                        {this.state.veterinaryDetails.map(
+                            vet => 
+                            <div class="table-row">
                             <div class="table-cell first-cell">
                                 <img
-                                    alt="Not available"
                                     class="card-img-top"
-                                    src="https://th.bing.com/th/id/OIP.vVAnGE1ISzQr7z875YLjaAHaEK?w=276&h=180&c=7&o=5&dpr=1.12&pid=1.7"
+                                    src={vet.imageURL}
                                 />
                             </div>
                             <div class="table-cell">
-                                <p>Dog Palace</p>
+                                <p>{vet.name}</p>
                             </div>
                             <div class="table-cell">
-                                <p>76/B, Weedagama,Bandaragama</p>
+                                <p>{vet.clinicLocation}</p>
                             </div>
                             <div class="table-cell">
-                                <p>0987654321</p>
+                                <p>{vet.contact_no}</p>
                             </div>
                             <div class="table-cell">
-                                <p>dulyakemali@gmail.com</p>
+                                <p>{vet.veterinaryFee}</p>
                             </div>
                             <div class="table-cell">
-                                <p>
-                                    <ol>
-                                        <li>Extended Stays - LKR 100/=</li>
-                                        <li>Daycare - LKR 100/=</li>
-                                        <li>Grooming - LKR 100/=</li>
-                                    </ol>
-                                </p>
+                                <p>{vet.description}</p>
                             </div>
                             <div class="table-cell last-cell">
-                                <a href="" target="_blank" rel="noreferrer">
+                                <a href="/update-veterinary-details" target="_blank" rel="noreferrer">
                                     <FiEdit
                                         size={30}
                                         style={{ textAlign: "center", color: "blue", backgroundColor: "white" }} />
                                 </a>&nbsp;&nbsp;&nbsp;
                                 <a href="" target="_blank" rel="noreferrer">
                                     <RiDeleteBin2Line
+                                        onClick = {e => this.deleteVeterinaryDetails(e,vet.id)}
                                         size={35}
                                         style={{ textAlign: "center", color: "red", backgroundColor: "white" }} />
                                 </a>
                             </div>
                         </div>
+                            )}
+
                         {/* Table Data Row End */}
                     </div>
                 </Row>
