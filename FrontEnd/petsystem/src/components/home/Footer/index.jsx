@@ -55,7 +55,7 @@ export default class Footer extends Component {
                                 <div class="copyright-text">
                                     <p>
                                         Copyright &copy; 2021 | All Rights Reserved
-                                        <a href="/">Pet Care</a>
+                                        <a href="/"> Pet Care</a>
                                     </p>
                                 </div>
                             </div>
