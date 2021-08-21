@@ -27,11 +27,11 @@ export default class InsertPet extends Component {
     componentDidMount() {
         
     }
-    onSubmit(e) {
-        e.preventDefault();
+    // onSubmit(e) {
+    //     e.preventDefault();
         
         
-    }
+    // }
     componentDidUpdate(prevProps, prevState, snapshot) { if (prevState.name !== this.state.name) { this.handler() } }
 
     onChange(e) {
