@@ -74,7 +74,8 @@ export default class InsertVeterinay extends Component {
                         <Form onSubmit={this.onSubmit} style={{ width: "80%", marginLeft: "10%" }}>
                             <Form.Group >
                                 <Form.Label>Veterinary Name</Form.Label>
-                                <Form.Control
+                                <Form.Control 
+                                    required
                                     type="text"
                                     id="name"
                                     name="name"
@@ -86,6 +87,7 @@ export default class InsertVeterinay extends Component {
                             <Form.Group >
                                 <Form.Label>Veterinary Image</Form.Label>
                                 <Form.Control
+                                    required
                                     type="text"
                                     id="imageURL"
                                     name="imageURL"
@@ -96,6 +98,7 @@ export default class InsertVeterinay extends Component {
                             <Form.Group >
                                 <Form.Label>Clinic Location</Form.Label>
                                 <Form.Control
+                                    required
                                     type="text"
                                     id="clinicLocation"
                                     name="clinicLocation"
@@ -106,6 +109,7 @@ export default class InsertVeterinay extends Component {
                             <Form.Group >
                                 <Form.Label>Contact Number</Form.Label>
                                 <Form.Control
+                                    required
                                     type="text"
                                     id="contact_no"
                                     name="contact_no"
@@ -116,6 +120,7 @@ export default class InsertVeterinay extends Component {
                             <Form.Group >
                                 <Form.Label>Veterinary Fee</Form.Label>
                                 <Form.Control
+                                    required
                                     type="text"
                                     id="veterinaryFee"
                                     name="veterinaryFee"
@@ -126,6 +131,7 @@ export default class InsertVeterinay extends Component {
                             <Form.Group >
                                 <Form.Label>Description</Form.Label>
                                 <Form.Control
+                                    required
                                     type="text"
                                     id="description"
                                     name="description"

@@ -18,9 +18,7 @@ import InsertVeterinay from './components/admin/VeterinaryServices/InsertVeterin
 import VetGenerateReport from './components/admin/VeterinaryServices/ReportGenerate';
 import UpdateVeterinay from './components/admin/VeterinaryServices/UpdateVeterinaryDetails';
 import './App.css';
-
 export default class App extends Component {
-
   render() {
     return (
       <div className='body'>

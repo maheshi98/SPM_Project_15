@@ -6,26 +6,40 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+
+
 import java.util.List;
+
+
 
 @RestController
 @CrossOrigin(origins = "*")
 @RequestMapping("/veterinary")
 public class VeterinaryController {
 
+
+
     @Autowired
     public VeterinaryService res;
+
+
 
     @RequestMapping(value = "/saveVeterinary", method = RequestMethod.POST)
     public VeterinaryModel test(@RequestBody VeterinaryModel veterinaryModel){
 
+
+
         return res.saveVeterinary(veterinaryModel);
     }
+
+
 
     @RequestMapping(value = "/showVeterinary", method = RequestMethod.GET)
     public List<VeterinaryModel> showData() {
         return res.showVeterinary();
     }
+
+
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> deleteVeterinary(@PathVariable String id) {
@@ -36,5 +50,7 @@ public class VeterinaryController {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+
 
 }

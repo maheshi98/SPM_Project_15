@@ -5,6 +5,8 @@ import com.petSystem.petSystem.Repository.PetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class PetService {
 
@@ -13,5 +15,13 @@ public class PetService {
 
     public Pet savePet(Pet pet){
         return petRepository.save(pet);
+    }
+
+    public List<Pet> getAllPets(){
+        return petRepository.findAll();
+    }
+
+    public void deletePet(String id){
+        petRepository.deleteById(id);
     }
 }
