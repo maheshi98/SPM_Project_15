@@ -17,4 +17,6 @@ public class PetAccessoryService {
         return petAccessoryRepo.findAll();
     }
 
+    public void deleteAccessory(String id) {petAccessoryRepo.deleteById(id);}
+
 }

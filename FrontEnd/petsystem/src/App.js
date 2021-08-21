@@ -13,6 +13,8 @@ import GenerateReportBoardingPlace from './components/admin/BoardingPlace/genera
 import PetAccessory from './components/admin/PetAccessory';
 import newAccessory from './components/admin/PetAccessory/newAccessory';
 import GenerateReport from './components/admin/PetAccessory/generateReport';
+import updateAccessory from './components/admin/PetAccessory/updateAccessory';
+import DisplayAccessory from './components/User/DisplayAccessory';
 import InsertPet from './components/admin/PetDetails/InsertPet';
 import VeterinaryService from './components/admin/VeterinaryServices';
 import InsertVeterinay from './components/admin/VeterinaryServices/InsertVeterinaryDetails';
@@ -43,6 +45,8 @@ export default class App extends Component {
             <Route exact path='/admin-accessory' component={PetAccessory} />
             <Route exact path='/new-accessory' component={newAccessory} />
             <Route exact path='/generate-report-accessory' component={GenerateReport} />
+            <Route exact path='/display-accessory' component={DisplayAccessory} />
+            <Route exact path='/update-accessory' component={updateAccessory} />
             {/* Pet Details Related Paths */}
             <Route exact path='/admin-insert-pet' component={InsertPet} />
             <Route exact path='/display-pet' component={DisplayPet} />

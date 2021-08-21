@@ -6,8 +6,51 @@ import { BsPlusCircle } from 'react-icons/bs';
 import { RiFileDownloadLine, RiDeleteBin2Line } from 'react-icons/ri';
 import { FiEdit } from 'react-icons/fi';
 import './index.css'
+import AccessoryService from '../../../Services/AccessoryService';
 
 export default class PetAccessory extends Component {
+    constructor(props) {
+        super(props);
+        this.retrieveAccessoryDet = this.retrieveAccessoryDet.bind(this); 
+        this.navigateUpdatePage = this.navigateUpdatePage.bind(this);
+
+        this.state = {
+            accessorydetails: []
+        }
+    }
+
+    componentDidMount() {
+        this.retrieveAccessoryDet();
+    }
+
+    retrieveAccessoryDet = () => {
+        AccessoryService.getallAccessory().then(response => {
+            this.setState({
+                accessorydetails: response.data
+            });
+            console.log(response.data);
+        })
+            .catch(e => {
+                console.log(e);
+            });
+    }
+
+    deleteAccessoryDetails(e, accId){
+        AccessoryService.deleteAccessory(accId)
+        .then(response => {
+            alert('Data successfully Deleted.');
+        })
+        .catch(error => {
+            console.log(error.message);
+            alert(error.message);
+        })
+    }
+
+    navigateUpdatePage(e, accId) {
+        console.log("Accessory ID:", accId);
+        window.location = `/update-accessory/${accId}`
+    }
+
     render() {
 
         return (
@@ -50,40 +93,42 @@ export default class PetAccessory extends Component {
                         </div>
                         {/* Table Header End */}
                         {/* Table Data Row Start */}
-                        <div class="table-row">
-                            <div class="table-cell first-cell">
-                                <img
-                                    alt="Not available"
-                                    class="card-img-top"
-                                    src="https://th.bing.com/th/id/OIP.vVAnGE1ISzQr7z875YLjaAHaEK?w=276&h=180&c=7&o=5&dpr=1.12&pid=1.7"
-                                />
-                            </div>
-                            <div class="table-cell">
-                                <p>Dog Palace</p>
-                            </div>
-                            <div class="table-cell">
-                                <p>76/B, Weedagama,Bandaragama</p>
-                            </div>
-                            <div class="table-cell">
-                                <p>0987654321</p>
-                            </div>
-                            <div class="table-cell">
-                                <p>dulyakemali@gmail.com</p>
-                            </div>
-                           
-                            <div class="table-cell last-cell">
-                                 <a href="/update-accessory" target="_blank" rel="noreferrer">
-                                    <FiEdit
-                                        size={30}
-                                        style={{ textAlign: "center", color: "blue", backgroundColor: "white" }} />
-                                </a>&nbsp;&nbsp;&nbsp;
-                                {/* {<a href="" target="_blank" rel="noreferrer">
-                                    <RiDeleteBin2Line
-                                        size={35}
-                                        style={{ textAlign: "center", color: "red", backgroundColor: "white" }} /> 
-                                </a>  */}
-                            </div>
-                        </div>
+                        {this.state.accessorydetails.map(
+                            accessory =>
+                                <div class="table-row" key={accessory.id}>
+                                    <div class="table-cell first-cell">
+                                        <img
+                                            alt="Not available"
+                                            class="card-img-top"
+                                            src={accessory.imageURL}
+                                        />
+                                    </div>
+                                    <div class="table-cell">
+                                        <p>{accessory.itemName}</p>
+                                    </div>
+                                    <div class="table-cell">
+                                        <p>{accessory.itemPrice}</p>
+                                    </div>
+                                    <div class="table-cell">
+                                        <p>{accessory.description}</p>
+                                    </div>
+                                   
+                                    <div class="table-cell last-cell">
+                                        <button style={{backgroundColor:"white", border:"none"}}>
+                                            <FiEdit
+                                                onClick={e => this.navigateUpdatePage(e, accessory.id)}
+                                                size={30}
+                                                style={{ textAlign: "center", color: "blue", backgroundColor: "white" }} />
+                                        </button>&nbsp;&nbsp;&nbsp;
+                                        <button style={{ backgroundColor: "white", border: "none" }}>
+                                            <RiDeleteBin2Line
+                                                onClick = {e => this.deleteAccessoryDetails(e , accessory.id)}
+                                                size={35}
+                                                style={{ textAlign: "center", color: "red", backgroundColor: "white" }} />
+                                        </button>
+                                    </div>
+                                </div>
+                                )}
                         {/* Table Data Row End */}
                     </div>
                 </Row>
