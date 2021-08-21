@@ -77,7 +77,7 @@ export default class newAccessory extends Component {
                                     type="text"
                                     id="itemName"
                                     name="itemName"
-                                    placeholder="Breed"
+                                    placeholder="Item Name"
                                     value={this.state.itemName}
                                     onChange={this.onChange} />
                                     
