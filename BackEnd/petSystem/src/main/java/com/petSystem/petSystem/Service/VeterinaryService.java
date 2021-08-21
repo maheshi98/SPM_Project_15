@@ -5,7 +5,6 @@ import com.petSystem.petSystem.Repository.VeterinaryRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -19,6 +18,8 @@ public class VeterinaryService {
     }
 
     public List<VeterinaryModel> showVeterinary() {
-        return (ArrayList<VeterinaryModel>) veterinary.findAll();
+        return veterinary.findAll();
     }
+
+    public void deleteVeterinary(String id) {veterinary.deleteById(id);}
 }

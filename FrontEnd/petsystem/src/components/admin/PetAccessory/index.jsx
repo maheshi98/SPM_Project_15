@@ -3,8 +3,8 @@ import React, { Component } from 'react';
 import { Row, Col } from 'react-bootstrap';
 //import items from '../../../assets/admin/items.png';
 import { BsPlusCircle } from 'react-icons/bs';
-//import { RiFileDownloadLine, RiDeleteBin2Line } from 'react-icons/ri';
-//import { FiEdit } from 'react-icons/fi';
+import { RiFileDownloadLine, RiDeleteBin2Line } from 'react-icons/ri';
+import { FiEdit } from 'react-icons/fi';
 import './index.css'
 
 export default class PetAccessory extends Component {
@@ -20,35 +20,29 @@ export default class PetAccessory extends Component {
                         <Col>
                         </Col>
                         <Col style={{ marginLeft: "35%" }}>
-                            <a href="" target="_blank" rel="noreferrer">
+                            <a href="/new-accessory">
                                 <button class="member-btn btn"><i><BsPlusCircle size="25" /></i> New Entry</button>
                             </a>
 
-                            {/* <a href="" target="_blank" rel="noreferrer">
+                            <a href="/generate-report-accessory">
                                 <button class="member-btn btn"><i><RiFileDownloadLine size="25" /></i> Download</button>
-                            </a> */}
+                            </a>
                         </Col>
                     </Row>
                     <div class="table-box">
                         {/* Table Header Start */}
                         <div class="table-row table-head">
                             <div class="table-cell first-cell">
-                                <p>Boarding Place Image</p>
+                                <p>Accessory Image</p>
                             </div>
                             <div class="table-cell">
-                                <p>Place Name</p>
+                                <p>Item Name</p>
                             </div>
                             <div class="table-cell">
-                                <p>Address</p>
+                                <p>Price</p>
                             </div>
                             <div class="table-cell">
-                                <p>Contact Number</p>
-                            </div>
-                            <div class="table-cell">
-                                <p>Email</p>
-                            </div>
-                            <div class="table-cell">
-                                <p>Services</p>
+                                <p>Description</p>
                             </div>
                             <div class="table-cell">
                                 <p>Actions</p>
@@ -76,26 +70,18 @@ export default class PetAccessory extends Component {
                             <div class="table-cell">
                                 <p>dulyakemali@gmail.com</p>
                             </div>
-                            <div class="table-cell">
-                                <p>
-                                    <ol>
-                                        <li>Extended Stays - LKR 100/=</li>
-                                        <li>Daycare - LKR 100/=</li>
-                                        <li>Grooming - LKR 100/=</li>
-                                    </ol>
-                                </p>
-                            </div>
+
                             <div class="table-cell last-cell">
-                                {/* <a href="" target="_blank" rel="noreferrer">
+                                <a href="/update-accessory">
                                     <FiEdit
                                         size={30}
                                         style={{ textAlign: "center", color: "blue", backgroundColor: "white" }} />
                                 </a>&nbsp;&nbsp;&nbsp;
-                                <a href="" target="_blank" rel="noreferrer">
+                                {/* {<a href="">
                                     <RiDeleteBin2Line
                                         size={35}
-                                        style={{ textAlign: "center", color: "red", backgroundColor: "white" }} />
-                                </a> */}
+                                        style={{ textAlign: "center", color: "red", backgroundColor: "white" }} /> 
+                                </a>  */}
                             </div>
                         </div>
                         {/* Table Data Row End */}
