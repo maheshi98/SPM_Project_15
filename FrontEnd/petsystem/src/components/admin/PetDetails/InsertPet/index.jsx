@@ -152,7 +152,7 @@ export default class InsertPet extends Component {
                             <br />
                             <Form.Group>
                                 <Button type="submit" style={{ backgroundColor: '#37474F', paddingRight: 10 }}>Submit</Button> {''}
-                                <Link to='/'>  <Button type="back" style={{ backgroundColor: '#37474F', paddingRight: 10 }}>Go Back</Button></Link>
+                                <Link to='/get-pet-details'>  <Button type="back" style={{ backgroundColor: '#37474F', paddingRight: 10 }}>Go Back</Button></Link>
                             </Form.Group>
                         </Form>
                     </Col>

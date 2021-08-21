@@ -44,11 +44,11 @@ export default class Navbarnew extends Component {
                 </Navbar.Brand>
                 <Nav id = "navbar" className="me-auto" style= {{fontSize:"20px" , width:"30cm"}}>
                 <Nav.Link href="/">Home</Nav.Link>
-                <Nav.Link href="/keynotes">Pet Details</Nav.Link>
+                <Nav.Link href="/display-pet">Pet Details</Nav.Link>
                 <Nav.Link href="/conference">Pet Accessories</Nav.Link>
                 <Nav.Link href="/conference">Veterinary Services</Nav.Link>
                 <Nav.Link href="/conference">Pet Boading Kennels</Nav.Link>
-                <Nav.Link href="/past-proceedings">Contact Us  </Nav.Link>
+                <Nav.Link href="/contact-us">Contact Us  </Nav.Link>
                 <Nav.Link href="/admin-login">Admin Login  </Nav.Link>
                 </Nav>
     
