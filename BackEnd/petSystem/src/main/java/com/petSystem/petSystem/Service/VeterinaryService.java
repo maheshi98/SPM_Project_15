@@ -21,4 +21,6 @@ public class VeterinaryService {
     public List<VeterinaryModel> showVeterinary() {
         return (ArrayList<VeterinaryModel>) veterinary.findAll();
     }
+
+    public void deleteVeterinary(String id) {veterinary.deleteById(id);}
 }

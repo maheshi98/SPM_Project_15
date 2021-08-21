@@ -8,5 +8,9 @@ import axios from 'axios';
     getAll() {
         return axios.get("http://localhost:8080/veterinary/showVeterinary");
     }
+
+    deleteVet(id){
+        return axios.delete('http://localhost:8080/veterinary/delete'+'/'+id);
+    }
 }
 export default new VeterinaryServices();
