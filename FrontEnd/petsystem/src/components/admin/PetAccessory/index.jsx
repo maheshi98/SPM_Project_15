@@ -63,13 +63,13 @@ export default class PetAccessory extends Component {
                         <Col>
                         </Col>
                         <Col style={{ marginLeft: "35%" }}>
-                            <a href="/new-accessory" target="_blank" rel="noreferrer">
+                            <a href="/new-accessory">
                                 <button class="member-btn btn"><i><BsPlusCircle size="25" /></i> New Entry</button>
                             </a>
 
-                             <a href="/generate-report-accessory" target="_blank" rel="noreferrer">
+                            <a href="/generate-report-accessory">
                                 <button class="member-btn btn"><i><RiFileDownloadLine size="25" /></i> Download</button>
-                            </a> 
+                            </a>
                         </Col>
                     </Row>
                     <div class="table-box">
