@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react';
 import { Row, Col } from 'react-bootstrap';
 import { BsPlusCircle } from 'react-icons/bs';
@@ -9,14 +10,12 @@ import './index.css'
 export default class BoardingPlace extends Component {
     constructor(props) {
         super(props);
-        this.retrievePetBoardingPlaces = this.retrievePetBoardingPlaces.bind(this); 
-        this.navigateUpdatePage = this.navigateUpdatePage.bind(this);
+        this.retrievePetBoardingPlaces = this.retrievePetBoardingPlaces.bind(this);
 
         this.state = {
             boardingPlaces: []
         }
     }
-
     componentDidMount() {
         this.retrievePetBoardingPlaces();
     }
@@ -32,13 +31,8 @@ export default class BoardingPlace extends Component {
                 console.log(e);
             });
     }
-
-    navigateUpdatePage(e, categoryId) {
-        console.log("Category ID:", categoryId);
-        window.location = `/update-boarding-place/${categoryId}`
-    }
-
     render() {
+        console.log("boarding places", this.state.boardingPlaces);
         return (
             <div className="container">
                 <Row>
@@ -49,11 +43,11 @@ export default class BoardingPlace extends Component {
                         <Col>
                         </Col>
                         <Col style={{ marginLeft: "35%" }}>
-                            <a href="">
+                            <a href="" target="_blank" rel="noreferrer">
                                 <button class="member-btn btn"><i><BsPlusCircle size="25" /></i> New Entry</button>
                             </a>
 
-                            <a href="/generate-report-boarding-place">
+                            <a href="" target="_blank" rel="noreferrer">
                                 <button class="member-btn btn"><i><RiFileDownloadLine size="25" /></i> Download</button>
                             </a>
                         </Col>
@@ -118,17 +112,16 @@ export default class BoardingPlace extends Component {
                                         </p>
                                     </div>
                                     <div class="table-cell last-cell">
-                                        <button style={{backgroundColor:"white", border:"none"}}>
+                                        <a href="" target="_blank" rel="noreferrer">
                                             <FiEdit
-                                                onClick={e => this.navigateUpdatePage(e, places.placeId)}
                                                 size={30}
                                                 style={{ textAlign: "center", color: "blue", backgroundColor: "white" }} />
-                                        </button>&nbsp;&nbsp;&nbsp;
-                                        <button style={{ backgroundColor: "white", border: "none" }}>
+                                        </a>&nbsp;&nbsp;&nbsp;
+                                        <a href="" target="_blank" rel="noreferrer">
                                             <RiDeleteBin2Line
                                                 size={35}
                                                 style={{ textAlign: "center", color: "red", backgroundColor: "white" }} />
-                                        </button>
+                                        </a>
                                     </div>
                                 </div>
                         )}
