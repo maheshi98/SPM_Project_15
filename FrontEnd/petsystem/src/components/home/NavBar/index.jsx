@@ -46,7 +46,7 @@ export default class Navbarnew extends Component {
                 <Nav.Link href="/">Home</Nav.Link>
                 <Nav.Link href="/display-pet">Pet Details</Nav.Link>
                 <Nav.Link href="/conference">Pet Accessories</Nav.Link>
-                <Nav.Link href="/conference">Veterinary Services</Nav.Link>
+                <Nav.Link href="/display-veterinary-details">Veterinary Services</Nav.Link>
                 <Nav.Link href="/conference">Pet Boading Kennels</Nav.Link>
                 <Nav.Link href="/contact-us">Contact Us  </Nav.Link>
                 <Nav.Link href="/admin-login">Admin Login  </Nav.Link>

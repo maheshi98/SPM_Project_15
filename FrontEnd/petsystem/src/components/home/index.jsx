@@ -49,7 +49,7 @@ export default class Home extends Component {
                         <div className='row' style={{marginLeft:40}}>
                             <div className='col-xs-12 col-md-6'>
                                 <div className='adopt-text' style={{marginLeft:80}}>
-                                    <h2>Search for Veternaries</h2>
+                                    <h2>Search for Veterinaries</h2>
                                     <p>Your veterinarian is the best source of health advice for an individual pet.
                                     </p>
                                 </div>
