@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 import { Row, Col, Button, Form, Image} from 'react-bootstrap';
 import pets from '../../../../assets/admin/pets.png';
-import './index.css';
+import './index.css'
 import PetService from '../../../../Services/PetService';
 
 const initialState = {
@@ -15,7 +15,7 @@ const initialState = {
     ownerContactNo : '',
 } 
 
-export default class InsertPet extends Component {
+export default class UpdatePet extends Component {
     constructor(props) {
         super(props)
 
@@ -73,7 +73,7 @@ export default class InsertPet extends Component {
             <div>
             <div id='createpet' style= {{paddingLeft : "3cm" , paddingRight : "3cm"}}>
                 <div className='section-title text-center'>
-                    <h3> ADD PET DETAILS</h3>
+                    <h3> Update PET DETAILS</h3>
                 </div>
                 <Row className="landing">
                     <Col >
