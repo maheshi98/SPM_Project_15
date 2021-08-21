@@ -29,4 +29,6 @@ public class PetAccessoryController {
     public List<PetAccessoryModel> getAllAccessories() {
         return petAccessoryService.getAll();
     }
+
+    
 }
