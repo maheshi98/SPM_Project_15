@@ -58,11 +58,11 @@ export default class VeterinaryService extends Component {
                         <Col>
                         </Col>
                         <Col style={{ marginLeft: "35%" }}>
-                            <a href="/new-veterinary-details" target="_blank" rel="noreferrer">
+                            <a href="/new-veterinary-details">
                                 <button class="member-btn btn"><i><BsPlusCircle size="25" /></i> New Entry</button>
                             </a>
 
-                            <a href="/generate-report-veterinary-details" target="_blank" rel="noreferrer">
+                            <a href="/generate-report-veterinary-details">
                                 <button class="member-btn btn"><i><RiFileDownloadLine size="25" /></i> Download</button>
                             </a>
                             
@@ -120,12 +120,12 @@ export default class VeterinaryService extends Component {
                                 <p>{vet.description}</p>
                             </div>
                             <div class="table-cell last-cell">
-                                <a href="/update-veterinary-details" target="_blank" rel="noreferrer">
+                                <a href="/update-veterinary-details">
                                     <FiEdit
                                         size={30}
                                         style={{ textAlign: "center", color: "blue", backgroundColor: "white" }} />
                                 </a>&nbsp;&nbsp;&nbsp;
-                                <a href="" target="_blank" rel="noreferrer">
+                                <a href="">
                                     <RiDeleteBin2Line
                                         onClick = {e => this.deleteVeterinaryDetails(e,vet.id)}
                                         size={35}

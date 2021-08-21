@@ -85,7 +85,7 @@ export default class BoardingPlace extends Component {
                         <Col>
                         </Col>
                         <Col style={{ marginLeft: "35%" }}>
-                            <a href="/new-boarding-place" target="_blank" rel="noreferrer">
+                            <a href="/new-boarding-place">
                                 <button class="member-btn btn"><i><BsPlusCircle size="25" /></i> New Entry</button>
                             </a>
                             <a href="/generate-report-boarding-place">

@@ -35,7 +35,7 @@ export default class Home extends Component {
                 console.log(e);
             });
     }
-    
+
     render() {
         const details = [
             {
@@ -115,7 +115,7 @@ export default class Home extends Component {
                                             <p class="card-text">
                                                 {item.description}
                                             </p>
-                                            <a href={item.link} target="_blank" rel="noreferrer">
+                                            <a href={item.link}>
                                                 <button class="member-btn btn">View More</button>
                                             </a>
                                         </div>

@@ -20,13 +20,13 @@ export default class PetAccessory extends Component {
                         <Col>
                         </Col>
                         <Col style={{ marginLeft: "35%" }}>
-                            <a href="/new-accessory" target="_blank" rel="noreferrer">
+                            <a href="/new-accessory">
                                 <button class="member-btn btn"><i><BsPlusCircle size="25" /></i> New Entry</button>
                             </a>
 
-                             <a href="/generate-report-accessory" target="_blank" rel="noreferrer">
+                            <a href="/generate-report-accessory">
                                 <button class="member-btn btn"><i><RiFileDownloadLine size="25" /></i> Download</button>
-                            </a> 
+                            </a>
                         </Col>
                     </Row>
                     <div class="table-box">
@@ -70,14 +70,14 @@ export default class PetAccessory extends Component {
                             <div class="table-cell">
                                 <p>dulyakemali@gmail.com</p>
                             </div>
-                           
+
                             <div class="table-cell last-cell">
-                                 <a href="/update-accessory" target="_blank" rel="noreferrer">
+                                <a href="/update-accessory">
                                     <FiEdit
                                         size={30}
                                         style={{ textAlign: "center", color: "blue", backgroundColor: "white" }} />
                                 </a>&nbsp;&nbsp;&nbsp;
-                                {/* {<a href="" target="_blank" rel="noreferrer">
+                                {/* {<a href="">
                                     <RiDeleteBin2Line
                                         size={35}
                                         style={{ textAlign: "center", color: "red", backgroundColor: "white" }} /> 

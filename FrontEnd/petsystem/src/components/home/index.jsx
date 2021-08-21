@@ -21,7 +21,7 @@ export default class Home extends Component {
                                         responsibility to preserve and nurture and care for all life.
                                     </p>
                                 </div>
-                                <a href="/admin" target="_blank" rel="noreferrer">
+                                <a href="/admin">
                                 <Button style={{ fontSize: 20, width: 150, paddingRight: 10, marginLeft:90, borderRadius: 20, backgroundColor: "#6372ff" }}>Click Here</Button>{' '}
                             </a>
                             </div>
@@ -37,7 +37,7 @@ export default class Home extends Component {
                                     <p>Go ahead and spoil your furry friends with unique pet accessories, from adorable pet pillows and blankets they can snuggle up with every day to custom dog bowls, food mats, treat jars and other pet necessities.
                                     </p>
                                 </div>
-                                <a href="/admin" target="_blank" rel="noreferrer">
+                                <a href="/admin">
                                 <Button style={{ fontSize: 20, width: 150, paddingRight: 10, marginLeft:90, borderRadius: 20, backgroundColor: "#6372ff" }}>Click Here</Button>{' '}
                                 </a>
                             </div>
@@ -53,7 +53,7 @@ export default class Home extends Component {
                                     <p>Your veterinarian is the best source of health advice for an individual pet.
                                     </p>
                                 </div>
-                                <a href="/admin" target="_blank" rel="noreferrer">
+                                <a href="/admin">
                                 <Button style={{ fontSize: 20, width: 150, paddingRight: 10, marginLeft:90, borderRadius: 20, backgroundColor: "#6372ff" }}>Click Here</Button>{' '}
                                 </a>
                             </div>
@@ -69,7 +69,7 @@ export default class Home extends Component {
                                     <p>Boarding your dog at a familiar place with familiar faces and smells will make a difference in how they feel being away from you.
                                     </p>
                                 </div>
-                                <a href="/admin" target="_blank" rel="noreferrer">
+                                <a href="/admin">
                                 <Button style={{ fontSize: 20, width: 150, paddingRight: 10, marginLeft:90, borderRadius: 20, backgroundColor: "#6372ff" }}>Click Here</Button>{' '}
                                 </a>
                             </div>
