@@ -17,6 +17,7 @@ import VeterinaryService from './components/admin/VeterinaryServices';
 import InsertVeterinay from './components/admin/VeterinaryServices/InsertVeterinaryDetails';
 import VetGenerateReport from './components/admin/VeterinaryServices/ReportGenerate';
 import UpdateVeterinay from './components/admin/VeterinaryServices/UpdateVeterinaryDetails';
+import VetDetails from './components/User/DisplayVeterinary';
 import './App.css';
 import DisplayPet from './components/User/DisplayPet';
 import Petreport from './components/admin/PetDetails/generateReport';
@@ -51,6 +52,7 @@ export default class App extends Component {
             <Route exact path='/new-veterinary-details' component={InsertVeterinay} />
             <Route exact path='/generate-report-veterinary-details' component={VetGenerateReport} />
             <Route exact path='/update-veterinary-details' component={UpdateVeterinay} />
+            <Route exact path='/display-veterinary-details' component={VetDetails} />
           </Switch>
         </BrowserRouter>
         <Footer/>
