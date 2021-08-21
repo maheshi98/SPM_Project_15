@@ -48,7 +48,7 @@ export default class PetAccessory extends Component {
 
     navigateUpdatePage(e, accId) {
         console.log("Accessory ID:", accId);
-        window.location = `/update-accessory/${accId}`
+        window.location = `/update-accessory/`
     }
 
     render() {
