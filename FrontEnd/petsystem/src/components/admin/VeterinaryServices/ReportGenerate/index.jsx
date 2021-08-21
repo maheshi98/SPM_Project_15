@@ -9,7 +9,7 @@ export default class VetGenerateReport extends Component {
             <div className="container">
                 <Row>
                     <div class="text-center">
-                        <h1 class="head-title">Generate Report For Veterinary Details According to the Location</h1>
+                        <h1 class="head-title">Generate Report For Veterinary Details</h1>
                     </div>
 
                     <div className="col-md-4" style={{ marginTop: "5%" }}>

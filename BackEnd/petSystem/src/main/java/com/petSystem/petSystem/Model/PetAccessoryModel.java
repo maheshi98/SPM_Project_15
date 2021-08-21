@@ -7,18 +7,18 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 public class PetAccessoryModel {
     @Id
-    private String Id;
+    private String id;
     private String itemName;
     private String imageURL;
     private int itemPrice;
     private String description;
 
     public String getId() {
-        return Id;
+        return id;
     }
 
     public void setId(String id) {
-        Id = id;
+        id = id;
     }
 
     public String getItemName() {
