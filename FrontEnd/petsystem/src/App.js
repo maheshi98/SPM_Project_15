@@ -13,6 +13,9 @@ import Footer from './components/home/Footer';
 import InsertPet from './components/admin/PetDetails/InsertPet';
 import LogIn from './components/admin/AdminLogin';
 
+
+import updateAccessory from './components/admin/PetAccessory/updateAccessory';
+
 export default class App extends Component {
 
   render() {
@@ -30,6 +33,9 @@ export default class App extends Component {
             <Route exact path='/new-veterinary-details' component={InsertVeterinay} />
             <Route exact path='/new-boarding-place' component={NewBoardingPlace} />
             <Route exact path='/admin-login' component={LogIn} />
+
+
+            <Route exact path='/update-accessory' component={updateAccessory} />
           </Switch>
         </BrowserRouter>
         <Footer/>
