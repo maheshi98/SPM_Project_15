@@ -3,14 +3,21 @@ import { Link } from 'react-router-dom';
 import { Row, Col, Button, Form, Image} from 'react-bootstrap';
 import pets from '../../../../assets/admin/pets.png';
 import './index.css';
+import AccessoryService from '../../../../Services/AccessoryService';
+
+const initialState = {
+    itemName : '',
+    imageURL : ''  ,
+    itemPrice : 0,
+    description: ''
+} 
 
 export default class updateAccessory extends Component {
     constructor(props) {
         super(props)
-
-        this.state = {
-                 
-        }
+        this.onChange = this.onChange.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
+        this.state = initialState;
 
         this.handleEvent = this.handleEvent.bind(this)
     }
@@ -21,6 +28,25 @@ export default class updateAccessory extends Component {
 
     componentDidUpdate(prevProps, prevState, snapshot) { if (prevState.name !== this.state.name) { this.handler() } }
 
+    onChange(e) {
+        this.setState({ [e.target.name]: e.target.value })
+    }
+    
+    onSubmit(e) {
+         
+        e.preventDefault();
+        let accessory = {
+            itemName: this.state.itemName,
+            imageURL: this.state.imageURL,
+            itemPrice: this.state.itemPrice,
+            description: this.state.description
+        };
+        console.log("DETAILS ADDED SUCCESSFUL ", accessory);
+        AccessoryService.addPetAccessory(accessory).then(res =>{
+
+        })
+
+    }
     componentWillUnmount() {
         
     }
