@@ -10,7 +10,7 @@ import BoardingPlaceAdmin from './components/admin/BoardingPlace';
 import NewBoardingPlace from './components/admin/BoardingPlace/insertBoardingPlace';
 import UpdateBoardingPlace from './components/admin/BoardingPlace/updateBoardingPlace';
 import GenerateReportBoardingPlace from './components/admin/BoardingPlace/generateReport';
-import BoardingPlace from './components/boardingPlace';
+import BoardingPlace from './components/User/DisplayBoardingPlace';
 import PetAccessory from './components/admin/PetAccessory';
 import newAccessory from './components/admin/PetAccessory/newAccessory';
 import GenerateReport from './components/admin/PetAccessory/generateReport';

@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react';
 import { Row, Col } from 'react-bootstrap';
-import BoardingPlaceService from '../../Services/BoardingPlacesService';
+import BoardingPlaceService from '../../../Services/BoardingPlacesService';
 import './index.css';
 
 export default class BoardingPlace extends Component {
@@ -57,7 +57,7 @@ export default class BoardingPlace extends Component {
         const { searchPlace } = this.state;
 
         return (
-            <div className="container" style={{ marginBottom: "5%" }}>
+            <div className="container" style={{ marginBottom: "5%", marginTop:"2%" }}>
                 <Row>
                     <div class="text-center">
                         <h1 class="head-title">BOARDING PLACES</h1>
