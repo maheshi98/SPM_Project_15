@@ -1,7 +1,8 @@
 
 import React, { Component } from 'react';
 import { Row } from 'react-bootstrap';
-import BoardingPlaceService from '../../../../Services/BoardingPlacesService';
+import BoardingPlaceService from '../../../../Services/BoardingPlacesService'; 
+import {RiFileDownloadLine} from 'react-icons/ri';
 import './index.css'
 
 export default class GenerateReport extends Component {
@@ -60,7 +61,7 @@ export default class GenerateReport extends Component {
             <div className="container" style={{marginBottom:"5%"}}>
                 <Row>
                     <div class="text-center">
-                        <h1 class="head-title">Generate Report For Boarding Places</h1>
+                        <h1 class="head-title">Generate Report For Pet Boarding Places</h1>
                     </div>
                     {/* Search bar and search button */}
                     <div className="col-md-4" style={{ marginTop: "5%" }}>
@@ -81,6 +82,14 @@ export default class GenerateReport extends Component {
                                     Search
                                 </button>
                             </div>
+                        </div>
+                    </div>
+                    {/* Download button */}
+                    <div className="col-md-4" style={{ marginTop: "5%" }}>
+                        <div className="input-group mb-3">
+                            <a href="/generate-report-boarding-place">
+                                <button class="member-btn btn"><i><RiFileDownloadLine size="25" /></i> Download</button>
+                            </a>
                         </div>
                     </div>
                 </Row>

@@ -60,7 +60,7 @@ export default class BoardingPlace extends Component {
             <div className="container" style={{ marginBottom: "5%", marginTop:"2%" }}>
                 <Row>
                     <div class="text-center">
-                        <h1 class="head-title">BOARDING PLACES</h1>
+                        <h1 class="head-title">PET BOARDING PLACES</h1>
                     </div>
                 </Row>
                 {/* Search bar & search button */}
