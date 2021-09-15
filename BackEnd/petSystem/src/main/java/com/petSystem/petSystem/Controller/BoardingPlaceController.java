@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -74,6 +75,22 @@ public class BoardingPlaceController {
     }
 
     /**
+     * @description Get Pet Boarding Place Details
+     * @memberof BoardingPlaceController
+     * @param id
+     */
+    @GetMapping("/place/{id}")
+    public ResponseEntity<BoardingPlace> getVehicleById(@PathVariable("id") String id) {
+        Optional<BoardingPlace> boardingPlaceData = boardingPlaceRepository.findById(id);
+
+        if(boardingPlaceData.isPresent()){
+            return new ResponseEntity<>(boardingPlaceData.get(), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    /**
      * @description Get Count of Boarding Places
      * @memberof BoardingPlaceController
      */
@@ -91,6 +108,31 @@ public class BoardingPlaceController {
             return new ResponseEntity<>(size, HttpStatus.OK);
         } catch (Exception e){
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    /**
+     * @description Update Pet Boarding Places
+     * @memberof BoardingPlaceController
+     * @param id
+     * @param boardingPlace
+     */
+    @PutMapping("/update/{id}")
+    public ResponseEntity<BoardingPlace> updateBoardingPlace(@PathVariable("id") String id, @RequestBody BoardingPlace boardingPlace){
+        Optional<BoardingPlace> boardingPlaceData = boardingPlaceRepository.findById(id);
+
+        if(boardingPlaceData.isPresent()){
+            BoardingPlace _boardingPlace = boardingPlaceData.get();
+            _boardingPlace.setPlaceImage(boardingPlace.getPlaceImage());
+            _boardingPlace.setPlaceName(boardingPlace.getPlaceName());
+            _boardingPlace.setPlaceCity(boardingPlace.getPlaceCity());
+            _boardingPlace.setPlaceEmail(boardingPlace.getPlaceEmail());
+            _boardingPlace.setPlaceOpeningHours(boardingPlace.getPlaceOpeningHours());
+            _boardingPlace.setPlaceServices(boardingPlace.getPlaceServices());
+
+            return new ResponseEntity<>(boardingPlaceRepository.save(_boardingPlace), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
 }
