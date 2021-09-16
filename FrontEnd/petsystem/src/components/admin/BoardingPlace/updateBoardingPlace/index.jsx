@@ -1,340 +1,382 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { Row, Col, Card, Image } from 'react-bootstrap';
 import BoardingPlaceService from '../../../../Services/BoardingPlacesService';
 import pic from '../../../../assets/admin/shelter.png';
 
 const initialState = {
-    placeImage: "",
-    placeName: "",
-    placeCity: "",
-    placeEmail: "",
-    placeOpeningHours: "",
-    selectedServices: [],
-    serviceDetails: [],
+    currentBoardingPlace: {
+        placeId: "",
+        placeImage: "",
+        placeName: "",
+        placeCity: "",
+        placeEmail: "",
+        placeOpeningHours: "",
+        placeServices: []
+    },
+    formErrors: {},
     submitted: false,
-    formErrors: {}
+    showHide: false
 }
 
 class UpdateBoardingPlace extends Component {
     constructor(props) {
         super(props);
+        this.getBoardingPlace = this.getBoardingPlace.bind(this);
         this.onChangePlaceImage = this.onChangePlaceImage.bind(this);
         this.onchangePlaceName = this.onchangePlaceName.bind(this);
         this.onchangePlaceCity = this.onchangePlaceCity.bind(this);
         this.onchangePlaceEmail = this.onchangePlaceEmail.bind(this);
         this.onchangePlaceOpeningHours = this.onchangePlaceOpeningHours.bind(this);
-        this.onchangeSelectedServices = this.onchangeSelectedServices.bind(this);
         this.onchangeServiceDetails = this.onchangeServiceDetails.bind(this);
-        this.newBoardingPlace = this.newBoardingPlace.bind(this);
-        this.handleFormValidation = this.handleFormValidation.bind(this);
+        this.updateBoardingPlace = this.updateBoardingPlace.bind(this);
+        this.handleFormValidation = this.handleFormValidation.bind(this); 
+        this.handleModalShowHide = this.handleModalShowHide.bind(this);
         this.state = initialState;
     }
 
-    onChangePlaceImage = (e) => {
-        this.setState({ placeImage: e.target.value });
+    componentDidMount() {
+        this.getBoardingPlace(this.props.match.params.id);
     }
 
-    onchangePlaceName = (e) => {
-        this.setState({ placeName: e.target.value });
+    getBoardingPlace(id) {
+        BoardingPlaceService.get(id)
+            .then(response => {
+                this.setState({
+                    currentBoardingPlace: response.data
+                });
+                console.log(response.data);
+            })
+            .catch(e => {
+                console.log(e);
+                this.setState({
+                    // submitted: false
+                });
+            });
     }
 
-    onchangePlaceCity = (e) => {
-        this.setState({ placeCity: e.target.value });
+    onChangePlaceImage(e) {
+        const placeImage = e.target.value;
+
+        this.setState(prevState => ({
+            currentBoardingPlace: {
+                ...prevState.currentBoardingPlace,
+                placeImage: placeImage
+            }
+        }));
     }
 
-    onchangePlaceEmail = (e) => {
-        this.setState({ placeEmail: e.target.value });
+    onchangePlaceName(e) {
+
+        console.log("changing", e);
+        const placeName = e.target.value;
+
+        this.setState(prevState => ({
+            currentBoardingPlace: {
+                ...prevState.currentBoardingPlace,
+                placeName: placeName
+            }
+        }));
+
+        console.log("after change", this.state.currentBoardingPlace);
     }
 
-    onchangePlaceOpeningHours = (e) => {
-        this.setState({ placeOpeningHours: e.target.value });
+    onchangePlaceCity(e) {
+        const placeCity = e.target.value;
+
+        this.setState(prevState => ({
+            currentBoardingPlace: {
+                ...prevState.currentBoardingPlace,
+                placeCity: placeCity
+            }
+        }));
     }
 
-    onchangeSelectedServices = (e) => {
-        this.setState({ selectedServices: e ? e.map(item => item) : [] });
+    onchangePlaceEmail(e) {
+        const placeEmail = e.target.value;
+
+        this.setState(prevState => ({
+            currentBoardingPlace: {
+                ...prevState.currentBoardingPlace,
+                placeEmail: placeEmail
+            }
+        }));
+    }
+
+    onchangePlaceOpeningHours(e) {
+        const placeOpeningHours = e.target.value;
+
+        this.setState(prevState => ({
+            currentBoardingPlace: {
+                ...prevState.currentBoardingPlace,
+                placeOpeningHours: placeOpeningHours
+            }
+        }));
     }
 
     onchangeServiceDetails = (e, item) => {
-        var prices = Object.assign([], this.state.serviceDetails);
-        const newService = {
-            value: item.value,
-            label: item.label,
-            price: e.target.value
-        }
-        prices[item.id] = newService;
-        this.setState({ serviceDetails: prices });
+        console.log("changing service details", e.target.value, item);
+        const placeServicePrice = e.target.value;
+        const services = this.state.currentBoardingPlace.placeServices.map(service => (
+            service.value === item.value ? { ...service, price: placeServicePrice } : service
+        ))
+
+        this.setState(prevState => ({
+            currentBoardingPlace: {
+                ...prevState.currentBoardingPlace,
+                placeServices: services
+            }
+        }));
+
+        console.log("after change", this.state.currentBoardingPlace.placeServices);
     }
 
-    newBoardingPlace = () => {
-        this.setState({
-            placeImage: "",
-            placeName: "",
-            placeCity: "",
-            placeEmail: "",
-            placeOpeningHours: "",
-            selectedServices: [],
-            serviceDetails: [],
-            submitted: false,
-            formErrors: {}
-        });
+    updateBoardingPlace() {
+        if (this.handleFormValidation()) {
+            BoardingPlaceService.update(
+                this.state.currentBoardingPlace.placeId,
+                this.state.currentBoardingPlace
+            )
+                .then(response => {
+                    alert("success");
+                    console.log(response.data);
+                    this.setState({
+                        submitted: true,
+                    });
+                })
+                .catch(e => {
+                    console.log(e);
+                    this.setState({
+                        submitted: false,
+                    });
+                });
+        }
     }
 
     handleFormValidation() {
-        const { placeImage, placeName, placeCity, placeEmail, placeOpeningHours, selectedServices } = this.state;
+        const { currentBoardingPlace } = this.state;
 
         let formErrors = {};
         let formIsValid = true;
 
         let letters_only_pattern = /^[a-zA-Z]+$/;
 
-        if (!placeImage) {
+        if (!currentBoardingPlace.placeImage) {
             formIsValid = false;
             formErrors["placeImageError"] = "*Pet Boarding Place Image URL is required.";
         }
 
-        if (!placeName) {
+        if (!currentBoardingPlace.placeName) {
             formIsValid = false;
             formErrors["placeNameError"] = "*Pet Boarding Place Name is required.";
         }
 
-        if (!placeCity) {
+        if (!currentBoardingPlace.placeCity) {
             formIsValid = false;
             formErrors["placeCityError"] = "*Pet Boarding Place City Name is required.";
         } else {
-            if (!letters_only_pattern.test(placeCity)) {
+            if (!letters_only_pattern.test(currentBoardingPlace.placeCity)) {
                 formIsValid = false;
                 formErrors["placeCityError"] = "*Please Enter Letters Only.";
             }
         }
 
-        if (!placeEmail) {
+        if (!currentBoardingPlace.placeEmail) {
             formIsValid = false;
             formErrors["placeEmailError"] = "*Pet Boarding Place Email is required.";
         }
         else {
             var pattern = /[a-zA-Z0-9]+[\.]?([a-zA-Z0-9]+)?[\@][a-z]{3,9}[\.][a-z]{2,5}/g;
-            if (!pattern.test(placeEmail)) {
+            if (!pattern.test(currentBoardingPlace.placeEmail)) {
                 formIsValid = false;
                 formErrors["placeEmailError"] = "*Please enter validate format of email."
             }
         }
 
-        if (!placeOpeningHours) {
+        if (!currentBoardingPlace.placeOpeningHours) {
             formIsValid = false;
             formErrors["placeOpeningHoursError"] = "*Pet Boarding Place Opening Hours are required.";
-        }
-
-        if (!selectedServices.length > 0) {
-            formIsValid = false;
-            formErrors["selectedServicesError"] = "*Pet Boarding Place Services are required.";
         }
 
         this.setState({ formErrors: formErrors });
         return formIsValid
     }
 
+    handleModalShowHide() {
+        this.setState({ showHide: !this.state.showHide })
+    }
+
     render() {
         const { placeImageError, placeNameError, placeCityError, placeEmailError, placeOpeningHoursError } = this.state.formErrors;
+        const { currentBoardingPlace } = this.state;
 
         return (
             <div className="container">
                 <div class="text-center">
                     <h1 class="head-title">UPDATE PET BOARDING PLACE</h1>
                 </div>
-                <Card style={{ width: '100%', marginTop: "5%", marginBottom:"5%" }}>
+                <Card style={{ width: '100%', marginTop: "5%", marginBottom: "5%" }}>
                     <Card.Body>
                         <Row>
                             <Col>
                                 <div className="submit-form" style={{ width: 500, textAlign: "left", color: "grey", marginTop: "2%", marginLeft: "7%" }}>
                                     {this.state.submitted ? (
                                         <div style={{ marginTop: "40%", textAlign: "center", color: "darkorchid" }}>
-                                            <h4>Boarding Place Updated Successfully.!!</h4>
+                                            <h4>Pet Boarding Place Updated Successfully.!!</h4>
                                             <br />
-                                            <button className="btn btn-secondary" onClick={this.newBoardingPlace}>Add New Place</button>
+                                            <a href="/admin-boarding-place"> <button className="btn btn-secondary">Add New Place</button></a>
                                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                             <a href="/admin-boarding-place"><button className="btn btn-warning">Go Back</button></a>
                                         </div>
                                     ) : (
                                         <div>
-                                            <form>
-                                                {/* Pet Boarding Place Image */}
-                                                <div className="form-group">
-                                                    <label htmlFor="placeImage">Pet Boarding Place Image</label>
-                                                    <input
-                                                        type="text"
-                                                        className="form-control"
-                                                        id="placeImage"
-                                                        required
-                                                        value={this.state.placeImage}
-                                                        onChange={this.onChangePlaceImage}
-                                                        name="placeImage"
-                                                    />
-                                                    {/* Pet Boarding Place Image error */}
-                                                    <div className="">
-                                                        {placeImageError &&
-                                                            <div style={{ color: "red", paddingBottom: 10, paddingTop: 3 }}>{placeImageError}</div>}
+                                            {currentBoardingPlace ? (
+                                                <form>
+                                                    {/* Pet Boarding Place Image */}
+                                                    <div className="form-group">
+                                                        <label htmlFor="placeImage">Pet Boarding Place Image</label>
+                                                        <textarea
+                                                            type="text"
+                                                            className="form-control"
+                                                            id="placeImage"
+                                                            required
+                                                            value={currentBoardingPlace.placeImage}
+                                                            onChange={this.onChangePlaceImage}
+                                                            name="placeImage"
+                                                        />
+                                                        {/* Pet Boarding Place Image error */}
+                                                        <div className="">
+                                                            {placeImageError &&
+                                                                <div style={{ color: "red", paddingBottom: 10, paddingTop: 3 }}>{placeImageError}</div>}
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                {/* Pet Boarding Place Name */}
-                                                <div className="form-group">
-                                                    <label htmlFor="placeName" >Pet Boarding Place Name</label>
-                                                    <input
-                                                        type="text"
-                                                        className="form-control"
-                                                        id="placeName"
-                                                        required
-                                                        value={this.state.placeName}
-                                                        onChange={this.onchangePlaceName}
-                                                        name="placeName"
-                                                    />
-                                                    {/* Pet Boarding Place Name error */}
-                                                    <div className="">
-                                                        {placeNameError &&
-                                                            <div style={{ color: "red", paddingBottom: 10, paddingTop: 3 }}>{placeNameError}</div>}
+                                                    <br />
+                                                    {/* Pet Boarding Place Name */}
+                                                    <div className="form-group">
+                                                        <label htmlFor="placeName" >Pet Boarding Place Name</label>
+                                                        <input
+                                                            type="text"
+                                                            className="form-control"
+                                                            id="placeName"
+                                                            required
+                                                            value={currentBoardingPlace.placeName}
+                                                            onChange={this.onchangePlaceName}
+                                                            name="placeName"
+                                                        />
+                                                        {/* Pet Boarding Place Name error */}
+                                                        <div className="">
+                                                            {placeNameError &&
+                                                                <div style={{ color: "red", paddingBottom: 10, paddingTop: 3 }}>{placeNameError}</div>}
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                {/* Pet Boarding Place City Name */}
-                                                <div className="form-group">
-                                                    <label htmlFor="placeCity">Pet Boarding Place City Name</label>
-                                                    <input
-                                                        type="text"
-                                                        className="form-control"
-                                                        id="placeCity"
-                                                        required
-                                                        value={this.state.placeCity}
-                                                        onChange={this.onchangePlaceCity}
-                                                        name="placeCity"
-                                                    />
-                                                    {/* Pet Boarding Place City Name error */}
-                                                    <div className="">
-                                                        {placeCityError &&
-                                                            <div style={{ color: "red", paddingBottom: 10, paddingTop: 3 }}>{placeCityError}</div>}
+                                                    <br />
+                                                    {/* Pet Boarding Place City Name */}
+                                                    <div className="form-group">
+                                                        <label htmlFor="placeCity">Pet Boarding Place City Name</label>
+                                                        <input
+                                                            type="text"
+                                                            className="form-control"
+                                                            id="placeCity"
+                                                            required
+                                                            value={currentBoardingPlace.placeCity}
+                                                            onChange={this.onchangePlaceCity}
+                                                            name="placeCity"
+                                                        />
+                                                        {/* Pet Boarding Place City Name error */}
+                                                        <div className="">
+                                                            {placeCityError &&
+                                                                <div style={{ color: "red", paddingBottom: 10, paddingTop: 3 }}>{placeCityError}</div>}
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                {/* Pet Boarding Place Email */}
-                                                <div className="form-group">
-                                                    <label htmlFor="placeEmail">Pet Boarding Place Email</label>
-                                                    <input
-                                                        type="text"
-                                                        className="form-control"
-                                                        id="placeEmail"
-                                                        required
-                                                        value={this.state.placeEmail}
-                                                        onChange={this.onchangePlaceEmail}
-                                                        name="placeEmail"
-                                                    />
-                                                    {/* Pet Boarding Place Email error */}
-                                                    <div className="">
-                                                        {placeEmailError &&
-                                                            <div style={{ color: "red", paddingBottom: 10, paddingTop: 3 }}>{placeEmailError}</div>}
+                                                    <br />
+                                                    {/* Pet Boarding Place Email */}
+                                                    <div className="form-group">
+                                                        <label htmlFor="placeEmail">Pet Boarding Place Email</label>
+                                                        <input
+                                                            type="text"
+                                                            className="form-control"
+                                                            id="placeEmail"
+                                                            required
+                                                            value={currentBoardingPlace.placeEmail}
+                                                            onChange={this.onchangePlaceEmail}
+                                                            name="placeEmail"
+                                                        />
+                                                        {/* Pet Boarding Place Email error */}
+                                                        <div className="">
+                                                            {placeEmailError &&
+                                                                <div style={{ color: "red", paddingBottom: 10, paddingTop: 3 }}>{placeEmailError}</div>}
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                {/* Pet Boarding Place Opening Hours */}
-                                                <div className="form-group">
-                                                    <label htmlFor="placeOpeningHours">Pet Boarding Place Opening Hours</label>
-                                                    <input
-                                                        type="text"
-                                                        className="form-control"
-                                                        id="placeOpeningHours"
-                                                        required
-                                                        value={this.state.placeOpeningHours}
-                                                        onChange={this.onchangePlaceOpeningHours}
-                                                        name="placeOpeningHours"
-                                                    />
-                                                    {/* Pet Boarding Place Opening Hours error */}
-                                                    <div className="">
-                                                        {placeOpeningHoursError &&
-                                                            <div style={{ color: "red", paddingBottom: 10, paddingTop: 3 }}>{placeOpeningHoursError}</div>}
+                                                    <br />
+                                                    {/* Pet Boarding Place Opening Hours */}
+                                                    <div className="form-group">
+                                                        <label htmlFor="placeOpeningHours">Pet Boarding Place Opening Hours</label>
+                                                        <input
+                                                            type="text"
+                                                            className="form-control"
+                                                            id="placeOpeningHours"
+                                                            required
+                                                            value={currentBoardingPlace.placeOpeningHours}
+                                                            onChange={this.onchangePlaceOpeningHours}
+                                                            name="placeOpeningHours"
+                                                        />
+                                                        {/* Pet Boarding Place Opening Hours error */}
+                                                        <div className="">
+                                                            {placeOpeningHoursError &&
+                                                                <div style={{ color: "red", paddingBottom: 10, paddingTop: 3 }}>{placeOpeningHoursError}</div>}
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                {/* Pet Boarding Place Services */}
-                                                {/* <div className="form-group">
-                                                    <label htmlFor="selectedServices">Pet Boarding Place Services</label>
-                                                    <Select
-                                                        options={services}
-                                                        onChange={this.onchangeSelectedServices}
-                                                        className="basic-multi-select"
-                                                        isMulti
-                                                    /> */}
-                                                    {/* Pet Boarding Place Services error */}
-                                                    {/* <div className="">
-                                                        {selectedServicesError &&
-                                                            <div style={{ color: "red", paddingBottom: 10, paddingTop: 3 }}>{selectedServicesError}</div>}
-                                                    </div>
-                                                </div> */}
-                                                    <Row>
-                                                        {/* Pet Boarding Place Each Services */}
+                                                    <br />
+                                                    {currentBoardingPlace.placeServices ? currentBoardingPlace.placeServices.map((item, index) => (
+                                                        <Row key={index}>
+                                                            {/* Pet Boarding Place Each Services */}
+                                                            <Col>
+                                                                <div className="form-group">
+                                                                    <label htmlFor="serviceName">Service</label>
+                                                                    <input
+                                                                        type="text"
+                                                                        className="form-control"
+                                                                        id="serviceName"
+                                                                        value={item.label}
+                                                                        name="serviceName"
+                                                                        readOnly
+                                                                    />
+                                                                </div>
+                                                            </Col>
+                                                            {/* Pet Boarding Place Each Service Price */}
+                                                            <Col>
+                                                                <div className="form-group">
+                                                                    <label htmlFor="servicePrice">Service Price in LKR (Per Pet)</label>
+                                                                    <input
+                                                                        type="text"
+                                                                        className="form-control"
+                                                                        id="id"
+                                                                        required
+                                                                        value={item.price}
+                                                                        name="servicePrice"
+                                                                        onChange={e => this.onchangeServiceDetails(e, item)}
+                                                                    />
+                                                                </div>
+                                                            </Col>
+                                                        </Row>
+                                                    )) :
+                                                        <h1>No services</h1>}
+                                                    <br />
+                                                    <Row style={{ marginLeft: "25%" }}>
                                                         <Col>
-                                                            <div className="form-group">
-                                                                <label htmlFor="serviceName">Service</label>
-                                                                <input
-                                                                    type="text"
-                                                                    className="form-control"
-                                                                    id="serviceName"
-                                                                    required
-                                                                    value=""
-                                                                    name="serviceName"
-                                                                />
-                                                            </div>
+                                                            <button className="btn btn-primary" onClick={this.updateBoardingPlace} style={{ width: 100 }}>Update</button>
                                                         </Col>
-                                                        {/* Pet Boarding Place Each Service Price */}
-                                                        <Col>
-                                                            <div className="form-group">
-                                                                <label htmlFor="servicePrice">Service Price in LKR (Per Pet)</label>
-                                                                <input
-                                                                    type="text"
-                                                                    className="form-control"
-                                                                    id="id"
-                                                                    required
-                                                                    value={this.state.servicePrice}
-                                                                    name="servicePrice"
-                                                                />
-                                                            </div>
-                                                        </Col>
-                                                    </Row>
-                                                {/* Pet Boarding Place Services */}
-                                                {this.state.selectedServices.length > 0 ? this.state.selectedServices.map((item, index) => (
-                                                    <Row key={index}>
-                                                        {/* Pet Boarding Place Each Services */}
-                                                        <Col>
-                                                            <div className="form-group">
-                                                                <label htmlFor="serviceName">Service</label>
-                                                                <input
-                                                                    type="text"
-                                                                    className="form-control"
-                                                                    id="serviceName"
-                                                                    required
-                                                                    value={item.label}
-                                                                    name="serviceName"
-                                                                />
-                                                            </div>
-                                                        </Col>
-                                                        {/* Pet Boarding Place Each Service Price */}
-                                                        <Col>
-                                                            <div className="form-group">
-                                                                <label htmlFor="servicePrice">Service Price in LKR (Per Pet)</label>
-                                                                <input
-                                                                    type="text"
-                                                                    className="form-control"
-                                                                    id={item.id}
-                                                                    required
-                                                                    value={this.state.servicePrice}
-                                                                    onChange={e => this.onchangeServiceDetails(e, item)}
-                                                                    name="servicePrice"
-                                                                />
-                                                            </div>
+                                                        <Col style={{ marginLeft: -100 }}>
+                                                            <Link to='/admin-boarding-place'>  <button className="btn btn-danger" style={{ width: 100 }}>Go Back</button></Link>
                                                         </Col>
                                                     </Row>
-                                                )
-                                                ) : ""
-                                                }
-                                                <br />
-                                                <Row style={{ marginLeft: "25%" }}>
-                                                    <button className="btn btn-primary" style={{ width: 100 }}>Update</button>
-                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                    <button className="btn btn-danger" onClick={this.newBoardingPlace} style={{ width: 100 }}>Clear</button>
-                                                </Row>
-                                            </form>
+                                                </form>
+                                            ) : (
+                                                <div>
+                                                    <br />
+                                                    <p>Please Select the Boarding Place to Update!!!</p>
+                                                </div>
+                                            )}
                                         </div>
                                     )}
                                 </div>
@@ -345,7 +387,7 @@ class UpdateBoardingPlace extends Component {
                         </Row>
                     </Card.Body>
                 </Card>
-            </div>
+            </div >
         );
     }
 }
