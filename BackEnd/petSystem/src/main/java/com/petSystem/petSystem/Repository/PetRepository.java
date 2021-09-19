@@ -10,4 +10,5 @@ public interface PetRepository extends MongoRepository<Pet ,String> {
 
     @Query("{breed:'?0'}")
     Pet findItemBreed(String breed);
+
 }
