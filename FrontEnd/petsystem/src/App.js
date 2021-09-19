@@ -21,6 +21,8 @@ import './App.css';
 import DisplayPet from './components/User/DisplayPet';
 import Petreport from './components/admin/PetDetails/generateReport';
 import PetDetails from './components/admin/PetDetails';
+import UpdatePet from './components/admin/PetDetails/UpdatePet';
+
 export default class App extends Component {
   render() {
     return (
@@ -46,6 +48,7 @@ export default class App extends Component {
             <Route exact path='/display-pet' component={DisplayPet} />
             <Route exact path='/generate-reprt-pet' component={Petreport} />
             <Route exact path='/get-pet-details' component={PetDetails} />
+            <Route exact path='/update-pet-details/:id' component={UpdatePet} />
 
             {/* Pet Veterinary Services Related Paths */}
             <Route exact path='/admin-veterinary-services' component={VeterinaryService} />
