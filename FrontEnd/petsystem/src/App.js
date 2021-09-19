@@ -62,7 +62,7 @@ export default class App extends Component {
             <Route exact path='/admin-veterinary-services' component={VeterinaryService} />
             <Route exact path='/new-veterinary-details' component={InsertVeterinay} />
             <Route exact path='/generate-report-veterinary-details' component={VetGenerateReport} />
-            <Route exact path='/update-veterinary-details' component={UpdateVeterinay} />
+            <Route exact path='/update-veterinary-details/:id' component={UpdateVeterinay} />
             <Route exact path='/display-veterinary-details' component={VetDetails} />
           </Switch>
         </BrowserRouter>

@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.*;
 
 
 import java.util.List;
+import java.util.Optional;
+import java.util.ArrayList;
 
 
 
@@ -51,6 +53,15 @@ public class VeterinaryController {
         }
     }
 
+    @GetMapping("getById/{id}")
+    public Optional<VeterinaryModel> findVeterinaryById(@PathVariable String id){
+        return res.findVeterinaryById(id);
+    }
 
-
+    @PutMapping("update/{id}")
+    public ResponseEntity<VeterinaryModel> updateVeterinary(@RequestBody VeterinaryModel veterinaryModel, @PathVariable String id) {
+        veterinaryModel.setId(id);
+        res.saveVeterinary(veterinaryModel);
+        return ResponseEntity.status(HttpStatus.CREATED).build();
+    }
 }
