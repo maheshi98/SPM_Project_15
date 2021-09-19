@@ -1,5 +1,6 @@
 package com.petSystem.petSystem.Controller;
 import com.petSystem.petSystem.Model.VeterinaryModel;
+import com.petSystem.petSystem.Repository.VeterinaryRepo;
 import com.petSystem.petSystem.Service.VeterinaryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -24,6 +25,8 @@ public class VeterinaryController {
     @Autowired
     public VeterinaryService res;
 
+    @Autowired
+    private VeterinaryRepo veterinaryRepo;
 
 
     @RequestMapping(value = "/saveVeterinary", method = RequestMethod.POST)
@@ -63,5 +66,20 @@ public class VeterinaryController {
         veterinaryModel.setId(id);
         res.saveVeterinary(veterinaryModel);
         return ResponseEntity.status(HttpStatus.CREATED).build();
+    }
+
+    @GetMapping("/search")
+    public ResponseEntity<List<VeterinaryModel>> searchVeterinaryLocation(@RequestParam(required = false) String clinicLocation){
+        try{
+            List<VeterinaryModel> vetClinicLocation = new ArrayList<VeterinaryModel>();
+            if(clinicLocation != null)
+                veterinaryRepo.findByClinicLocationContaining(clinicLocation).forEach(vetClinicLocation::add);
+            if(vetClinicLocation.isEmpty()){
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            }
+            return new ResponseEntity<>(vetClinicLocation, HttpStatus.OK);
+        } catch (Exception e){
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 }
