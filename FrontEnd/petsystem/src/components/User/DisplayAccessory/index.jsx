@@ -39,8 +39,9 @@ export default class DisplayAccessory extends Component {
 
     // Class Properties (Stage 3 Proposal)
     handler = () => { this.setState() }
-
+ 
     render() {
+        
         return (
             <div className="container" >
                 <div className="col-md-8">

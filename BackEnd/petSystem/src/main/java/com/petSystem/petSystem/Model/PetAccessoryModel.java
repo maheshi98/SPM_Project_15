@@ -13,6 +13,8 @@ public class PetAccessoryModel {
     private int itemPrice;
     private String description;
 
+    PetAccessoryModel() {}
+
     public String getId() {
         return id;
     }
