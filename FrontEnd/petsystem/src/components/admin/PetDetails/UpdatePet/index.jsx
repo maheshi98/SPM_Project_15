@@ -80,8 +80,12 @@ export default class UpdatePet extends Component {
             imgUrl : this.state.imgUrl
         };
         console.log("DETAILS ADDED SUCCESSFUL ", pet);
-        PetService.addPetDetails(pet).then(res =>{
-
+        PetService.updatePetDetails( pet , this.state.id ).then(res =>{
+            this.setState({"updateShow" : true});
+            setTimeout(() => this.setState({ "updateShow": false }), 3000)
+            let pet;
+            this.setState({ pet : res.data });
+            alert("Successfuly Updated!")
         })
 
     }
@@ -181,7 +185,7 @@ export default class UpdatePet extends Component {
                             </Form.Group>
                             <br />
                             <Form.Group>
-                                <Button type="submit" style={{ backgroundColor: '#37474F', paddingRight: 10 }}>Submit</Button> {''}
+                                <Button type="submit" style={{ backgroundColor: '#37474F', paddingRight: 10 }}>Update</Button> {''}
                                 <Link to='/get-pet-details'>  <Button type="back" style={{ backgroundColor: '#37474F', paddingRight: 10 }}>Go Back</Button></Link>
                             </Form.Group>
                         </Form>

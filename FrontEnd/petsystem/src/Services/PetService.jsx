@@ -16,5 +16,9 @@ import axios from 'axios';
     getPetById(id ){
         return axios.get('http://localhost:8080/PetDetails/getById/' + id);
     }
+
+    updatePetDetails(pet , id){
+        return axios.put('http://localhost:8080/PetDetails/update/' +id , pet)
+    }
 }
 export default new PetServices();
