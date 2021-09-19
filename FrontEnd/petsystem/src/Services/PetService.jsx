@@ -12,5 +12,9 @@ import axios from 'axios';
     deletePet(id){
         return axios.delete('http://localhost:8080/PetDetails/delete'+'/'+id);
     }
+
+    getPetById(id ){
+        return axios.get('http://localhost:8080/PetDetails/getById/' + id);
+    }
 }
 export default new PetServices();

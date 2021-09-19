@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -53,13 +54,7 @@ public class PetController {
     }
 
     @GetMapping("getById/{id}")
-    public ResponseEntity<Pet> findPetById(@PathVariable String id){
-        try{
-            petService.findPetById(id);
-            return ResponseEntity.status(HttpStatus.CREATED).build();
-        }catch (Exception e){
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-
-        }
+    public Optional<Pet> findPetById(@PathVariable String id){
+        return petService.findPetById(id);
     }
 }
