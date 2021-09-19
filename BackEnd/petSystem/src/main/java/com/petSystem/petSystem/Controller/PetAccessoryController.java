@@ -1,5 +1,7 @@
 package com.petSystem.petSystem.Controller;
+import com.petSystem.petSystem.Model.BoardingPlace;
 import com.petSystem.petSystem.Model.PetAccessoryModel;
+import com.petSystem.petSystem.Repository.BoardingPlaceRepository;
 import com.petSystem.petSystem.Repository.PetAccessoryRepo;
 
 import com.petSystem.petSystem.PetSystemApplication;
@@ -9,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @CrossOrigin
@@ -20,7 +23,8 @@ public class PetAccessoryController {
 
     @Autowired
     public PetAccessoryService petAccessoryService;
-
+    @Autowired
+    private PetAccessoryRepo petAccessoryRepo;
 
     @RequestMapping(value = "/addAccessory", method = RequestMethod.POST)
     public PetAccessoryModel saveAccessory(@RequestBody PetAccessoryModel accessoryModel){
@@ -38,6 +42,21 @@ public class PetAccessoryController {
             petAccessoryService.deleteAccessory(id);
             return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
         } catch(Exception e){
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @GetMapping("/search")
+    public ResponseEntity<List<PetAccessoryModel>> searchAccessory(@RequestParam(required = false) String itemName){
+        try{
+            List<PetAccessoryModel> accessory = new ArrayList<PetAccessoryModel>();
+            if(itemName != null)
+                petAccessoryRepo.findByItemNameContaining(itemName).forEach(accessory::add);
+            if(accessory.isEmpty()){
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            }
+            return new ResponseEntity<>(accessory, HttpStatus.OK);
+        } catch (Exception e){
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
