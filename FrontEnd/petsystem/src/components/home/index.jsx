@@ -37,7 +37,6 @@ export default class Home extends Component {
                                     <p>Go ahead and spoil your furry friends with unique pet accessories, from adorable pet pillows and blankets they can snuggle up with every day to custom dog bowls, food mats, treat jars and other pet necessities.
                                     </p>
                                 </div>
-                                <a href="/admin" target="_blank" rel="noreferrer">
                                 <Button style={{ fontSize: 20, width: 150, paddingRight: 10, marginLeft:90, borderRadius: 20, backgroundColor: "#6372ff" }}>Click Here</Button>{' '}
                                 </a>
                             </div>
@@ -49,11 +48,9 @@ export default class Home extends Component {
                         <div className='row' style={{marginLeft:40}}>
                             <div className='col-xs-12 col-md-6'>
                                 <div className='adopt-text' style={{marginLeft:80}}>
-                                    <h2>Search for Veternaries</h2>
                                     <p>Your veterinarian is the best source of health advice for an individual pet.
                                     </p>
                                 </div>
-                                <a href="/admin" target="_blank" rel="noreferrer">
                                 <Button style={{ fontSize: 20, width: 150, paddingRight: 10, marginLeft:90, borderRadius: 20, backgroundColor: "#6372ff" }}>Click Here</Button>{' '}
                                 </a>
                             </div>
@@ -65,11 +62,9 @@ export default class Home extends Component {
                         <div className='row' style={{marginLeft:40}}>
                             <div className='col-xs-12 col-md-6'>
                                 <div className='adopt-text' style={{marginLeft:80}}>
-                                    <h2>Cannels</h2>
                                     <p>Boarding your dog at a familiar place with familiar faces and smells will make a difference in how they feel being away from you.
                                     </p>
                                 </div>
-                                <a href="/admin" target="_blank" rel="noreferrer">
                                 <Button style={{ fontSize: 20, width: 150, paddingRight: 10, marginLeft:90, borderRadius: 20, backgroundColor: "#6372ff" }}>Click Here</Button>{' '}
                                 </a>
                             </div>

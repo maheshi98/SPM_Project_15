@@ -17,7 +17,6 @@ const initialState = {
 }
 
 class NewBoardingPlace extends Component {
-
     constructor(props) {
         super(props);
         this.onChangePlaceImage = this.onChangePlaceImage.bind(this);
@@ -174,7 +173,7 @@ class NewBoardingPlace extends Component {
                 <div class="text-center">
                     <h1 class="head-title">ADD NEW PET BOARDING PLACE</h1>
                 </div>
-                <Card style={{ width: '100%', marginTop: "5%" }}>
+                <Card style={{ width: '100%', marginTop: "5%", marginBottom:"5%" }}>
                     <Card.Body>
                         <Row>
                             <Col>
@@ -320,7 +319,7 @@ class NewBoardingPlace extends Component {
                                                             <div className="form-group">
                                                                 <label htmlFor="servicePrice">Service Price in LKR (Per Pet)</label>
                                                                 <input
-                                                                    type="text"
+                                                                    type="number"
                                                                     className="form-control"
                                                                     id={item.id}
                                                                     required

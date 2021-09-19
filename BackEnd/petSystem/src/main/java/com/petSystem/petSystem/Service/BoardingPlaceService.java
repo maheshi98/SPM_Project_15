@@ -27,9 +27,18 @@ public class BoardingPlaceService {
 
     /**
      * @description Get all Conferences
-     * @memberof ConferenceService
+     * @memberof BoardingPlaceService
      */
     public List<BoardingPlace> getAllBoardingPlace(){
         return boardingPlaceRepository.findAll();
+    }
+
+    /**
+     * @description Delete BoardingPlace
+     * @param id
+     * @memberof BoardingPlaceService
+     */
+    public void deleteBoardingPlace(String id) {
+        boardingPlaceRepository.deleteById(id);
     }
 }

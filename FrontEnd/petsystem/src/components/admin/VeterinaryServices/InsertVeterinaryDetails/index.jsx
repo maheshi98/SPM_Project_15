@@ -141,7 +141,7 @@ export default class InsertVeterinay extends Component {
                             </Form.Group>
                             <br />
                             <Form.Group>
-                                <Button type="submit" style={{ backgroundColor: '#37474F', paddingRight: 10 }}>Submit</Button> {''}
+                                <Button type="submit" variant="primary" style={{paddingRight: 10 }}>Submit</Button> {''}
                                 <Link to='/'>  <Button type="back" style={{ backgroundColor: '#37474F', paddingRight: 10 }}>Go Back</Button></Link>
                             </Form.Group>
                         </Form>
