@@ -21,7 +21,7 @@ export default class Home extends Component {
                                         responsibility to preserve and nurture and care for all life.
                                     </p>
                                 </div>
-                                <a href="/admin" target="_blank" rel="noreferrer">
+                                <a href="/display-pet">
                                 <Button style={{ fontSize: 20, width: 150, paddingRight: 10, marginLeft:90, borderRadius: 20, backgroundColor: "#6372ff" }}>Click Here</Button>{' '}
                             </a>
                             </div>

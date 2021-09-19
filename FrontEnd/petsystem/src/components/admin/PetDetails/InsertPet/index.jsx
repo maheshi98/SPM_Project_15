@@ -27,11 +27,11 @@ export default class InsertPet extends Component {
     componentDidMount() {
         
     }
-    onSubmit(e) {
-        e.preventDefault();
+    // onSubmit(e) {
+    //     e.preventDefault();
         
         
-    }
+    // }
     componentDidUpdate(prevProps, prevState, snapshot) { if (prevState.name !== this.state.name) { this.handler() } }
 
     onChange(e) {
@@ -151,7 +151,7 @@ export default class InsertPet extends Component {
                             </Form.Group>
                             <br />
                             <Form.Group>
-                                <Button type="submit" style={{ backgroundColor: '#37474F', paddingRight: 10 }}>Submit</Button> {''}
+                           <Button type="submit" style={{ backgroundColor: '#37474F', paddingRight: 10 }}>Submit</Button> {''}
                                 <Link to='/get-pet-details'>  <Button type="back" style={{ backgroundColor: '#37474F', paddingRight: 10 }}>Go Back</Button></Link>
                             </Form.Group>
                         </Form>

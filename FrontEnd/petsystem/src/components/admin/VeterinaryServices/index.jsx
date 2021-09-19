@@ -66,9 +66,6 @@ export default class VeterinaryService extends Component {
                                 <button class="member-btn btn"><i><RiFileDownloadLine size="25" /></i> Download</button>
                             </a>
                             
-                            <a href="/contact-us" target="_blank" rel="noreferrer">
-                                <button class="member-btn btn"><i><RiFileDownloadLine size="25" /></i> Testing</button>
-                            </a>
                         </Col>
                     </Row>
                     <div class="table-box">
