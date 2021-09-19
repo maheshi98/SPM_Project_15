@@ -58,7 +58,6 @@ export default class App extends Component {
             <Route exact path='/generate-reprt-pet' component={Petreport} />
             <Route exact path='/get-pet-details' component={PetDetails} />
             <Route exact path='/update-pet-details/:id' component={UpdatePet} />
-
             {/* Pet Veterinary Services Related Paths */}
             <Route exact path='/admin-veterinary-services' component={VeterinaryService} />
             <Route exact path='/new-veterinary-details' component={InsertVeterinay} />
@@ -67,6 +66,7 @@ export default class App extends Component {
             <Route exact path='/display-veterinary-details' component={VetDetails} />
           </Switch>
         </BrowserRouter>
+        <Footer />
       </div>
     )
   }
