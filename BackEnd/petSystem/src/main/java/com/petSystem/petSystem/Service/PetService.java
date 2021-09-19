@@ -24,4 +24,8 @@ public class PetService {
     public void deletePet(String id){
         petRepository.deleteById(id);
     }
+
+    public Pet findPetById(String id){
+        petRepository.findById(id);
+    }
 }
