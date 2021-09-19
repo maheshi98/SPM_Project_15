@@ -4,12 +4,22 @@ import Dog from '../../assets/dogs.jpg';
 import PetAcc from '../../assets/petaccessories.png';
 import Vet from '../../assets/vet.jpg';
 import Kennel from '../../assets/kennel.jpg';
+import MainSection from './MainSection';
 
 export default class Home extends Component {
     render() {
         return (
             <div className="maincontainer">
-                <div id='adopt'>
+                 <div>
+                <MainSection />
+                {/* <PetSection />
+                <GallerySection />
+                <AdoptSection /> */}
+                {/* <PaperTopicsSection /> */}
+                {/* <CountDown /> */}
+                {/* <MapSection />  */}
+            </div>
+                {/* <div id='adopt'>
                     <div>
                         <br/>
                         <div className='row' style={{marginLeft:40}}>
@@ -77,7 +87,7 @@ export default class Home extends Component {
                         </div>
 
                     </div>
-                </div>
+                </div> */}
                
             </div>
         );
