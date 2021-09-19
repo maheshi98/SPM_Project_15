@@ -10,12 +10,12 @@ class BoardingPlacesService {
         return http.get("/boardingPlace/places");
     }
 
+    findByPlace(placeCity) {
+        return http.get(`/boardingPlace/search?placeCity=${placeCity}`);
+    }
+    
     delete(id) {
         return http.delete(`/boardingPlace/delete/${id}`);
-    }
-
-    getCount() {
-        return http.get("/boardingPlace/count");
     }
 
 }

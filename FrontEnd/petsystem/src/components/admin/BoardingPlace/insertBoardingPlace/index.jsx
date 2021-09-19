@@ -319,7 +319,7 @@ class NewBoardingPlace extends Component {
                                                             <div className="form-group">
                                                                 <label htmlFor="servicePrice">Service Price in LKR (Per Pet)</label>
                                                                 <input
-                                                                    type="text"
+                                                                    type="number"
                                                                     className="form-control"
                                                                     id={item.id}
                                                                     required

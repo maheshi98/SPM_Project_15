@@ -45,6 +45,11 @@ export default class VeterinaryService extends Component {
         })
     }
 
+    navigateUpdatePage(e, vetId) {
+        console.log("Vet ID:", vetId);
+        window.location = `/update-veterinary-details/${vetId}`
+    }
+
 
     render() {
 
@@ -119,12 +124,12 @@ export default class VeterinaryService extends Component {
                             <div class="table-cell">
                                 <p>{vet.description}</p>
                             </div>
-                            <div class="table-cell last-cell">
-                                <a href="/update-veterinary-details">
+                            <div class="table-cell last-cell">                       
                                     <FiEdit
+                                        onClick={e => this.navigateUpdatePage(e, vet.id)}
                                         size={30}
                                         style={{ textAlign: "center", color: "blue", backgroundColor: "white" }} />
-                                </a>&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;
                                 <a href="">
                                     <RiDeleteBin2Line
                                         onClick = {e => this.deleteVeterinaryDetails(e,vet.id)}
