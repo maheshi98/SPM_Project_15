@@ -55,7 +55,7 @@ export default class VetGenerateReport extends Component {
 
     render() {
         const { clinicLocation } = this.state;
-        
+
         return (
             <div className="container">
                 <Row>
