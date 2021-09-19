@@ -88,7 +88,7 @@ export default class newAccessory extends Component {
                                     type="text"
                                     id="imageURL"
                                     name="imageURL"
-                                    placeholder="Age"
+                                    placeholder="Image URL"
                                     value={this.state.imageURL}
                                     onChange={this.onChange} />
                             </Form.Group>

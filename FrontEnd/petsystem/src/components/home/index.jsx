@@ -37,7 +37,7 @@ export default class Home extends Component {
                                     <p>Go ahead and spoil your furry friends with unique pet accessories, from adorable pet pillows and blankets they can snuggle up with every day to custom dog bowls, food mats, treat jars and other pet necessities.
                                     </p>
                                 </div>
-                                <a href="/admin">
+                                <a href="/display-accessory">
                                 <Button style={{ fontSize: 20, width: 150, paddingRight: 10, marginLeft:90, borderRadius: 20, backgroundColor: "#6372ff" }}>Click Here</Button>{' '}
                                 </a>
                             </div>
