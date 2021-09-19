@@ -33,7 +33,7 @@ export default class Petitem extends Component {
 
     render() {
         return (
-            <Card border="primary" style={{ color: "blue", width: '100%', marginTop: '-1cm' }} >
+            <Card border="primary" style={{ color: "blue", width: '100%', marginTop: '-2cm' , marginBottom: '1cm'}} >
 
                 <div className="product-tumb" style={{ marginTop: '0.5cm' }}>
                     <img width="200" height="200" src={this.props.pet.imgUrl} alt="" />

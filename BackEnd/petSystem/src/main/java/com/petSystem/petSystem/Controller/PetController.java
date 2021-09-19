@@ -51,4 +51,15 @@ public class PetController {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+    @GetMapping("getById/{id}")
+    public ResponseEntity<Pet> findPetById(@PathVariable String id){
+        try{
+            petService.findPetById(id);
+            return ResponseEntity.status(HttpStatus.CREATED).build();
+        }catch (Exception e){
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+
+        }
+    }
 }
