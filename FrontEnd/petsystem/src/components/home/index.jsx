@@ -38,7 +38,6 @@ export default class Home extends Component {
                                     </p>
                                 </div>
                                 <Button style={{ fontSize: 20, width: 150, paddingRight: 10, marginLeft:90, borderRadius: 20, backgroundColor: "#6372ff" }}>Click Here</Button>{' '}
-                                </a>
                             </div>
                             <div className='col-xs-12 col-md-6'>
                                 <img src={PetAcc} className='img-responsive' style={{ height: 200, width: 300, marginLeft:30 }} alt='logo' />
@@ -48,11 +47,11 @@ export default class Home extends Component {
                         <div className='row' style={{marginLeft:40}}>
                             <div className='col-xs-12 col-md-6'>
                                 <div className='adopt-text' style={{marginLeft:80}}>
+                                <h2>Look For Veternaries</h2>
                                     <p>Your veterinarian is the best source of health advice for an individual pet.
                                     </p>
                                 </div>
                                 <Button style={{ fontSize: 20, width: 150, paddingRight: 10, marginLeft:90, borderRadius: 20, backgroundColor: "#6372ff" }}>Click Here</Button>{' '}
-                                </a>
                             </div>
                             <div className='col-xs-12 col-md-6'>
                                 <img src={Vet} className='img-responsive' style={{ height: 200, width: 300, marginLeft:30 }} alt='logo' />
@@ -62,11 +61,11 @@ export default class Home extends Component {
                         <div className='row' style={{marginLeft:40}}>
                             <div className='col-xs-12 col-md-6'>
                                 <div className='adopt-text' style={{marginLeft:80}}>
+                                <h2>Search Fo Cannels</h2>
                                     <p>Boarding your dog at a familiar place with familiar faces and smells will make a difference in how they feel being away from you.
                                     </p>
                                 </div>
                                 <Button style={{ fontSize: 20, width: 150, paddingRight: 10, marginLeft:90, borderRadius: 20, backgroundColor: "#6372ff" }}>Click Here</Button>{' '}
-                                </a>
                             </div>
                             <div className='col-xs-12 col-md-6'>
                                 <img src={Kennel} className='img-responsive' style={{ height: 200, width: 300, marginLeft:30 }} alt='logo' />
