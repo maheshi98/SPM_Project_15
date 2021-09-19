@@ -18,10 +18,6 @@ class BoardingPlacesService {
         return http.delete(`/boardingPlace/delete/${id}`);
     }
 
-    getCount() {
-        return http.get("/boardingPlace/count");
-    }
-
 }
 
 export default new BoardingPlacesService();
