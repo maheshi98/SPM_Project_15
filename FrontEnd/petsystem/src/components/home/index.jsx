@@ -51,7 +51,9 @@ export default class Home extends Component {
                                     <p>Your veterinarian is the best source of health advice for an individual pet.
                                     </p>
                                 </div>
+                                <a href="/display-veterinary-details">
                                 <Button style={{ fontSize: 20, width: 150, paddingRight: 10, marginLeft:90, borderRadius: 20, backgroundColor: "#6372ff" }}>Click Here</Button>{' '}
+                                </a>
                             </div>
                             <div className='col-xs-12 col-md-6'>
                                 <img src={Vet} className='img-responsive' style={{ height: 200, width: 300, marginLeft:30 }} alt='logo' />
