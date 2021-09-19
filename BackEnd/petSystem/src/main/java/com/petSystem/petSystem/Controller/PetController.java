@@ -1,6 +1,8 @@
 package com.petSystem.petSystem.Controller;
 
+import com.petSystem.petSystem.Model.BoardingPlace;
 import com.petSystem.petSystem.Model.Pet;
+import com.petSystem.petSystem.Repository.PetRepository;
 import com.petSystem.petSystem.Service.PetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,6 +20,9 @@ public class PetController {
 
     @Autowired
     public PetService petService;
+
+    @Autowired
+    public PetRepository petRepository;
 
     @PostMapping("/create")
     public ResponseEntity<Pet> createPet(@RequestBody Pet pet) {
@@ -63,5 +68,20 @@ public class PetController {
         pet.setId(id);
         petService.savePet(pet);
         return ResponseEntity.status(HttpStatus.CREATED).build();
+    }
+
+    @GetMapping("/search")
+    public ResponseEntity<List<Pet>> searchPetByBreed(@RequestParam(required = false) String breed){
+        try{
+            List<Pet> pet = new ArrayList<Pet>();
+            if(breed != null)
+                petRepository.findByBreed(breed).forEach(pet::add);
+            if(pet.isEmpty()){
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            }
+            return new ResponseEntity<>(pet, HttpStatus.OK);
+        } catch (Exception e){
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 }
