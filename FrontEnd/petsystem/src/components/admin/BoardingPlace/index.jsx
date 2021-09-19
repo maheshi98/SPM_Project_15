@@ -85,9 +85,11 @@ export default class BoardingPlace extends Component {
                         <Col>
                         </Col>
                         <Col style={{ marginLeft: "35%" }}>
+                            {/* Add new entry button */}
                             <a href="/new-boarding-place">
                                 <button class="member-btn btn"><i><BsPlusCircle size="25" /></i> New Entry</button>
                             </a>
+                            {/* Generate report button */}
                             <a href="/generate-report-boarding-place">
                                 <button class="member-btn btn"><i><RiFileDownloadLine size="25" /></i> Download</button>
                             </a>
