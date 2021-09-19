@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import VetDetails from './vetDetails';
-import { Card, Button,Row} from 'react-bootstrap';
+import { Card, Button, Row } from 'react-bootstrap';
 import VeterinaryServices from '../../../Services/VeterinaryService';
 import './index.css'
 
@@ -58,32 +58,32 @@ export default class DisplayVeterinary extends Component {
         const { clinicLocation } = this.state;
         return (
             <div className="container" >
-                            <Row>
-                <div class="text-center">
-                    <h1 class="head-title">Generate Report For Veterinary Details</h1>
-                </div>
+                <Row>
+                    <div class="text-center">
+                        <h1 class="head-title">Pet Veterinary Details</h1>
+                    </div>
 
-                <div className="col-md-4" style={{ marginTop: "3%", marginLeft: "65%" }}>
-                    <div className="input-group mb-3">
-                        <input
-                            type="text"
-                            className="form-control"
-                            placeholder="Search By Location"
-                            value={clinicLocation}
-                            onChange={this.onChangeSearchPlace}
-                        />
-                        <div className="input-group-append">
-                            <button
-                                className="btn btn-outline-primary"
-                                type="button"
-                                onClick={this.searchClinicLocation}
-                            >
-                                Search
-                            </button>
+                    <div className="col-md-4" style={{ marginTop: "3%", marginLeft: "65%" }}>
+                        <div className="input-group mb-3">
+                            <input
+                                type="text"
+                                className="form-control"
+                                placeholder="Search By Location"
+                                value={clinicLocation}
+                                onChange={this.onChangeSearchPlace}
+                            />
+                            <div className="input-group-append">
+                                <button
+                                    className="btn btn-outline-primary"
+                                    type="button"
+                                    onClick={this.searchClinicLocation}
+                                >
+                                    Search
+                                </button>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </Row>
+                </Row>
                 <div className="col-md-8">
                     <div classname="col-md-8">
                         <div classname="input-group mb-3">
@@ -93,7 +93,7 @@ export default class DisplayVeterinary extends Component {
                     {
                         this.state.veterinarydetails.map((vet, key) => {
 
-                               return<VetDetails vet = {vet} key ={key}/>
+                            return <VetDetails vet={vet} key={key} />
                         })
                     }
                 </main>
