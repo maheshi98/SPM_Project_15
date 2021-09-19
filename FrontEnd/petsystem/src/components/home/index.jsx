@@ -63,11 +63,13 @@ export default class Home extends Component {
                         <div className='row' style={{marginLeft:40}}>
                             <div className='col-xs-12 col-md-6'>
                                 <div className='adopt-text' style={{marginLeft:80}}>
-                                <h2>Search Fo Cannels</h2>
+                                <h2>Search For Boarding Places</h2>
                                     <p>Boarding your dog at a familiar place with familiar faces and smells will make a difference in how they feel being away from you.
                                     </p>
                                 </div>
+                                <a href="/boarding-place">
                                 <Button style={{ fontSize: 20, width: 150, paddingRight: 10, marginLeft:90, borderRadius: 20, backgroundColor: "#6372ff" }}>Click Here</Button>{' '}
+                                </a>
                             </div>
                             <div className='col-xs-12 col-md-6'>
                                 <img src={Kennel} className='img-responsive' style={{ height: 200, width: 300, marginLeft:30 }} alt='logo' />
