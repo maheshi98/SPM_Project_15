@@ -32,7 +32,7 @@ export default class Navbarnew extends Component {
        
         return (
       
-                <Navbar bg="light" variant="dark-gray">
+                <Navbar bg="light" variant="dark-gray"  >
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                 <Navbar.Brand  href="/">

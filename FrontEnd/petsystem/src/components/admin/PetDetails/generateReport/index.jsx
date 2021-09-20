@@ -1,9 +1,13 @@
 
 import React, { Component } from 'react';
-import { Row } from 'react-bootstrap';
+import { Row , Col } from 'react-bootstrap';
 import './index.css'
 import { MdCancel } from 'react-icons/md';
 import PetService from '../../../../Services/PetService';
+import jsPDF from 'jspdf'; import 'jspdf-autotable';
+import { RiFileDownloadLine } from 'react-icons/ri';
+
+
 
 export default class Petreport extends Component {
 
@@ -60,6 +64,46 @@ export default class Petreport extends Component {
         this.retrievePetDetails();
     }
 
+    //Report generation part starting from here
+
+    exportPDF = () => {
+
+        console.log( "SSSSSSSSSS" )
+        const unit = "pt";
+        const size = "A3"; // Use A1, A2, A3 or A4
+        const orientation = "landscape"; // portrait or landscape
+        const marginLeft = 40;
+        const doc = new jsPDF( orientation, unit, size );
+        const title = "Pet Details ";
+        const headers = [["Image URL","Dog Breed","Age","Price","Description","Owner name","TContact Number"]];
+        const pet =  this.state.pet.map(
+
+            pet=>[
+                pet.imgUrl,
+                pet.breed,
+                pet.age,
+                pet.price,
+                pet.description,
+                pet.ownerName,
+                pet.ownerContactNo,
+
+            ]
+
+        );
+        let content = {
+            startY: 50,
+            head: headers,
+            body: pet
+        };
+
+        doc.setFontSize( 20 );
+        doc.text( title, marginLeft, 40 );
+        require('jspdf-autotable');
+        doc.autoTable( content );
+        doc.save( "Pet Details.pdf" )
+    }
+
+
     render() {
 
         const { breed } = this.state;
@@ -88,13 +132,22 @@ export default class Petreport extends Component {
                                     Search
                                 </button>
                                 <i>
-                                 <button class="btn btn-outline-primary"
-                                  onClick={this.cancel}><MdCancel  size="26"/></button>
+                                 <button class="btn btn-outline-primary"  style = {{marginLeft : "5px"}}
+                                  onClick={this.cancel}><MdCancel  size="23"/></button>
                                 </i>
                             </div>
                         </div>
                     </div>
                 </Row>
+                <Row style={{ marginTop: "-1.5cm" }}>
+                        <Col>
+                        </Col>
+                        <Col style={{ marginLeft: "35%" }}>
+                            <a href="generate-reprt-pet">
+                                <button class="member-btn btn" onClick={() => this.exportPDF()}><i><RiFileDownloadLine size="25" /></i> Download</button>
+                            </a>
+                        </Col>
+                    </Row>
                 <div class="table-box">
                     {/* Table Header Start */}
                     <div class="table-row table-head">
