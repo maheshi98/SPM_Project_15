@@ -76,7 +76,7 @@ shoot(event) {
 
     
         return (
-            <div className="container" style={{ padding: '5%' }}>
+            <body className="container" style={{ padding: '5%' }}>
                 <div className='section-title text-center'>
                     <h3>Log In</h3>
                 </div>
@@ -118,7 +118,7 @@ shoot(event) {
                         </Row>
                     </Card.Body>
                 </Card>
-            </div>
+            </body>
         )
     }
 }
