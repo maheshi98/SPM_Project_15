@@ -76,11 +76,12 @@ shoot(event) {
 
     
         return (
-            <body className="container" style={{ padding: '5%' }}>
-                <div className='section-title text-center'>
+          <div className='section-title text-center'>
                     <h3>Log In</h3>
-                </div>
-                <Card border="primary" style={{ width: '100%' , marginTop: '-1cm' }} >
+              
+            <div className="container" >
+                
+                <Card border="primary" style={{ width: '100%' , marginTop: '1cm' }} >
                     <Card.Body>
                         <Row className="landing">
                             <Col>
@@ -118,7 +119,8 @@ shoot(event) {
                         </Row>
                     </Card.Body>
                 </Card>
-            </body>
+            </div>
+            </div>
         )
     }
 }

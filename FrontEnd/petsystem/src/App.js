@@ -31,7 +31,7 @@ import UpdatePet from './components/admin/PetDetails/UpdatePet';
 export default class App extends Component {
   render() {
     return (
-      <div className='body' style={{backgroundColor : '#ddddff'}}  >
+      <div className='body' style={{backgroundColor : '#ddddff'}} >
          <NavBar/>
         <BrowserRouter>
           <Switch>
