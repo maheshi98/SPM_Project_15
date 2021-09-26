@@ -143,9 +143,7 @@ export default class Petreport extends Component {
                         <Col>
                         </Col>
                         <Col style={{ marginLeft: "35%" }}>
-                            <a href="generate-reprt-pet">
                                 <button class="member-btn btn" onClick={() => this.exportPDF()}><i><RiFileDownloadLine size="25" /></i> Download</button>
-                            </a>
                         </Col>
                     </Row>
                 <div class="table-box">
