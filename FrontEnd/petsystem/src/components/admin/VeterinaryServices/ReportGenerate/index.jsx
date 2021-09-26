@@ -64,16 +64,16 @@ export default class VetGenerateReport extends Component {
         const doc = new jsPDF( orientation, unit, size );
         const title = "Pet Details ";
         const headers = [["Veterinary Image","Veterinary Name","Clinic Location","Contact Number","Veterinary Fee(Rs.)","Description"]];
-        const vet =  this.state.vet.map(
+        const veterinarydetails =  this.state.veterinarydetails.map(
 
-            vet=>[
-                vet.imgUrl,
-                vet.breed,
-                vet.age,
-                vet.price,
-                vet.description,
-                vet.ownerName,
-                vet.ownerContactNo,
+            veterinarydetails=>[
+                veterinarydetails.imgUrl,
+                veterinarydetails.breed,
+                veterinarydetails.age,
+                veterinarydetails.price,
+                veterinarydetails.description,
+                veterinarydetails.ownerName,
+                veterinarydetails.ownerContactNo,
 
             ]
 
@@ -81,7 +81,7 @@ export default class VetGenerateReport extends Component {
         let content = {
             startY: 50,
             head: headers,
-            body: vet
+            body: veterinarydetails
         };
 
         doc.setFontSize( 20 );
