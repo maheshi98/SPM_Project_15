@@ -10,16 +10,7 @@ export default class Home extends Component {
     render() {
         return (
             <div className="maincontainer">
-                 <div>
-                <MainSection />
-                {/* <PetSection />
-                <GallerySection />
-                <AdoptSection /> */}
-                {/* <PaperTopicsSection /> */}
-                {/* <CountDown /> */}
-                {/* <MapSection />  */}
-            </div>
-                {/* <div id='adopt'>
+                <div id='adopt'>
                     <div>
                         <br/>
                         <div className='row' style={{marginLeft:40}}>
@@ -87,7 +78,7 @@ export default class Home extends Component {
                         </div>
 
                     </div>
-                </div> */}
+                </div>
                
             </div>
         );
