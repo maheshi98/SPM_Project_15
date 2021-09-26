@@ -41,15 +41,30 @@ public class BoardingPlaceController {
      * @memberof BoardingPlaceController
      */
     @GetMapping("/places")
-    public ResponseEntity<List<BoardingPlace>> getAllBoardingPlaces(@RequestParam(required = false) String placeCity){
+    public ResponseEntity<List<BoardingPlace>> getAllBoardingPlaces(){
         try{
             List<BoardingPlace> boardingPlaces = new ArrayList<BoardingPlace>();
+            boardingPlaceService.getAllBoardingPlace().forEach(boardingPlaces::add);
+            if(boardingPlaces.isEmpty()){
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            }
+            return new ResponseEntity<>(boardingPlaces, HttpStatus.OK);
+        } catch (Exception e){
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 
-            if(placeCity == null)
-                boardingPlaceService.getAllBoardingPlace().forEach(boardingPlaces::add);
-             else
+
+    /**
+     * @description Search Boarding Places
+     * @memberof BoardingPlaceController
+     */
+    @GetMapping("/search")
+    public ResponseEntity<List<BoardingPlace>> searchBoardingPlaces(@RequestParam(required = false) String placeCity){
+        try{
+            List<BoardingPlace> boardingPlaces = new ArrayList<BoardingPlace>();
+            if(placeCity != null)
                 boardingPlaceRepository.findByPlaceCityContaining(placeCity).forEach(boardingPlaces::add);
-
             if(boardingPlaces.isEmpty()){
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);
             }
@@ -72,25 +87,5 @@ public class BoardingPlaceController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
-    /**
-     * @description Get Count of Boarding Places
-     * @memberof BoardingPlaceController
-     */
-    @GetMapping("/count")
-    public ResponseEntity<Integer> getCountBoardingPlaces(@RequestParam(required = false) String placeCity){
-        try{
-            List<BoardingPlace> boardingPlaces = new ArrayList<BoardingPlace>();
-            if(placeCity == null)
-                boardingPlaceService.getAllBoardingPlace().forEach(boardingPlaces::add);
-            if(boardingPlaces.isEmpty())
-                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-
-            int size = boardingPlaces.size();
-
-            return new ResponseEntity<>(size, HttpStatus.OK);
-        } catch (Exception e){
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
+    
 }

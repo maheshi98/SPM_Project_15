@@ -1,22 +1,66 @@
 import React, { Component } from 'react';
+import { Row } from 'react-bootstrap';
 import jsPDF from 'jspdf';
 import "jspdf-autotable";
-import { Row } from 'react-bootstrap';
-import { RiFileDownloadLine } from 'react-icons/ri';
+import BoardingPlaceService from '../../../../Services/BoardingPlacesService'; 
+import {RiFileDownloadLine} from 'react-icons/ri';
 import './index.css'
 
 export default class GenerateReport extends Component {
     constructor(props) {
         super(props);
+        this.retrievePetBoardingPlaces = this.retrievePetBoardingPlaces.bind(this);
+        this.onChangeSearchPlace = this.onChangeSearchPlace.bind(this);
+        this.searchPetBoardingPlace = this.searchPetBoardingPlace.bind(this);
+        this.jsPdfGenerator = this.jsPdfGenerator.bind(this);
+        this.exportPDF = this.exportPDF.bind(this);
         this.state = {
+            boardingPlaces: [],
+            searchPlace: "",
             people: [
-                { name: "Keanu Reeves", profession: "Actor", image:"https://st.depositphotos.com/1428083/2946/i/600/depositphotos_29460297-stock-photo-bird-cage.jpg" },
+                { name: "Keanu Reeves", profession: "Actor", image: "https://st.depositphotos.com/1428083/2946/i/600/depositphotos_29460297-stock-photo-bird-cage.jpg" },
                 { name: "Lionel Messi", profession: "Football Player", image: "https://st.depositphotos.com/1428083/2946/i/600/depositphotos_29460297-stock-photo-bird-cage.jpg" },
                 { name: "Cristiano Ronaldo", profession: "Football Player", image: "https://st.depositphotos.com/1428083/2946/i/600/depositphotos_29460297-stock-photo-bird-cage.jpg" },
-                { name: "Jack Nicklaus", profession: "Golf Player", image:"https://st.depositphotos.com/1428083/2946/i/600/depositphotos_29460297-stock-photo-bird-cage.jpg"},
+                { name: "Jack Nicklaus", profession: "Golf Player", image: "https://st.depositphotos.com/1428083/2946/i/600/depositphotos_29460297-stock-photo-bird-cage.jpg" },
             ],
         }
-        this.jsPdfGenerator = this.jsPdfGenerator.bind(this);
+    }
+
+    componentDidMount() {
+        this.retrievePetBoardingPlaces();
+    }
+
+    onChangeSearchPlace(e) {
+        const searchPlace = e.target.value;
+
+        this.setState({
+            searchPlace: searchPlace
+        });
+    }
+
+    retrievePetBoardingPlaces = () => {
+        BoardingPlaceService.getAll().then(response => {
+            this.setState({
+                boardingPlaces: response.data
+            });
+            console.log(response.data);
+        })
+            .catch(e => {
+                console.log(e);
+            });
+    }
+
+    searchPetBoardingPlace = () => {
+        BoardingPlaceService.findByPlace(this.state.searchPlace)
+            .then(response => {
+                this.setState({
+                    boardingPlaces: response.data
+                });
+                console.log(response.data);
+            })
+            .catch(e => {
+                console.log(e);
+            });
     }
 
     jsPdfGenerator = () => {
@@ -85,61 +129,30 @@ export default class GenerateReport extends Component {
     }
 
 
-
-
-
-// var doc = new jsPDF('p', 'pt', 'letter');
-// var elem = document.getElementById('tbl-customers');
-// var imgElements = document.querySelectorAll('#tbl-customers tbody img');
-// var data = doc.autoTableHtmlToJson(elem);
-// var images = [];
-// doc.autoTable(data.columns, data.rows, {
-//     bodyStyles: { rowHeight: 30 },
-//     drawCell: function (cell, opts) {
-//         if (opts.column.dataKey === 7) {
-//             var img = imgElements[opts.row.index];
-//             images.push({
-//                 elem: img,
-//                 x: cell.textPos.x,
-//                 y: cell.textPos.y
-//             });
-//         }
-//     },
-//     afterPageContent: function () {
-//         for (var i = 0; i < images.length; i++) {
-//             doc.addImage(images[i].elem, 'jpg', images[i].x, images[i].y);
-//         }
-//     }
-// });
-// doc.save("table.pdf");
-
-
-
-
-
-
-
-
-
     render() {
+        const { searchPlace } = this.state;
+
         return (
-            <div className="container" style={{ marginBottom: "5%" }}>
+            <div className="container" style={{marginBottom:"5%"}}>
                 <Row>
                     <div class="text-center">
-                        <h1 class="head-title">Generate Report For Boarding Places</h1>
+                        <h1 class="head-title">Generate Report For Pet Boarding Places</h1>
                     </div>
-                    {/* Search bar & button */}
+                    {/* Search bar and search button */}
                     <div className="col-md-4" style={{ marginTop: "5%" }}>
                         <div className="input-group mb-3">
                             <input
                                 type="text"
                                 className="form-control"
                                 placeholder="Search By City"
+                                value={searchPlace}
+                                onChange={this.onChangeSearchPlace}
                             />
                             <div className="input-group-append">
                                 <button
                                     className="btn btn-outline-primary"
                                     type="button"
+                                    onClick={this.searchPetBoardingPlace}
                                 >
                                     Search
                                 </button>
@@ -150,8 +163,7 @@ export default class GenerateReport extends Component {
                     <div className="col-md-4" style={{ marginTop: "5%" }}>
                         <div className="input-group mb-3">
                             <a href="/generate-report-boarding-place">
-                                {/* <button class="member-btn btn" onClick={this.jsPdfGenerator}><i><RiFileDownloadLine size="25" /></i> Download</button> */}
-                                <button onClick={() => this.exportPDF()}>Generate Report</button>
+                                <button class="member-btn btn" onClick={() => this.exportPDF()}><i><RiFileDownloadLine size="25" /></i> Download</button>
                             </a>
                         </div>
                     </div>
@@ -181,36 +193,40 @@ export default class GenerateReport extends Component {
                     </div>
                     {/* Table Header End */}
                     {/* Table Data Row Start */}
-                    <div class="table-row">
-                        <div class="table-cell first-cell">
-                            <img
-                                alt="Not available"
-                                class="card-img-top"
-                                src="http://durbandevelopment.com/wp-content/uploads/2019/08/Web-1.jpg"
-                            />
-                        </div>
-                        <div class="table-cell">
-                            <p>Dog Palace</p>
-                        </div>
-                        <div class="table-cell">
-                            <p>Colombo 05</p>
-                        </div>
-                        <div class="table-cell">
-                            <p>dulyakemali@gmail.com</p>
-                        </div>
-                        <div class="table-cell">
-                            <p>8.00a.m-6.00p.m</p>
-                        </div>
-                        <div class="table-cell">
-                            <p>
-                                {/* <ol>
-                                    <li>Extended Stays - LKR 1000/=</li>
-                                    <li>Daycare - LKR 1500/=</li>
-                                    <li>Grooming - LKR 500/=</li>
-                                </ol> */}
-                            </p>
-                        </div>
-                    </div>
+                    {this.state.boardingPlaces.map(
+                        places =>
+                            <div class="table-row">
+                                <div class="table-cell first-cell">
+                                    <img
+                                        alt="Not available"
+                                        class="card-img-top"
+                                        src={places.placeImage}
+                                    />
+                                </div>
+                                <div class="table-cell">
+                                    <p>{places.placeName}</p>
+                                </div>
+                                <div class="table-cell">
+                                    <p>{places.placeCity}</p>
+                                </div>
+                                <div class="table-cell">
+                                    <p>{places.placeEmail}</p>
+                                </div>
+                                <div class="table-cell">
+                                    <p>{places.placeOpeningHours}</p>
+                                </div>
+                                <div class="table-cell">
+                                    <p>
+                                        <ol>
+                                            {places.placeServices.map(
+                                                services =>
+                                                    <li>{services.label} - Rs.{services.price}/=</li>
+                                            )}
+                                        </ol>
+                                    </p>
+                                </div>
+                            </div>
+                    )}
                     {/* Table Data Row End */}
                 </div>
             </div>
