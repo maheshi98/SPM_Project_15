@@ -1,5 +1,6 @@
 package com.petSystem.petSystem.Controller;
 import com.petSystem.petSystem.Model.BoardingPlace;
+import com.petSystem.petSystem.Model.Pet;
 import com.petSystem.petSystem.Model.PetAccessoryModel;
 import com.petSystem.petSystem.Repository.BoardingPlaceRepository;
 import com.petSystem.petSystem.Repository.PetAccessoryRepo;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @CrossOrigin
 @RestController
@@ -59,6 +61,17 @@ public class PetAccessoryController {
         } catch (Exception e){
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
+    @GetMapping("getById/{id}")
+    public Optional<PetAccessoryModel> findAccessoryById(@PathVariable String id){
+        return petAccessoryService.findAccessoryById(id);
+    }
+
+    @PutMapping("update/{id}")
+    public ResponseEntity<PetAccessoryModel> updateAccessory(@RequestBody PetAccessoryModel accessory, @PathVariable String id){
+        accessory.setId(id);
+        petAccessoryService.saveAccessory(accessory);
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
 }

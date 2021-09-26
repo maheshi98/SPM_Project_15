@@ -1,9 +1,12 @@
 package com.petSystem.petSystem.Service;
+import com.petSystem.petSystem.Model.Pet;
 import com.petSystem.petSystem.Model.PetAccessoryModel;
 import com.petSystem.petSystem.Repository.PetAccessoryRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
+import java.util.Optional;
+
 @Service
 
 public class PetAccessoryService {
@@ -18,5 +21,9 @@ public class PetAccessoryService {
     }
 
     public void deleteAccessory(String id) {petAccessoryRepo.deleteById(id);}
+
+    public Optional<PetAccessoryModel> findAccessoryById(String id){
+        return petAccessoryRepo.findById(id);
+    }
 
 }
