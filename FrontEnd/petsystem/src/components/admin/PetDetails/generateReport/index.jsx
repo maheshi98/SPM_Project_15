@@ -4,7 +4,7 @@ import { Row , Col } from 'react-bootstrap';
 import './index.css'
 import { MdCancel } from 'react-icons/md';
 import PetService from '../../../../Services/PetService';
-import jsPDF from 'jspdf'; import 'jspdf-autotable';
+import jsPDF from 'jspdf-autotable';
 import { RiFileDownloadLine } from 'react-icons/ri';
 
 

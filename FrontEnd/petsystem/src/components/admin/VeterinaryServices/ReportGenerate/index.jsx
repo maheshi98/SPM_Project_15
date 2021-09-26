@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import { Row } from 'react-bootstrap';
+import { Row,Col } from 'react-bootstrap';
 import './index.css';
 import VeterinaryServices from '../../../../Services/VeterinaryService';
+import jsPDF from 'jspdf'; import 'jspdf-autotable';
+import { RiFileDownloadLine } from 'react-icons/ri';
 
 export default class VetGenerateReport extends Component {
     constructor(props) {
@@ -51,6 +53,40 @@ export default class VetGenerateReport extends Component {
                 console.log(e);
             });
     }
+ 
+    exportPDF = () => {
+
+        console.log( "SSSSSSSSSS" )
+        const unit = "pt";
+        const size = "A3"; // Use A1, A2, A3 or A4
+        const orientation = "landscape"; // portrait or landscape
+        const marginLeft = 40;
+        const doc = new jsPDF( orientation, unit, size );
+        const title = "Veterinary Details ";
+        const headers = [["Veterinary Name","Clinic Location","Contact Number","Veterinary Fee(Rs.)","Description"]];
+        const vet =  this.state.vet.map(
+
+            vet=>[
+                vet.name,
+                vet.clinicLocation,
+                vet.contact_no,
+                vet.veterinaryFee,
+                vet.description,
+            ]
+
+        );
+        let content = {
+            startY: 50,
+            head: headers,
+            body: vet
+        };
+
+        doc.setFontSize( 20 );
+        doc.text( title, marginLeft, 40 );
+        require('jspdf-autotable');
+        doc.autoTable( content );
+        doc.save( "Veterinary Details.pdf" )
+    }
 
 
     render() {
@@ -63,7 +99,7 @@ export default class VetGenerateReport extends Component {
                         <h1 class="head-title">Generate Report For Veterinary Details</h1>
                     </div>
 
-                    <div className="col-md-4" style={{ marginTop: "3%", marginLeft: "65%" }}>
+                    <div className="col-md-4" style={{ marginTop: "3%"}}>
                         <div className="input-group mb-3">
                             <input
                                 type="text"
@@ -84,6 +120,15 @@ export default class VetGenerateReport extends Component {
                         </div>
                     </div>
                 </Row>
+                <Row style={{ marginTop: "-1.5cm" }}>
+                        <Col>
+                        </Col>
+                        <Col style={{ marginLeft: "35%" }}>
+                            
+                                <button class="member-btn btn" onClick={() => this.exportPDF()}><i><RiFileDownloadLine size="25" /></i> Download</button>
+                            
+                        </Col>
+                    </Row>
                 <div class="table-box">
                     {/* Table Header Start */}
                     <div class="table-row table-head">
