@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Row,Col } from 'react-bootstrap';
 import './index.css';
 import VeterinaryServices from '../../../../Services/VeterinaryService';
-import jsPDF from 'jspdf-autotable';
+import jsPDF from 'jspdf'; import 'jspdf-autotable';
 import { RiFileDownloadLine } from 'react-icons/ri';
 
 export default class VetGenerateReport extends Component {
@@ -62,19 +62,16 @@ export default class VetGenerateReport extends Component {
         const orientation = "landscape"; // portrait or landscape
         const marginLeft = 40;
         const doc = new jsPDF( orientation, unit, size );
-        const title = "Pet Details ";
-        const headers = [["Veterinary Image","Veterinary Name","Clinic Location","Contact Number","Veterinary Fee(Rs.)","Description"]];
+        const title = "Veterinary Details ";
+        const headers = [["Veterinary Name","Clinic Location","Contact Number","Veterinary Fee(Rs.)","Description"]];
         const veterinarydetails =  this.state.veterinarydetails.map(
 
             veterinarydetails=>[
-                veterinarydetails.imgUrl,
-                veterinarydetails.breed,
-                veterinarydetails.age,
-                veterinarydetails.price,
+                veterinarydetails.name,
+                veterinarydetails.clinicLocation,
+                veterinarydetails.contact_no,
+                veterinarydetails.veterinaryFee,
                 veterinarydetails.description,
-                veterinarydetails.ownerName,
-                veterinarydetails.ownerContactNo,
-
             ]
 
         );
