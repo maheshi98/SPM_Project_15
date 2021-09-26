@@ -22,7 +22,10 @@
 }
 
 .why-us .container {
-  box-shadow: 0 5px 25px 5px rgba(214, 215, 216, 0.6);
+  /* box-shadow: 0 5px 25px 5px rgb(193, 194, 196); */
+  -webkit-box-shadow: 0px 0px 28px -16px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 28px -16px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 28px -16px rgba(0, 0, 0, 0.75);
 }
 
 .why-us .video-box {

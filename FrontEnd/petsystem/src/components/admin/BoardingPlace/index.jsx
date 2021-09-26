@@ -97,7 +97,7 @@ export default class BoardingPlace extends Component {
                     </Row>
                     <div class="table-box">
                         {/* Table Header Start */}
-                        <div class="table-row table-head">
+                        <div class="table-row-place table-head">
                             <div class="table-cell first-cell">
                                 <p>Boarding Place Image</p>
                             </div>
@@ -124,7 +124,7 @@ export default class BoardingPlace extends Component {
                         {/* Table Data Row Start */}
                         {this.state.boardingPlaces.map(
                             places =>
-                                <div class="table-row" key={places.placeId}>
+                                <div class="table-row-place" key={places.placeId}>
                                     <div class="table-cell first-cell">
                                         <img
                                             alt="Not available"
