@@ -4,7 +4,7 @@ import { Row , Col } from 'react-bootstrap';
 import './index.css'
 import { MdCancel } from 'react-icons/md';
 import PetService from '../../../../Services/PetService';
-import jsPDF from 'jspdf'; import 'jspdf-autotable';
+import jsPDF from 'jspdf-autotable';
 import { RiFileDownloadLine } from 'react-icons/ri';
 
 
@@ -143,9 +143,7 @@ export default class Petreport extends Component {
                         <Col>
                         </Col>
                         <Col style={{ marginLeft: "35%" }}>
-                            <a href="generate-reprt-pet">
                                 <button class="member-btn btn" onClick={() => this.exportPDF()}><i><RiFileDownloadLine size="25" /></i> Download</button>
-                            </a>
                         </Col>
                     </Row>
                 <div class="table-box">
