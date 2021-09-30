@@ -27,6 +27,7 @@ import DisplayPet from './components/User/DisplayPet';
 import Petreport from './components/admin/PetDetails/generateReport';
 import PetDetails from './components/admin/PetDetails';
 import UpdatePet from './components/admin/PetDetails/UpdatePet';
+import Index from './components/User/DisplayPet/DisplayContactdet';
 
 export default class App extends Component {
   render() {
@@ -58,6 +59,7 @@ export default class App extends Component {
             <Route exact path='/generate-reprt-pet' component={Petreport} />
             <Route exact path='/get-pet-details' component={PetDetails} />
             <Route exact path='/update-pet-details/:id' component={UpdatePet} />
+            <Route exact path='/display-Contact/:id' component={Index}></Route>
             {/* Pet Veterinary Services Related Paths */}
             <Route exact path='/admin-veterinary-services' component={VeterinaryService} />
             <Route exact path='/new-veterinary-details' component={InsertVeterinay} />
@@ -66,6 +68,7 @@ export default class App extends Component {
             <Route exact path='/display-veterinary-details' component={VetDetails} />
           </Switch>
         </BrowserRouter>
+        <br />
         <Footer />
       </div>
     )

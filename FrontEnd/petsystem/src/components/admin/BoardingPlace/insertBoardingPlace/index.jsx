@@ -70,7 +70,6 @@ class NewBoardingPlace extends Component {
     saveBoardingPlace = (e) => {
         e.preventDefault();
         if (this.handleFormValidation()) {
-
             var data = {
                 placeImage: this.state.placeImage,
                 placeName: this.state.placeName,
@@ -166,14 +165,15 @@ class NewBoardingPlace extends Component {
         const services = [
             { id: "0", value: 'stays', label: 'Overnight & Extended Stays' },
             { id: "1", value: 'daycare', label: 'Daycare' },
-            { id: "2", value: 'grooming', label: 'Grooming' }];
+            { id: "2", value: 'grooming', label: 'Grooming' },
+        ];
 
         return (
             <div className="container">
                 <div class="text-center">
                     <h1 class="head-title">ADD NEW PET BOARDING PLACE</h1>
                 </div>
-                <Card style={{ width: '100%', marginTop: "5%", marginBottom:"5%" }}>
+                <Card style={{ width: '100%', marginTop: "5%", marginBottom: "5%" }}>
                     <Card.Body>
                         <Row>
                             <Col>
@@ -195,7 +195,7 @@ class NewBoardingPlace extends Component {
                                                 {/* Pet Boarding Place Image */}
                                                 <div className="form-group">
                                                     <label htmlFor="placeImage">Pet Boarding Place Image</label>
-                                                    <input
+                                                    <textarea
                                                         type="text"
                                                         className="form-control"
                                                         id="placeImage"

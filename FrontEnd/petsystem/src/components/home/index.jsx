@@ -5,11 +5,13 @@ import PetAcc from '../../assets/petaccessories.png';
 import Vet from '../../assets/vet.jpg';
 import Kennel from '../../assets/kennel.jpg';
 import MainSection from './MainSection';
+import NewHome from './newMain';
 
 export default class Home extends Component {
     render() {
         return (
             <div className="maincontainer">
+                <NewHome />
                 <div id='adopt'>
                     <div>
                         <br/>
