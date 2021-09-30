@@ -54,7 +54,8 @@
       width: 100%;
       margin: 5px auto;
       font-family: sans-serif;
-      background: transparent;
+      /* background: transparent; */
+      background: #ffffff;
       padding: 10px 0;
       color: #555;
       font-size: 15px;
