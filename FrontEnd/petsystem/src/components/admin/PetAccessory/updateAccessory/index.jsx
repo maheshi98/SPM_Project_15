@@ -63,6 +63,7 @@ export default class updateAccessory extends Component {
         };
         console.log("DETAILS ADDED SUCCESSFUL ", accessory);
         AccessoryService.updateAccessory(accessory, this.state.id).then(res =>{
+            this.props.history.push('/admin-accessory')
             this.setState({"updateShow" : true});
             setTimeout(() => this.setState({ "updateShow": false }), 3000)
             let accessory;

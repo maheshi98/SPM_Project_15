@@ -45,6 +45,7 @@ export default class newAccessory extends Component {
 
     onSubmit(e) {
         e.preventDefault();
+        if(this.validate()){
         let accessory = {
             itemName: this.state.itemName,
             imageURL: this.state.imageURL,
@@ -53,9 +54,16 @@ export default class newAccessory extends Component {
         };
         console.log("DETAILS ADDED SUCCESSFUL ", accessory);
         AccessoryService.addPetAccessory(accessory).then(res =>{
+            this.props.history.push('/admin-accessory')
+            if(res.data != null){
+                this.setState({"show":true});
+                setTimeout(() => this.setState({"show" :false}) , 3000)
 
+            }else{
+                this.setState({"show" :false})
+            }
         })
-
+    }
     }
     clearData = () => {
         this.setState({
@@ -154,7 +162,6 @@ export default class newAccessory extends Component {
                                 <Form.Control
                                     type="text"
                                     id="itemName"
-                                    required
                                     name="itemName"
                                     placeholder="Item Name"
                                     value={this.state.itemName}
@@ -170,7 +177,6 @@ export default class newAccessory extends Component {
                                 <Form.Control
                                     type="text"
                                     id="imageURL"
-                                    required
                                     name="imageURL"
                                     placeholder="ImageURL"
                                     value={this.state.imageURL}
@@ -186,7 +192,6 @@ export default class newAccessory extends Component {
                                 <Form.Control
                                     type="text"
                                     id="itemPrice"
-                                    required
                                     name="itemPrice"
                                     placeholder="Description"
                                     value={this.state.itemPrice}
@@ -202,7 +207,6 @@ export default class newAccessory extends Component {
                                 <Form.Control
                                     type="text"
                                     id="description"
-                                    required
                                     name="description"
                                     placeholder="description"
                                     value={this.state.description}
