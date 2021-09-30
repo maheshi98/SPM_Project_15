@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Row,Col } from 'react-bootstrap';
 import './index.css';
 import VeterinaryServices from '../../../../Services/VeterinaryService';
-import jsPDF from 'jspdf-autotable';
+import jsPDF from 'jspdf'; import 'jspdf-autotable';
 import { RiFileDownloadLine } from 'react-icons/ri';
 
 export default class VetGenerateReport extends Component {
