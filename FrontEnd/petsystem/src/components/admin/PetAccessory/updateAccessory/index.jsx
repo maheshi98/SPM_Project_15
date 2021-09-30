@@ -15,15 +15,35 @@ const initialState = {
 export default class updateAccessory extends Component {
     constructor(props) {
         super(props)
+        this.state = {
+            id: this.props.match.params.id,
+            itemName: '',
+            imageURL: '',
+            itemPrice: 0,
+            description: '',
+        }
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
-        this.state = initialState;
+        
 
         this.handleEvent = this.handleEvent.bind(this)
     }
 
     componentDidMount() {
-        
+        AccessoryService.getAccessoryById(this.state.id).then((res )=> {
+            let accessory = res.data;
+            this.setState({
+                itemName : accessory.itemName,
+                imageURL: accessory.imageURL,
+                itemPrice: accessory.itemPrice,
+                description: accessory.description,
+            });
+            console.log(accessory);
+        })
+            .catch(e => {
+                console.log(e);
+            });
+
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) { if (prevState.name !== this.state.name) { this.handler() } }
@@ -42,8 +62,12 @@ export default class updateAccessory extends Component {
             description: this.state.description
         };
         console.log("DETAILS ADDED SUCCESSFUL ", accessory);
-        AccessoryService.addPetAccessory(accessory).then(res =>{
-
+        AccessoryService.updateAccessory(accessory, this.state.id).then(res =>{
+            this.setState({"updateShow" : true});
+            setTimeout(() => this.setState({ "updateShow": false }), 3000)
+            let accessory;
+            this.setState({ accessory : res.data });
+            alert("Successfuly Updated!")
         })
 
     }
@@ -96,7 +120,7 @@ export default class updateAccessory extends Component {
                                     id="price"
                                     name="price"
                                     placeholder="Item Price"
-                                    value={this.state.price}
+                                    value={this.state.itemPrice}
                                     onChange={this.onChange} />
                             </Form.Group>
                             <Form.Group >
@@ -111,8 +135,8 @@ export default class updateAccessory extends Component {
                             </Form.Group>
                             <br />
                             <Form.Group>
-                                <Button type="submit" style={{ paddingRight: 10 }}>Submit</Button> {''}
-                                <Link to='/'>  <Button type="back" style={{ backgroundColor: '#37474F', paddingRight: 10 }}> Clear </Button></Link>
+                                <Button type="submit" style={{ paddingRight: 10 }}>Update</Button> {''}
+                                <Link to='/admin-accessory'>  <Button type="back" style={{ backgroundColor: '#37474F', paddingRight: 10 }}> Go Back </Button></Link>
                             </Form.Group>
                         </Form>
                     </Col>

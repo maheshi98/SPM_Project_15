@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class VeterinaryService {
@@ -22,4 +23,8 @@ public class VeterinaryService {
     }
 
     public void deleteVeterinary(String id) {veterinary.deleteById(id);}
+
+    public Optional<VeterinaryModel> findVeterinaryById(String id){
+        return veterinary.findById(id);
+    }
 }

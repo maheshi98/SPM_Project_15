@@ -166,7 +166,6 @@ class NewBoardingPlace extends Component {
             { id: "0", value: 'stays', label: 'Overnight & Extended Stays' },
             { id: "1", value: 'daycare', label: 'Daycare' },
             { id: "2", value: 'grooming', label: 'Grooming' },
-            { id: "3", value: 'other', label: 'Other' }
         ];
 
         return (

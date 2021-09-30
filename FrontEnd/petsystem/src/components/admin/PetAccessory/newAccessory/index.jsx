@@ -49,6 +49,15 @@ export default class newAccessory extends Component {
         })
 
     }
+    clearData = () => {
+        this.setState({
+            itemName : '',
+            imageURL : ''  ,
+            itemPrice : 0,
+            description: ''
+        });
+    }
+
 
     componentWillUnmount() {
         
@@ -88,7 +97,7 @@ export default class newAccessory extends Component {
                                     type="text"
                                     id="imageURL"
                                     name="imageURL"
-                                    placeholder="Age"
+                                    placeholder="ImageURL"
                                     value={this.state.imageURL}
                                     onChange={this.onChange} />
                             </Form.Group>
@@ -115,7 +124,8 @@ export default class newAccessory extends Component {
                             <br />
                             <Form.Group>
                                 <Button type="submit" style={{ paddingRight: 10 }}>Submit</Button> {''}
-                                <Link to='/'>  <Button type="back" style={{ backgroundColor: '#37474F', paddingRight: 10 }}>Clear</Button></Link>
+                                {/* <Link to='/'>  <Button type="back" style={{ backgroundColor: '#37474F', paddingRight: 10 }}>Clear</Button></Link> */}
+                                <button className="btn btn-danger" onClick={this.clearData } style={{ width: 100 }}>Clear</button>
                             </Form.Group>
                         </Form>
                     </Col>

@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
-import { Row, Col, Button, Form, Image} from 'react-bootstrap';
+import { Row, Col, Button, Form, Image , Card} from 'react-bootstrap';
 import pets from '../../../../assets/admin/pets.png';
 import './index.css'
 import PetService from '../../../../Services/PetService';
 
 const initialState = {
+    
     breed : '',
     age : ''  ,
     description : '',
@@ -13,18 +14,46 @@ const initialState = {
     imgUrl : '',
     ownerName : '',
     ownerContactNo : '',
+    petdetails: []
 } 
 
 export default class UpdatePet extends Component {
     constructor(props) {
         super(props)
+        this.state={
+            id: this.props.match.params.id,  
+              
+    breed : '',
+    age : ''  ,
+    description : '',
+    price : '',
+    imgUrl : '',
+    ownerName : '',
+    ownerContactNo : '',
+        }
 
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
-        this.state = initialState;
     }
 
     componentDidMount() {
+
+        PetService.getPetById(this.state.id).then((res )=> {
+            let pet = res.data;
+            this.setState({
+                breed : pet.breed,
+                age: pet.age,
+                description: pet.description,
+                price: pet.price,
+                ownerName : pet.ownerName,
+                ownerContactNo : pet.ownerContactNo,
+                imgUrl : pet.imgUrl
+            });
+            console.log(pet);
+        })
+            .catch(e => {
+                console.log(e);
+            });
         
     }
     onSubmit(e) {
@@ -51,8 +80,12 @@ export default class UpdatePet extends Component {
             imgUrl : this.state.imgUrl
         };
         console.log("DETAILS ADDED SUCCESSFUL ", pet);
-        PetService.addPetDetails(pet).then(res =>{
-
+        PetService.updatePetDetails( pet , this.state.id ).then(res =>{
+            this.setState({"updateShow" : true});
+            setTimeout(() => this.setState({ "updateShow": false }), 3000)
+            let pet;
+            this.setState({ pet : res.data });
+            alert("Successfuly Updated!")
         })
 
     }
@@ -75,11 +108,12 @@ export default class UpdatePet extends Component {
                 <div className='section-title text-center'>
                     <h3> Update PET DETAILS</h3>
                 </div>
+                <Card style={{ width: "90%" , marginTop:"-1cm"}}>
                 <Row className="landing">
                     <Col >
                         <Form onSubmit={this.onSubmit} style={{ width: "80%", marginLeft: "10%" }}>
                             <Form.Group >
-                                <Form.Label>Breed</Form.Label>
+                                <Form.Label style={{fontWeight:"-moz-initial" , fontSize:"20px"}}>Breed</Form.Label>
                                 <Form.Control
                                     type="text"
                                     id="breed"
@@ -90,7 +124,7 @@ export default class UpdatePet extends Component {
                                     
                             </Form.Group>
                             <Form.Group >
-                                <Form.Label>Age</Form.Label>
+                                <Form.Label style={{fontWeight:"-moz-initial" , fontSize:"20px"}}>Age</Form.Label>
                                 <Form.Control
                                     type="text"
                                     id="age"
@@ -100,7 +134,7 @@ export default class UpdatePet extends Component {
                                     onChange={this.onChange} />
                             </Form.Group>
                             <Form.Group >
-                                <Form.Label>Description</Form.Label>
+                                <Form.Label style={{fontWeight:"-moz-initial" , fontSize:"20px"}}>Description</Form.Label>
                                 <Form.Control
                                     type="text"
                                     id="description"
@@ -110,7 +144,7 @@ export default class UpdatePet extends Component {
                                     onChange={this.onChange} />
                             </Form.Group>
                             <Form.Group >
-                                <Form.Label>Price</Form.Label>
+                                <Form.Label style={{fontWeight:"-moz-initial" , fontSize:"20px"}}>Price</Form.Label>
                                 <Form.Control
                                     type="text"
                                     id="price"
@@ -120,7 +154,7 @@ export default class UpdatePet extends Component {
                                     onChange={this.onChange} />
                             </Form.Group>
                             <Form.Group >
-                                <Form.Label>Image URL</Form.Label>
+                                <Form.Label style={{fontWeight:"-moz-initial" , fontSize:"20px"}}>Image URL</Form.Label>
                                 <Form.Control
                                     type="imgUrl"
                                     id="imgUrl"
@@ -130,7 +164,7 @@ export default class UpdatePet extends Component {
                                     onChange={this.onChange} />
                             </Form.Group>
                             <Form.Group >
-                                <Form.Label>Owner Name</Form.Label>
+                                <Form.Label style={{fontWeight:"-moz-initial" , fontSize:"20px"}}>Owner Name</Form.Label>
                                 <Form.Control
                                     type="text"
                                     id="ownerName"
@@ -140,7 +174,7 @@ export default class UpdatePet extends Component {
                                     onChange={this.onChange} />
                             </Form.Group>
                             <Form.Group >
-                                <Form.Label>Owner contact Number</Form.Label>
+                                <Form.Label style={{fontWeight:"-moz-initial" , fontSize:"20px"}}>Owner contact Number</Form.Label>
                                 <Form.Control
                                     type="text"
                                     id="ownerContactNo"
@@ -151,15 +185,16 @@ export default class UpdatePet extends Component {
                             </Form.Group>
                             <br />
                             <Form.Group>
-                                <Button type="submit" style={{ backgroundColor: '#37474F', paddingRight: 10 }}>Submit</Button> {''}
+                                <Button type="submit" style={{ backgroundColor: '#37474F', paddingRight: 10 }}>Update</Button> {''}
                                 <Link to='/get-pet-details'>  <Button type="back" style={{ backgroundColor: '#37474F', paddingRight: 10 }}>Go Back</Button></Link>
                             </Form.Group>
                         </Form>
                     </Col>
                     <Col >
-                        <Image src={pets} thumbnail style={{ border: "none", width:"18cm" , marginTop:"-4cm"}} />
+                        <Image src={pets} thumbnail style={{ border: "none", width:"18cm" }} />
                     </Col>
                 </Row>
+                </Card>
             </div >
         </div >
         )
