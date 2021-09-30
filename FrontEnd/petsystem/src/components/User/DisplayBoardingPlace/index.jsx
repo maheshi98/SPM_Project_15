@@ -88,9 +88,9 @@ export default class BoardingPlace extends Component {
                 </Row>
                 {this.state.boardingPlaces.map(
                     places =>
-                        <section class="why-us section-bg auto-space auto-space-vertical">
+                        <section class="why-us section-bg auto-space auto-space-vertical"> 
                             <br />
-                            <div class="container" key={places.placeId}>
+                            <div class="container" key={places.placeId} style={{ backgroundColor: '#fff' }}>
                                 <div class="row">
                                     <div class="col-lg-6 video-box">
                                         <img

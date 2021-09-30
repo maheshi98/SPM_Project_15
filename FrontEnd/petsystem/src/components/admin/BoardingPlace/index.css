@@ -49,12 +49,13 @@
 {
     margin: 10px auto;
 }
-.table-row{
+.table-row-place{
     display: table;
     width: 100%;
     margin: 5px auto;
     font-family: sans-serif;
-    background: transparent;
+    background: #ffffff;
+    /* background-color: antiquewhite; */
     padding: 10px 0;
     color: #555;
     font-size: 15px;
@@ -91,7 +92,7 @@ a{
 }
 
 @media only screen and (max-width: 600px) {
-  .table-row {
+  .table-row-place {
     font-size: 11px;
   }
 }

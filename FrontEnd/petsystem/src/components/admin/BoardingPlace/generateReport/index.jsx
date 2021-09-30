@@ -1,8 +1,9 @@
-
 import React, { Component } from 'react';
 import { Row } from 'react-bootstrap';
-import BoardingPlaceService from '../../../../Services/BoardingPlacesService'; 
-import {RiFileDownloadLine} from 'react-icons/ri';
+import jsPDF from 'jspdf';
+import "jspdf-autotable";
+import BoardingPlaceService from '../../../../Services/BoardingPlacesService';
+import { RiFileDownloadLine } from 'react-icons/ri';
 import './index.css'
 
 export default class GenerateReport extends Component {
@@ -11,9 +12,10 @@ export default class GenerateReport extends Component {
         this.retrievePetBoardingPlaces = this.retrievePetBoardingPlaces.bind(this);
         this.onChangeSearchPlace = this.onChangeSearchPlace.bind(this);
         this.searchPetBoardingPlace = this.searchPetBoardingPlace.bind(this);
+        this.exportPDF = this.exportPDF.bind(this);
         this.state = {
             boardingPlaces: [],
-            searchPlace: ""
+            searchPlace: "",
         }
     }
 
@@ -54,11 +56,53 @@ export default class GenerateReport extends Component {
             });
     }
 
+
+    exportPDF = () => {
+        const unit = "pt";
+        const size = "A3"; // Use A1, A2, A3 or A4
+        const orientation = "landscape"; // portrait or landscape
+        const marginLeft = 40;
+        const doc = new jsPDF(orientation, unit, size);
+        const title = "Pet Boarding Places City Starting in " + `${this.state.searchPlace}`;
+        const headers = [["Place Image URL", "Place Name", "Place City", "Place Email", "Place Opening Hours", "Services"]];
+        const place = this.state.boardingPlaces.map(
+            places => [
+                places.placeImage,
+                places.placeName,
+                places.placeCity,
+                places.placeEmail,
+                places.placeOpeningHours,
+                places.placeServices.map(
+                    services => [
+                        services.label,
+                        services.price]
+                )
+            ]
+        );
+
+        let content = {
+            // theme:
+            theme: 'grid',
+            headStyles: { font: 'helvetica', fontStyle: 'bold', halign: 'center' },
+            bodyStyles: { halign: 'center' },
+            startY: 50,
+            head: headers,
+            body: place
+        };
+        doc.rect(20, 20, doc.internal.pageSize.width - 40, doc.internal.pageSize.height - 40, 'S');
+        doc.setFontSize(20);
+        doc.text(title, marginLeft, 40);
+        require('jspdf-autotable');
+        doc.autoTable(content);
+        doc.save("Pet Boarding Place in " + `${this.state.searchPlace}` + ".pdf");
+    }
+
+
     render() {
         const { searchPlace } = this.state;
 
         return (
-            <div className="container" style={{marginBottom:"5%"}}>
+            <div className="container" style={{ marginBottom: "5%" }}>
                 <Row>
                     <div class="text-center">
                         <h1 class="head-title">Generate Report For Pet Boarding Places</h1>
@@ -88,7 +132,7 @@ export default class GenerateReport extends Component {
                     <div className="col-md-4" style={{ marginTop: "5%" }}>
                         <div className="input-group mb-3">
                             <a href="/generate-report-boarding-place">
-                                <button class="member-btn btn"><i><RiFileDownloadLine size="25" /></i> Download</button>
+                                <button class="member-btn btn" onClick={() => this.exportPDF()}><i><RiFileDownloadLine size="25" /></i> Download</button>
                             </a>
                         </div>
                     </div>

@@ -22,6 +22,13 @@ export default class InsertPet extends Component {
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
         this.state = initialState;
+
+        this.state.show =false;   
+        this.state = {
+            errors: {},
+            isLoaded: false,
+            isPayareaHidden:true
+        }
     }
 
     componentDidMount() {
@@ -41,6 +48,7 @@ export default class InsertPet extends Component {
     onSubmit(e) {
          
         e.preventDefault();
+        if(this.validate()){
         let pet = {
             breed: this.state.breed,
             age: this.state.age,
@@ -52,20 +60,70 @@ export default class InsertPet extends Component {
         };
         console.log("DETAILS ADDED SUCCESSFUL ", pet);
         PetService.addPetDetails(pet).then(res =>{
+            this.props.history.push('/get-pet-details')
+            if(res.data != null){
+                this.setState({"show":true});
+                setTimeout(() => this.setState({"show" :false}) , 3000)
+
+            }else{
+                this.setState({"show" :false})
+            }
 
         })
+    }
 
     }
 
-    componentWillUnmount() {
-        
+    validate(){
+
+        let errors = {};
+        let isValid = true;
+        if (!this.state.imgUrl) {  
+            isValid = false;
+            errors["imgUrl"] = "Please enter the image URL.";
+          }
+          if (!this.state.ownerName) {  
+            isValid = false;
+            errors["ownerName"] = "Please enter the owner name.";
+          }
+        if (!this.state.breed) {  
+          isValid = false;
+          errors["breed"] = "Please enter the dog's breed.";
+        }
+        if (!this.state.age) {  
+            isValid = false;
+            errors["age"] = "Please enter the dog's age.";
+          }
+          if (!this.state.description) {  
+            isValid = false;
+            errors["description"] = "Please enter the description.";
+          }
+          if (!this.state.ownerContactNo) {  
+            isValid = false;
+            errors["ownerContactNo"] = "Please enter the Contact Number.";
+          }
+          if (!this.state.price) {  
+            isValid = false;
+            errors["price"] = "Please enter the price.";
+          }
+          if (typeof this.state.ownerContactNo !== "undefined") {
+            var pattern = new RegExp(/^[0-9\b]+$/);
+            if (!pattern.test(this.state.ownerContactNo)) {
+              isValid = false;
+              errors["ownerContactNo"] = "Please enter only numbers.";
+            }else if(this.state.ownerContactNo.length != 10){
+              isValid = false;
+              errors["ownerContactNo"] = "Please enter valid phone number.";
+            }
+          
+          }
+  
+        this.setState({
+          errors: errors
+        });
+        return isValid;
+  
     }
-
-    // Prototype methods, Bind in Constructor (ES2015)
-    handleEvent() {}
-
-    // Class Properties (Stage 3 Proposal)
-    handler = () => { this.setState() }
 
     render() {
         return (
@@ -87,6 +145,7 @@ export default class InsertPet extends Component {
                                     placeholder="Breed"
                                     value={this.state.breed}
                                     onChange={this.onChange} />
+                                    <div className="text-danger">{this.state.errors.breed}</div>
                                     
                             </Form.Group>
                             <Form.Group >
@@ -98,6 +157,7 @@ export default class InsertPet extends Component {
                                     placeholder="Age"
                                     value={this.state.age}
                                     onChange={this.onChange} />
+                                     <div className="text-danger">{this.state.errors.age}</div>
                             </Form.Group>
                             <Form.Group >
                                 <Form.Label>Description</Form.Label>
@@ -108,6 +168,7 @@ export default class InsertPet extends Component {
                                     placeholder="Description"
                                     value={this.state.description}
                                     onChange={this.onChange} />
+                                     <div className="text-danger">{this.state.errors.description}</div>
                             </Form.Group>
                             <Form.Group >
                                 <Form.Label>Price</Form.Label>
@@ -118,6 +179,7 @@ export default class InsertPet extends Component {
                                     placeholder="Rs."
                                     value={this.state.price}
                                     onChange={this.onChange} />
+                                    <div className="text-danger">{this.state.errors.price}</div>
                             </Form.Group>
                             <Form.Group >
                                 <Form.Label>Image URL</Form.Label>
@@ -128,6 +190,7 @@ export default class InsertPet extends Component {
                                     placeholder="Image URL."
                                     value={this.state.imgUrl}
                                     onChange={this.onChange} />
+                                    <div className="text-danger">{this.state.errors.imgUrl}</div>
                             </Form.Group>
                             <Form.Group >
                                 <Form.Label>Owner Name</Form.Label>
@@ -138,6 +201,7 @@ export default class InsertPet extends Component {
                                     placeholder="Owner name."
                                     value={this.state.ownerName}
                                     onChange={this.onChange} />
+                                    <div className="text-danger">{this.state.errors.ownerName}</div>
                             </Form.Group>
                             <Form.Group >
                                 <Form.Label>Owner contact Number</Form.Label>
@@ -148,6 +212,7 @@ export default class InsertPet extends Component {
                                     placeholder="Contact Number."
                                     value={this.state.ownerContactNo}
                                     onChange={this.onChange} />
+                                    <div className="text-danger">{this.state.errors.ownerContactNo}</div>
                             </Form.Group>
                             <br />
                             <Form.Group>
