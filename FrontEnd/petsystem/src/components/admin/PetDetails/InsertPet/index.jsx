@@ -22,6 +22,13 @@ export default class InsertPet extends Component {
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
         this.state = initialState;
+
+        this.state.show =false;   
+        this.state = {
+            errors: {},
+            isLoaded: false,
+            isPayareaHidden:true
+        }
     }
 
     componentDidMount() {
@@ -41,6 +48,7 @@ export default class InsertPet extends Component {
     onSubmit(e) {
          
         e.preventDefault();
+        if(this.validate()){
         let pet = {
             breed: this.state.breed,
             age: this.state.age,
@@ -52,20 +60,62 @@ export default class InsertPet extends Component {
         };
         console.log("DETAILS ADDED SUCCESSFUL ", pet);
         PetService.addPetDetails(pet).then(res =>{
+            this.props.history.push('/get-pet-details')
+            if(res.data != null){
+                this.setState({"show":true});
+                setTimeout(() => this.setState({"show" :false}) , 3000)
+
+            }else{
+                this.setState({"show" :false})
+            }
 
         })
+    }
 
     }
 
-    componentWillUnmount() {
-        
+    validate(){
+
+        let errors = {};
+        let isValid = true;
+        if (!this.state.imgUrl) {  
+            isValid = false;
+            errors["imgUrl"] = "Please enter the image URL.";
+          }
+          if (!this.state.ownerName) {  
+            isValid = false;
+            errors["ownerName"] = "Please enter the owner name.";
+          }
+        if (!this.state.breed) {  
+          isValid = false;
+          errors["breed"] = "Please enter the dog's breed.";
+        }
+        if (!this.state.age) {  
+            isValid = false;
+            errors["age"] = "Please enter the dog's age.";
+          }
+          if (!this.state.description) {  
+            isValid = false;
+            errors["description"] = "Please enter your Contact Number.";
+          }
+          if (typeof this.state.ownerContactNo !== "undefined") {
+            var pattern = new RegExp(/^[0-9\b]+$/);
+            if (!pattern.test(this.state.ownerContactNo)) {
+              isValid = false;
+              errors["ownerContactNo"] = "Please enter only numbers.";
+            }else if(this.state.ownerContactNo.length != 10){
+              isValid = false;
+              errors["ownerContactNo"] = "Please enter valid phone number.";
+            }
+          
+          }
+  
+        this.setState({
+          errors: errors
+        });
+        return isValid;
+  
     }
-
-    // Prototype methods, Bind in Constructor (ES2015)
-    handleEvent() {}
-
-    // Class Properties (Stage 3 Proposal)
-    handler = () => { this.setState() }
 
     render() {
         return (

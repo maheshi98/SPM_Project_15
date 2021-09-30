@@ -29,6 +29,12 @@ export default class Petitem extends Component {
     // Prototype methods, Bind in Constructor (ES2015)
     handleEvent() { }
 
+    navigateUpdatePage(e, petId) {
+        console.log("Pet ID:", petId);
+        window.location = `/display-Contact/${petId}`
+    }
+
+
     // Class Properties (Stage 3 Proposal)
     handler = () => { this.setState() }
 
@@ -44,10 +50,9 @@ export default class Petitem extends Component {
                     <h5><a href="#name">{this.props.pet.age}</a></h5>
                     <p>{this.props.pet.description}</p>
                     <div className=" product-bottom-details">RS.{this.props.pet.price}.00</div>
-                    <Link to='/admin'> <Button onClick={this.shoot} variant="primary" type="submit">
+                     <Button onClick={e => this.navigateUpdatePage(e, this.props.pet.id)} variant="primary" type="submit">
                        Contact
                     </Button> {''}
-                    </Link>
                     <div className="product-bottom-details">
 
                         <div className="product-links">
