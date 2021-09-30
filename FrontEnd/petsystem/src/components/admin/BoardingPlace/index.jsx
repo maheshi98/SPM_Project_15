@@ -55,9 +55,9 @@ export default class BoardingPlace extends Component {
             })
     }
 
-    navigateUpdatePage(e, categoryId) {
-        console.log("Category ID:", categoryId);
-        window.location = `/update-boarding-place/${categoryId}`
+    navigateUpdatePage(e, placeId) {
+        console.log("Place ID:", placeId);
+        window.location = `/update-boarding-place/${placeId}`
     }
 
     setToast = (key) => {
