@@ -3,7 +3,8 @@ import React, { Component } from 'react';
 import { Row, Col } from 'react-bootstrap';
 import AccessoryService from '../../../../Services/AccessoryService';
 import './index.css'
-import jsPDF from 'jspdf-autotable';
+import jsPDF from 'jspdf';
+import "jspdf-autotable";
 import { RiFileDownloadLine } from 'react-icons/ri';
 import { MdCancel } from 'react-icons/md';
 
