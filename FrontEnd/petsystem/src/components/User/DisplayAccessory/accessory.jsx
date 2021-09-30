@@ -31,6 +31,7 @@ export default class accessory extends Component {
     // Class Properties (Stage 3 Proposal)
     handler = () => { this.setState() }
 
+
     render() {
         return (
             <Card border="primary" style={{ color: "blue", width: '100%', marginTop: '-1cm' }} >
@@ -39,14 +40,11 @@ export default class accessory extends Component {
                     <img width="200" height="200" src={this.props.accessory.imageURL} alt="" />
                 </div>
                 <div className="product-details" >
-                    <span className="product-catagory"> <h5>{this.props.accessory.itemName}</h5></span>
+                    <span className="product-catagory"> <h5><b>{this.props.accessory.itemName}</b></h5></span>
                
                     <p>{this.props.accessory.description}</p>
                     <div className=" product-bottom-details">RS.{this.props.accessory.itemPrice}.00</div>
-                    <Link to='/admin'> <Button onClick={this.shoot} variant="primary" type="submit">
-                       Contact
-                    </Button> {''}
-                    </Link>
+                   
                     <div className="product-bottom-details">
 
                         <div className="product-links">
