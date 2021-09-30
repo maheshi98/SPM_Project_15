@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button } from 'react-bootstrap';
+import { Button,Carousel } from 'react-bootstrap';
 import Dog from '../../assets/dogs.jpg';
 import PetAcc from '../../assets/petaccessories.png';
 import Vet from '../../assets/vet.jpg';
