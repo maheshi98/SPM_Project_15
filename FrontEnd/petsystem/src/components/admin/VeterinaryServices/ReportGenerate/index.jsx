@@ -64,7 +64,7 @@ export default class VetGenerateReport extends Component {
         const doc = new jsPDF( orientation, unit, size );
         const title = "Veterinary Details ";
         const headers = [["Veterinary Name","Clinic Location","Contact Number","Veterinary Fee(Rs.)","Description"]];
-        const vet =  this.state.vet.map(
+        const vet = this.state.veterinarydetails.map(
 
             vet=>[
                 vet.name,
