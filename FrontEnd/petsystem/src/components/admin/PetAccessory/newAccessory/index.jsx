@@ -9,7 +9,8 @@ const initialState = {
     itemName : '',
     imageURL : ''  ,
     itemPrice : 0,
-    description: ''
+    description: '',
+    formErrors: {}
 } 
 
 export default class newAccessory extends Component {
@@ -18,6 +19,7 @@ export default class newAccessory extends Component {
 
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
+        this.handleFormValidation = this.handleFormValidation.bind(this);
         this.state = initialState;
     }
 
@@ -69,9 +71,41 @@ export default class newAccessory extends Component {
     // Class Properties (Stage 3 Proposal)
     handler = () => { this.setState() }
 
+    handleFormValidation() {
+        const { itemName, imageURL, itemPrice, description } = this.state;
+
+        let formErrors = {};
+        let formIsValid = true;
+
+        if (!imageURL) {
+            formIsValid = false;
+            formErrors["imageURLError"] = "*Accessory Image URL is required.";
+        }
+
+        if (!itemName) {
+            formIsValid = false;
+            formErrors["itemNameError"] = "*Accessory Name is required.";
+        }
+
+        if (!itemPrice) {
+            formIsValid = false;
+            formErrors["itemPriceError"] = "*Accessory Price is required.";
+        }
+
+        if (!description) {
+            formIsValid = false;
+            formErrors["descriptionError"] = "*Description is required.";
+        }
+
+        this.setState({ formErrors: formErrors });
+        return formIsValid
+    }
+
     render() {
+
+        const { itemNameError, imageURLError, itemPriceError, descriptionError} = this.state.formErrors;
         return (
-            
+           
             <div>
             <div id='createaccessory' style= {{paddingLeft : "3cm" , paddingRight : "3cm"}}>
                 <div className='section-title text-center'>
@@ -85,41 +119,60 @@ export default class newAccessory extends Component {
                                 <Form.Control
                                     type="text"
                                     id="itemName"
+                                    required
                                     name="itemName"
                                     placeholder="Item Name"
                                     value={this.state.itemName}
                                     onChange={this.onChange} />
-                                    
+                                    <div className="">
+                                     {itemNameError &&
+                                        <div style={{ color: "red", paddingBottom: 10, paddingTop: 3 }}>{itemNameError}</div>}
+                                    </div>
                             </Form.Group>
                             <Form.Group >
                                 <Form.Label>imageURL</Form.Label>
                                 <Form.Control
                                     type="text"
                                     id="imageURL"
+                                    required
                                     name="imageURL"
                                     placeholder="ImageURL"
                                     value={this.state.imageURL}
                                     onChange={this.onChange} />
+                                     <div className="">
+                                     {imageURLError &&
+                                        <div style={{ color: "red", paddingBottom: 10, paddingTop: 3 }}>{imageURLError}</div>}
+                                    </div>
                             </Form.Group>
                             <Form.Group >
                                 <Form.Label>itemPrice</Form.Label>
                                 <Form.Control
                                     type="text"
                                     id="itemPrice"
+                                    required
                                     name="itemPrice"
                                     placeholder="Description"
                                     value={this.state.itemPrice}
                                     onChange={this.onChange} />
+                                    <div className="">
+                                     {itemPriceError&&
+                                        <div style={{ color: "red", paddingBottom: 10, paddingTop: 3 }}>{itemPriceError}</div>}
+                                    </div>
                             </Form.Group>
                             <Form.Group >
                                 <Form.Label>description</Form.Label>
                                 <Form.Control
                                     type="text"
                                     id="description"
+                                    required
                                     name="description"
                                     placeholder="description"
                                     value={this.state.description}
                                     onChange={this.onChange} />
+                                     <div className="">
+                                     {descriptionError&&
+                                        <div style={{ color: "red", paddingBottom: 10, paddingTop: 3 }}>{descriptionError}</div>}
+                                    </div>
                             </Form.Group>
                             <br />
                             <Form.Group>

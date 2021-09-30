@@ -82,6 +82,7 @@ export default class updateAccessory extends Component {
     handler = () => { this.setState() }
 
     render() {
+        
         return (
             
             <div>

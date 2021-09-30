@@ -20,7 +20,7 @@ public class PetAccessoryModel {
     }
 
     public void setId(String id) {
-        id = id;
+        this.id = id;
     }
 
     public String getItemName() {
