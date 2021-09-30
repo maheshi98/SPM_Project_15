@@ -73,6 +73,7 @@ export default class UpdateVeterinay extends Component {
         };
         console.log("DETAILS ADDED SUCCESSFUL ", vet);
         VeterinaryServices.updateVeterinaryDetails(vet, this.state.id).then(res => {
+            this.props.history.push('/admin-veterinary-services')
             this.setState({ "updateShow": true });
             setTimeout(() => this.setState({ "updateShow": false }), 3000)
             let vet;
