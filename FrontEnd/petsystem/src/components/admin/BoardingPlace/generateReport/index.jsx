@@ -12,7 +12,6 @@ export default class GenerateReport extends Component {
         this.retrievePetBoardingPlaces = this.retrievePetBoardingPlaces.bind(this);
         this.onChangeSearchPlace = this.onChangeSearchPlace.bind(this);
         this.searchPetBoardingPlace = this.searchPetBoardingPlace.bind(this);
-        // this.jsPdfGenerator = this.jsPdfGenerator.bind(this);
         this.exportPDF = this.exportPDF.bind(this);
         this.state = {
             boardingPlaces: [],
@@ -59,17 +58,14 @@ export default class GenerateReport extends Component {
 
 
     exportPDF = () => {
-
-        console.log("SSSSSSSSSS")
         const unit = "pt";
         const size = "A3"; // Use A1, A2, A3 or A4
         const orientation = "landscape"; // portrait or landscape
         const marginLeft = 40;
         const doc = new jsPDF(orientation, unit, size);
-        const title = "Pet Boarding Place";
+        const title = "Pet Boarding Places City Starting in " + `${this.state.searchPlace}`;
         const headers = [["Place Image URL", "Place Name", "Place City", "Place Email", "Place Opening Hours", "Services"]];
-        const pet = this.state.boardingPlaces.map(
-
+        const place = this.state.boardingPlaces.map(
             places => [
                 places.placeImage,
                 places.placeName,
@@ -83,17 +79,22 @@ export default class GenerateReport extends Component {
                 )
             ]
         );
+
         let content = {
+            // theme:
+            theme: 'grid',
+            headStyles: { font: 'helvetica', fontStyle: 'bold', halign: 'center' },
+            bodyStyles: { halign: 'center' },
             startY: 50,
             head: headers,
-            body: pet
+            body: place
         };
-
+        doc.rect(20, 20, doc.internal.pageSize.width - 40, doc.internal.pageSize.height - 40, 'S');
         doc.setFontSize(20);
         doc.text(title, marginLeft, 40);
         require('jspdf-autotable');
         doc.autoTable(content);
-        doc.save("Pet Details.pdf");
+        doc.save("Pet Boarding Place in " + `${this.state.searchPlace}` + ".pdf");
     }
 
 

@@ -66,6 +66,7 @@ export default class App extends Component {
             <Route exact path='/display-veterinary-details' component={VetDetails} />
           </Switch>
         </BrowserRouter>
+        <br />
         <Footer />
       </div>
     )
