@@ -9,7 +9,8 @@ const initialState = {
     itemName : '',
     imageURL : ''  ,
     itemPrice : 0,
-    description: ''
+    description: '',
+    //formErrors: {}
 } 
 
 export default class newAccessory extends Component {
@@ -18,7 +19,14 @@ export default class newAccessory extends Component {
 
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
+        //this.handleFormValidation = this.handleFormValidation.bind(this);
         this.state = initialState;
+        this.state.show =false;   
+        this.state = {
+            errors: {},
+            isLoaded: false,
+            isPayareaHidden:true
+        }
     }
 
     componentDidMount() {
@@ -37,6 +45,7 @@ export default class newAccessory extends Component {
 
     onSubmit(e) {
         e.preventDefault();
+        if(this.validate()){
         let accessory = {
             itemName: this.state.itemName,
             imageURL: this.state.imageURL,
@@ -45,9 +54,16 @@ export default class newAccessory extends Component {
         };
         console.log("DETAILS ADDED SUCCESSFUL ", accessory);
         AccessoryService.addPetAccessory(accessory).then(res =>{
+            this.props.history.push('/admin-accessory')
+            if(res.data != null){
+                this.setState({"show":true});
+                setTimeout(() => this.setState({"show" :false}) , 3000)
 
+            }else{
+                this.setState({"show" :false})
+            }
         })
-
+    }
     }
     clearData = () => {
         this.setState({
@@ -69,9 +85,70 @@ export default class newAccessory extends Component {
     // Class Properties (Stage 3 Proposal)
     handler = () => { this.setState() }
 
+    // handleFormValidation() {
+    //     const { itemName, imageURL, itemPrice, description } = this.state;
+
+    //     let formErrors = {};
+    //     let formIsValid = true;
+
+    //     if (!imageURL) {
+    //         formIsValid = false;
+    //         formErrors["imageURLError"] = "*Accessory Image URL is required.";
+    //     }
+
+    //     if (!itemName) {
+    //         formIsValid = false;
+    //         formErrors["itemNameError"] = "*Accessory Name is required.";
+    //     }
+
+    //     if (!itemPrice) {
+    //         formIsValid = false;
+    //         formErrors["itemPriceError"] = "*Accessory Price is required.";
+    //     }
+
+    //     if (!description) {
+    //         formIsValid = false;
+    //         formErrors["descriptionError"] = "*Description is required.";
+    //     }
+
+    //     this.setState({ formErrors: formErrors });
+    //     return formIsValid
+    // }
+    validate(){
+
+        let errors = {};
+        let isValid = true;
+        if (!this.state.imageURL) {  
+            isValid = false;
+            errors["imageURL"] = "Please enter the image URL.";
+          }
+          if (!this.state.itemName) {  
+            isValid = false;
+            errors["itemName"] = "Please enter the item name.";
+          }
+        if (!this.state.itemPrice) {  
+          isValid = false;
+          errors["itemPrice"] = "Please enter the accessory price.";
+        }
+        
+          if (!this.state.description) {  
+            isValid = false;
+            errors["description"] = "Please enter the description.";
+          }
+          
+  
+        this.setState({
+          errors: errors
+        });
+        return isValid;
+  
+    }
+
     render() {
+
+        // const { itemNameError, imageURLError, itemPriceError, descriptionError} = this.state.formErrors;
         return (
-            
+           
             <div>
             <div id='createaccessory' style= {{paddingLeft : "3cm" , paddingRight : "3cm"}}>
                 <div className='section-title text-center'>
@@ -89,7 +166,11 @@ export default class newAccessory extends Component {
                                     placeholder="Item Name"
                                     value={this.state.itemName}
                                     onChange={this.onChange} />
-                                    
+                                    {/* <div className="">
+                                     {itemNameError &&
+                                        <div style={{ color: "red", paddingBottom: 10, paddingTop: 3 }}>{itemNameError}</div>}
+                                    </div> */}
+                                    <div className="text-danger">{this.state.errors.itemName}</div>
                             </Form.Group>
                             <Form.Group >
                                 <Form.Label>imageURL</Form.Label>
@@ -100,6 +181,11 @@ export default class newAccessory extends Component {
                                     placeholder="ImageURL"
                                     value={this.state.imageURL}
                                     onChange={this.onChange} />
+                                     {/* <div className="">
+                                     {imageURLError &&
+                                        <div style={{ color: "red", paddingBottom: 10, paddingTop: 3 }}>{imageURLError}</div>}
+                                    </div> */}
+                                    <div className="text-danger">{this.state.errors.imageURL}</div>
                             </Form.Group>
                             <Form.Group >
                                 <Form.Label>itemPrice</Form.Label>
@@ -110,6 +196,11 @@ export default class newAccessory extends Component {
                                     placeholder="Description"
                                     value={this.state.itemPrice}
                                     onChange={this.onChange} />
+                                    {/* <div className="">
+                                     {itemPriceError&&
+                                        <div style={{ color: "red", paddingBottom: 10, paddingTop: 3 }}>{itemPriceError}</div>}
+                                    </div> */}
+                                    <div className="text-danger">{this.state.errors.itemPrice}</div>
                             </Form.Group>
                             <Form.Group >
                                 <Form.Label>description</Form.Label>
@@ -120,6 +211,11 @@ export default class newAccessory extends Component {
                                     placeholder="description"
                                     value={this.state.description}
                                     onChange={this.onChange} />
+                                     {/* <div className="">
+                                     {descriptionError&&
+                                        <div style={{ color: "red", paddingBottom: 10, paddingTop: 3 }}>{descriptionError}</div>}
+                                    </div> */}
+                                    <div className="text-danger">{this.state.errors.description}</div>
                             </Form.Group>
                             <br />
                             <Form.Group>
