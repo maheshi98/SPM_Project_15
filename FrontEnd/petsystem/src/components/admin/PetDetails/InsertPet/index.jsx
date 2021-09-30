@@ -96,7 +96,15 @@ export default class InsertPet extends Component {
           }
           if (!this.state.description) {  
             isValid = false;
-            errors["description"] = "Please enter your Contact Number.";
+            errors["description"] = "Please enter the description.";
+          }
+          if (!this.state.ownerContactNo) {  
+            isValid = false;
+            errors["ownerContactNo"] = "Please enter the Contact Number.";
+          }
+          if (!this.state.price) {  
+            isValid = false;
+            errors["price"] = "Please enter the price.";
           }
           if (typeof this.state.ownerContactNo !== "undefined") {
             var pattern = new RegExp(/^[0-9\b]+$/);
@@ -137,6 +145,7 @@ export default class InsertPet extends Component {
                                     placeholder="Breed"
                                     value={this.state.breed}
                                     onChange={this.onChange} />
+                                    <div className="text-danger">{this.state.errors.breed}</div>
                                     
                             </Form.Group>
                             <Form.Group >
@@ -148,6 +157,7 @@ export default class InsertPet extends Component {
                                     placeholder="Age"
                                     value={this.state.age}
                                     onChange={this.onChange} />
+                                     <div className="text-danger">{this.state.errors.age}</div>
                             </Form.Group>
                             <Form.Group >
                                 <Form.Label>Description</Form.Label>
@@ -158,6 +168,7 @@ export default class InsertPet extends Component {
                                     placeholder="Description"
                                     value={this.state.description}
                                     onChange={this.onChange} />
+                                     <div className="text-danger">{this.state.errors.description}</div>
                             </Form.Group>
                             <Form.Group >
                                 <Form.Label>Price</Form.Label>
@@ -168,6 +179,7 @@ export default class InsertPet extends Component {
                                     placeholder="Rs."
                                     value={this.state.price}
                                     onChange={this.onChange} />
+                                    <div className="text-danger">{this.state.errors.price}</div>
                             </Form.Group>
                             <Form.Group >
                                 <Form.Label>Image URL</Form.Label>
@@ -178,6 +190,7 @@ export default class InsertPet extends Component {
                                     placeholder="Image URL."
                                     value={this.state.imgUrl}
                                     onChange={this.onChange} />
+                                    <div className="text-danger">{this.state.errors.imgUrl}</div>
                             </Form.Group>
                             <Form.Group >
                                 <Form.Label>Owner Name</Form.Label>
@@ -188,6 +201,7 @@ export default class InsertPet extends Component {
                                     placeholder="Owner name."
                                     value={this.state.ownerName}
                                     onChange={this.onChange} />
+                                    <div className="text-danger">{this.state.errors.ownerName}</div>
                             </Form.Group>
                             <Form.Group >
                                 <Form.Label>Owner contact Number</Form.Label>
@@ -198,6 +212,7 @@ export default class InsertPet extends Component {
                                     placeholder="Contact Number."
                                     value={this.state.ownerContactNo}
                                     onChange={this.onChange} />
+                                    <div className="text-danger">{this.state.errors.ownerContactNo}</div>
                             </Form.Group>
                             <br />
                             <Form.Group>
