@@ -22,8 +22,8 @@ Member Details:
 1. 
 
 ### Procedure of setting up perquisites  and run the project
-1. 
+1. In the project directory, you can run:
 
+### `npm start`
 
-
-
+2. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
