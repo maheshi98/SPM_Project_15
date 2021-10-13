@@ -1,7 +1,7 @@
 ## Group ID : `REG_WE_15`
 ## Project Name: `Pet care System`
-## Group Details
-Member Details: 
+## Group Member Details
+ 
 |Name|Student ID|Username|
 |:--:|:--:|:--:|
 |Achini Wickkramaratne|IT19236742|AchiniIma|
@@ -10,6 +10,7 @@ Member Details:
 |Dulya Perera|IT19236810|Dulyaaa|
 
 ## Project Description
+This is group project
 
 ## Technologies
 * ![ReactJs](https://img.shields.io/badge/FrontEnd-ReactJs-blue)
