@@ -26,14 +26,21 @@ The admin of the system can perform all the operations on the website. Once he/s
 
 ## How to get started
 ### Prerequisites
-1. npm install - frontend project
+#### Softwares:
+1. IntelliJ Idea IDE
+2. VS Code IDE
 
-### Procedure of setting up perquisites  and run the project
-1. In the project directory, you can run:
+#### Dependencies 
+1. node
+2. React
 
-### `npm start`
+### Procedure of setting up and run the project
+#### Frontend
+1. Clone the project
+2. Open a cmd in the project frontend directory and run `npm install`
+3. In the project directory, run the `npm start`
+4. Then will open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-2. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-### `mvn clean spring-boot:run`
-1. run backend project
+#### Backend
+1. Open a cmd in the project backtend directory
+2. Run backend project `mvn clean spring-boot:run`
