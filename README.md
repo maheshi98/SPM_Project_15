@@ -10,7 +10,7 @@
 |Dulya Perera|IT19236810|Dulyaaa|
 
 ## Project Description
-## `"ADOPT THE BELOVED OF YOUR LIFE"`
+## `"Only the best for your Dog"`
 More than 100 shelters, humane societies, and pet rescue groups are part of the Home for-Pet.com family, and these groups rely on being able to post various profiles of homeless pets on Home-for-Pet.com free of charge. A dog or cat only has a chance to find a home when they are seen, and your gift helps ensure this happens each and every day.
 
 #### VISSION:
