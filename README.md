@@ -5,7 +5,7 @@
 |Name|Student ID|Username|
 |:--:|:--:|:--:|
 |Achini Wickkramaratne|IT19236742|AchiniIma|
-|Maheshi Purnima|IT19212982|Maheshi|
+|Maheshi Purnima|IT19212982|maheshi98|
 |Perusha Wanniarachchi|IT19234908|Perusha|
 |Dulya Perera|IT19236810|Dulyaaa|
 
