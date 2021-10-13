@@ -1,5 +1,5 @@
 ## Group ID : `REG_WE_15`
-## Project Name: `Pet care System`
+## Project Name: `Pet Care Management System`
 ## Group Member Details
  
 |Name|Student ID|Username|
@@ -11,7 +11,9 @@
 
 ## Project Description
 ## `"Only the best for your Dog"`
-More than 100 shelters, humane societies, and pet rescue groups are part of the Home for-Pet.com family, and these groups rely on being able to post various profiles of homeless pets on Home-for-Pet.com free of charge. A dog or cat only has a chance to find a home when they are seen, and your gift helps ensure this happens each and every day.
+The Pet Care Management System helps to take care of your lovely pets by providing different services. The system is a website where the any user of the system can view the pet details, pets’ accessories details, veterinary service details, and pet boarding kennel places before they come to the shop. Also, they can search the before mentioned details as much as quickly on the website.
+The admin of the system can perform all the operations on the website. Once he/she log in to the system as an admin by entering exact username and password can view the admin dashboard. At there they can view summary of website. Following are the main operations that can be performed by admin on the website.
+
 
 #### VISSION:
 Provide a Home for All the Pets in Sri Lanka.
