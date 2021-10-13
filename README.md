@@ -1,7 +1,5 @@
-# Group ID
-REG_WE_15
-## Project Name
-Pet care System
+## Group ID : `REG_WE_15`
+## Project Name: `Pet care System`
 ## Group Details
 Member Details: 
 |Name|Student ID|Username|
@@ -11,13 +9,14 @@ Member Details:
 |Perusha Wanniarachchi|IT19234908|Perusha|
 |Dulya Perera|IT19236810|Dulyaaa|
 
-# Project Description
-# Technologies
+## Project Description
+
+## Technologies
 * ![ReactJs](https://img.shields.io/badge/FrontEnd-ReactJs-blue)
 * ![SpringBoot](https://img.shields.io/badge/BackEnd-Spring_Boot-green)
 * ![MongoDB](https://img.shields.io/badge/Database-MongoDB-green)
 
-# How to get started
+## How to get started
 ### Prerequisites
 1. 
 
